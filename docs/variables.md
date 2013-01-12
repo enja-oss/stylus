@@ -25,7 +25,7 @@ Compiles to:
 
 Variables can even consist of an expression list:
 
-変数は式（のリスト）としても成立します。
+変数はリスト表現としても成立します。
 
     font-size = 14px
     font = font-size "Lucida Grande", Arial
@@ -57,8 +57,8 @@ Identifiers (variable names, functions, etc.) may also include the `$` character
  Another cool feature unique to Stylus is the ability to reference
  properties defined _without_ assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element (typically done using percentages and negative margins, as follows):
 
-別のStylus固有のクールな機能として、変数に値を割り当てる_ことなく_、定義されたプロパティを参照できることが挙げられます。
-これの良い例は　エレメントが垂直方向と水平方法の中心となるようなロジックが必要な場合です。
+別のStylus固有のクールな機能として、変数にこれらの値を割り当てる_ことなく_、定義されたプロパティを参照できることが挙げられます。
+この良い例は　エレメントが垂直方向と水平方法の中心となるようなロジックが必要な場合です。
 （次のように、パーセントやマイナスのマージンにて使うことが一般的です。）
 
      #logo
