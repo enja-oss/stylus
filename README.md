@@ -32,42 +32,9 @@ Markdown上で元文書の表現を再現できるようご協力ください。
 en.ja-ossプロジェクトでは現在管理者を募集しています。
 詳しくは[こちらを参照してください](https://github.com/enja-oss/README/issues/12)。
 
-## 翻訳済みコンテンツ
+## 翻訳コンテンツ
 
--
-
-## 着手中/予定コンテンツ
-
-- [Selectors](http://learnboost.github.com/stylus/docs/selectors.html) [@mitsuruog](https://github.com/mitsuruog)
-- [Variables](http://learnboost.github.com/stylus/docs/variables.html) [@mitsuruog](https://github.com/mitsuruog)
-- [Interpolation](http://learnboost.github.com/stylus/docs/interpolation.html) [@mitsuruog](https://github.com/mitsuruog)
-- [Operators](http://learnboost.github.com/stylus/docs/operators.html) [@mitsuruog](https://github.com/mitsuruog)
-- [Mixins](http://learnboost.github.com/stylus/docs/mixins.html) [@yukihr](https://github.com/yukihr)
-- [Functions](http://learnboost.github.com/stylus/docs/functions.html) [@yukihr](https://github.com/yukihr)
-- [Keyword Arguments](http://learnboost.github.com/stylus/docs/kwargs.html) [@yukihr](https://github.com/yukihr)
-- [Built-in Functions](http://learnboost.github.com/stylus/docs/bifs.html) [@yukihr](https://github.com/yukihr)
-- [Rest Params](http://learnboost.github.com/stylus/docs/vargs.html) [@yukihr](https://github.com/yukihr)
-- [Comments](http://learnboost.github.com/stylus/docs/comments.html) [@japboy](https://github.com/japboy)
-- [Conditionals](http://learnboost.github.com/stylus/docs/conditionals.html) [@japboy](https://github.com/japboy)
-- [Iteration](http://learnboost.github.com/stylus/docs/iteration.html) [@japboy](https://github.com/japboy)
-- [@import](http://learnboost.github.com/stylus/docs/import.html) [@yukihr](https://github.com/yukihr)
-- [@media](http://learnboost.github.com/stylus/docs/media.html) [@yukihr](https://github.com/yukihr)
-- [@font-face](http://learnboost.github.com/stylus/docs/font-face.html [@yukihr](https://github.com/yukihr)
-
-## 未着手コンテンツ
-
-- [@keyframes](http://learnboost.github.com/stylus/docs/keyframes.html)
-- [@extend](http://learnboost.github.com/stylus/docs/extend.html)
-- [url()](http://learnboost.github.com/stylus/docs/functions.url.html)
-- [CSS Literal](http://learnboost.github.com/stylus/docs/literal.html)
-- [CSS Style Syntax](http://learnboost.github.com/stylus/docs/css-style.html)
-- [Char Escaping](http://learnboost.github.com/stylus/docs/escape.html)
-- [Executable](http://learnboost.github.com/stylus/docs/executable.html)
-- [Error Reporting](http://learnboost.github.com/stylus/docs/error-reporting.html)
-- [Connect Middleware](http://learnboost.github.com/stylus/docs/middleware.html)
-- [Introspection API](http://learnboost.github.com/stylus/docs/introspection.html)
-- [JavaScript API](http://learnboost.github.com/stylus/docs/js.html)
-
+[Wiki](https://github.com/enja-oss/stylus/wiki/%E7%BF%BB%E8%A8%B3%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E4%B8%80%E8%A6%A7)を参照してください。
 
 コンテンツの翻訳にご協力くださる方は、ぜひ[着手予定の宣言コーナー](https://github.com/enja-oss/stylus/issues/1)でお知らせください。
 その際に着手予定のパートがすでに他の方と重複していないか確認ください。
