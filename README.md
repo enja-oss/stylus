@@ -50,12 +50,12 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 - [Comments](http://learnboost.github.com/stylus/docs/comments.html) [@japboy](https://github.com/japboy)
 - [Conditionals](http://learnboost.github.com/stylus/docs/conditionals.html) [@japboy](https://github.com/japboy)
 - [Iteration](http://learnboost.github.com/stylus/docs/iteration.html) [@japboy](https://github.com/japboy)
+- [@import](http://learnboost.github.com/stylus/docs/import.html) [@yukihr](https://github.com/yukihr)
+- [@media](http://learnboost.github.com/stylus/docs/media.html) [@yukihr](https://github.com/yukihr)
+- [@font-face](http://learnboost.github.com/stylus/docs/font-face.html [@yukihr](https://github.com/yukihr)
 
 ## 未着手コンテンツ
 
-- [@import](http://learnboost.github.com/stylus/docs/import.html)
-- [@media](http://learnboost.github.com/stylus/docs/media.html)
-- [@font-face](http://learnboost.github.com/stylus/docs/font-face.html)
 - [@keyframes](http://learnboost.github.com/stylus/docs/keyframes.html)
 - [@extend](http://learnboost.github.com/stylus/docs/extend.html)
 - [url()](http://learnboost.github.com/stylus/docs/functions.url.html)
