@@ -50,7 +50,7 @@ LICENSE-MIT を参照してください。
 
 ##翻訳参加者
 
-– [@mitsuruog](https://github.com/mitsuruog) (管理者)
+- [@mitsuruog](https://github.com/mitsuruog) (管理者)
 - [@Layzie](https://github.com/Layzie) (管理者)
 - [@studiomohawk](https://github.com/studiomohawk) (監訳・管理者)
 - [@yukihr](https://github.com/yukihr)
