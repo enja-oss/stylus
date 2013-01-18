@@ -1,7 +1,14 @@
+ +  元文書: [stylus/docs/operators.html at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/operators.html 
+"stylus/docs/operators.html at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub")
 
 ## Operator Precedence
 
+## ## 演算子の優先順位 [原文](http://learnboost.github.com/stylus/docs/operators.html)
+
 Below is the operator precedence table, highest to lowest:
+
+下は演算子を優先順位の高いものから並べた表です。
 
      []
      ! ~ + -
@@ -21,7 +28,11 @@ Below is the operator precedence table, highest to lowest:
 
 ## Unary Operators
 
+## 単項演算子
+
 The following unary operators are available, `!`, `not`, `-`, `+`, and `~`.
+
+次の単項演算子が利用できます。 `!`, `not`, `-`, `+`, `~`
 
     !0
     // => true
@@ -49,26 +60,41 @@ The following unary operators are available, `!`, `not`, `-`, `+`, and `~`.
     
 The logical `not` operator has low precedence, therefore the following example could be replaced with
 
+`not` 論理演算子は優先度が低いため、次の例は置き換えることができます。
+
     a = 0
     b = 1
     
     !a and !b
     // => false
     // pased as: (!a) and (!b)
+    // このように評価される: (!a) and (!b)
 
 With:
+
+置き換え後:
 
     not a or b
     // => false
     // parsed as: not (a or b)
+    // このように評価される: not (a or b)
 
 ## Binary Operators
 
+## バイナリ演算子
+
 ### Subscript []
 
+### 記号 []\(\)
+
  The subscript operator allows us to grab a value inside an expression via index. Parenthesized expressions may act as tuples (e.g. `(15px 5px)`, `(1 2 3)`).
+
+ 記号（`[]`）は、インデックス経由で式の中の値を取得することが出来ます。
+ 括弧（`()`）で囲まれた表現はタプルとして振舞います（例えば、 `(15px 5px)`, `(1 2 3)`）。 
  
  Below is an example that uses tuples for error handling (and showcasing the versatility of this construct):
+ 
+ 次は、エラーハンドリングのためにタプルを使う（そして、この構造の汎用性を紹介する）例です。
  
      add(a, b)
        if a is a 'unit' and b is a 'unit'
@@ -91,14 +117,17 @@ With:
 
  Here's a more complex example. Now we're invoking the built-in `error()` function with the return error message, whenever the ident (the first value) equals `error`.
  
- 
      if (val = add(1,'5'))[0] == error
        error(val[1])
 
 ## Range .. ...
 
+## 範囲 .. ...
+
  Both the inclusive (`..`) and exclusive (`...`) range operators are provided, expanding to expressions:
  
+ 包含的（`..`）と排他的（`...`）両方の範囲記号が提供されており、次のような式に展開されます。
+
      1..5
      // => 1 2 3 4 5
 
@@ -107,7 +136,12 @@ With:
 
 ### Additive: + -
 
+### 加算減算: + -
+
 Multiplicative and additive binary operators work as expected. Type conversion is applied within unit type classes, or default to the literal value. For example `5s - 2px` results in `3s`.
+
+加算と減算のバイナリ演算子は期待通りに動作します。
+型変換は、ユニット型クラスの範囲内か初期のリテラル値が適用されます。例えば、 `5s - 2px` の結果は `3s` です。
 
     15px - 5px
     // => 10px
@@ -132,6 +166,8 @@ Multiplicative and additive binary operators work as expected. Type conversion i
 
 ### Multiplicative: / * %
 
+### 乗算除算: / * %
+
     2000ms + (1s * 2)
     // => 4ms
 
@@ -143,24 +179,43 @@ Multiplicative and additive binary operators work as expected. Type conversion i
 
 When using `/` within a property value, you **must** wrap with parens. Otherwise the `/` is taken literally (to support CSS `line-height`):
 
+もし、`/` をプロパティ値の中で使う場合、**必ず** 括弧で囲まなければなりません。
+そうしなければ、 `/` は文字通りに解釈されます（これはCSSが`line-height` をサポートするため）。
+
     font: 14px/1.5;
 
 But the following is evaluated as `14px` ÷ `1.5`:
+
+しかし、次は`14px` ÷ `1.5` と評価されます。:
 
     font: (14px/1.5);
 
 This is _only_ required for the `/` operator.
 
+これは、 `/` 演算子　_のみ_ に必要なことです。
+
 ### Exponent: **
 
+### 指数: **
+
 The Exponent operator:
+
+指数演算子:
 
     2 ** 8
     // => 256
 
 ### Equality & Relational: == != >= <= > <
 
-Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers (such as as `wahoo`) can be utilized as atoms. A function could return `yes` or `no` instead of `true` or `false` (although not advised). 
+### 等価と関係（比較）: == != >= <= > <
+
+Equality operators can be used to equate units, colors, strings, and even identifiers. 
+This is a powerful concept, as even arbitrary identifiers (such as as `wahoo`) can be utilized as atoms. 
+A function could return `yes` or `no` instead of `true` or `false` (although not advised). 
+
+等価演算子は色や文字列や任意の識別子でさえ、同一視するものに使用できます。
+これは任意の識別子（ `wahoo` などなど）をアトムとして利用することができる、強力な概念です。
+関数も `true` か `false` の代わりに `yes` か `no` を返すことができました（これは、あまりお勧めしませんが）。
 
     5 == 5
     // => true
@@ -203,7 +258,11 @@ Equality operators can be used to equate units, colors, strings, and even identi
 
 Only exact values match. For example, `0 == false` and `null == false` are both `false`.
 
+正確な値のみがマッチします。例えば `0 == false` と`null == false` は両方 `false` です。
+
 Aliases:
+
+エイリアス:
 
     ==    is
     !=    is not
@@ -211,13 +270,27 @@ Aliases:
 
 ## Truthfulness
 
- Nearly everything within Stylus resolves to `true`, including units with a suffix. Even `0%`, `0px`, etc. will resolve to `true` (because it's common in Stylus for mixins or functions to accept units as valid). 
+## 真偽
+
+ Nearly everything within Stylus resolves to `true`, including units with a suffix. 
+ Even `0%`, `0px`, etc. will resolve to `true` 
+ (because it's common in Stylus for mixins or functions to accept units as valid). 
  
+ Stylus内のほぼすべての接尾語を持つ単位は `true` として解釈されます。
+ `0%`, `0px`, などでさえも `true` として解釈されます。
+ （なぜなら、Stylusではmixinsやfunctionsのため、これらを有効な単位として受け入れることが一般的であるためです。）
+
  However, `0` itself is `false` in terms of arithmetic. 
  
+ しかし、`0` 自体は算術の観点から `false` です。
+
  Expressions (or "lists") with a length greater than 1 are considered truthy.
 
+ lengthが1より大きい値を持つ式（またはリスト）はtrueと見なされます。
+
 `true` examples:
+
+`true` の例:
 
       0% 
       0px
@@ -231,6 +304,8 @@ Aliases:
 
 `false` examples:
 
+`false` の例:
+
      0 
      null
      false
@@ -238,7 +313,11 @@ Aliases:
 
 ### Logical Operators: && || and or
 
+### 論理演算子: && || and or
+
 Logical operators `&&` and `||` are aliased `and` / `or` which apply the same precedence.
+
+論理演算子の `&&` と `||` は`and` / `or` と同じ優先順位が適用されるエイリアスです。
 
     5 && 3
     // => 3
@@ -254,9 +333,15 @@ Logical operators `&&` and `||` are aliased `and` / `or` which apply the same pr
 
 ### Existence Operator: in
 
+### 存在演算子: in
+
  Checks for the existence of the _left-hand_ operand within the _right-hand_ expression.
 
+  _右辺_ の式の中に、 _左辺_ のオペランドが存在することをチェックします。
+
 Simple examples:
+
+単純な例:
 
       nums = 1 2 3
       1 in nums
@@ -267,6 +352,8 @@ Simple examples:
 
 Some undefined identifiers:
 
+いくつかの未定義な識別子の例:
+
       words = foo bar baz
       bar in words
       // => true
@@ -275,6 +362,8 @@ Some undefined identifiers:
       // => false
 
 Works with tuples too:
+
+タプルでの動作の例:
 
       vals = (error 'one') (error 'two')
       error in vals
@@ -290,6 +379,8 @@ Works with tuples too:
       // => false
 
 Example usage in mixin:
+
+mixinでの使用例:
 
       pad(types = padding, n = 5px)
         if padding in types
@@ -308,6 +399,8 @@ Example usage in mixin:
 
 Yielding:
 
+結果:
+
       body {
         padding: 5px;
       }
@@ -321,15 +414,23 @@ Yielding:
 
 ### Conditional Assignment: ?= :=
 
+### 条件付き代入: ?= :=
+
 The conditional assignment operator `?=` (aliased as `:=`) lets us define variables without clobbering old values (if present). This operator expands to an `is defined` binary operation within a ternary. 
 
+条件付き代入演算子 `?=` （`:=`）は、古い値（もし存在する場合）を上書きして破壊することなしに、変数を定義することができます。この演算子は三項演算子の中の `is defined` 二項演算子として展開されます。
+
 For example, the following are equivalent:
+
+以下の例は等価です。:
 
     color := white
     color ?= white
     color = color is defined ? color : white
 
 When using plain `=`, we simply reassign:
+
+`=` を使った場合、簡単に再割り当てできます。
 
     color = white
     color = black
@@ -339,6 +440,8 @@ When using plain `=`, we simply reassign:
 
 But when using `?=`, our second attempt fails (since the variable is already defined):
 
+しかし、`?=`を使った場合、（下の例の）2行目の試みは失敗します（既に変数が定義されているので）。:
+
     color = white
     color ?= black
     
@@ -347,7 +450,11 @@ But when using `?=`, our second attempt fails (since the variable is already def
 
 ### Instance Check: is a
 
+### インスタンスチェック: is a
+
 Stylus provides a binary operator named `is a` used to type check.
+
+Stylusはタイプチェックのため、 `is a` という名前の二項演算子を提供します。
 
     15 is a 'unit'
     // => true
@@ -360,15 +467,25 @@ Stylus provides a binary operator named `is a` used to type check.
 
 Alternatively, we could use the `type()` BIF:
 
+代わりに、`type()` BIF（Built in Function　組み込み関数）を利用することができます。:
+
     type(#fff) == 'rgba'
     // => true                                                                            
 
 **Note:** `color` is the only special-case, evaluating to `true` when the
 left-hand operand is an `RGBA` or `HSLA` node.
 
+**注意:** `color` は左辺のオペランドが `RGBA` や `HSLA` ノードである場合に `true` と評価される、唯一の特殊なケースです。
+
 ### Variable Definition: is defined
 
+### 変数定義: is defined
+
 This pseudo binary operator does not accept a right-hand operator, and does _not_ evaluate the left. This allows us to check if a variable has a value assigned to it.
+
+この擬似二項演算子は右辺の演算子を必要としません。
+また、左辺も評価 _しません。_　
+これは、変数が割り当てられた値を持っている場合のみ、チェックすることが出来ます。
 
     foo is defined
     // => false
@@ -382,6 +499,8 @@ This pseudo binary operator does not accept a right-hand operator, and does _not
 
 Alternatively, one can use the `lookup(name)` built-in function to do this—or to perform dynamic lookups:
 
+代わりに、組み込み関数 `lookup(name)` を使ってこれを行うことが出来ます。—または動的ルックアップを実行する。
+
     name = 'blue'
     lookup('light-' + name)
     // => null
@@ -392,17 +511,23 @@ Alternatively, one can use the `lookup(name)` built-in function to do this—or 
 
 This operator is essential, as an undefined identifier is still a truthy value. For example:
 
+この演算子は、未定義の識別子はtrueの値を持っているため必要不可欠です。例えば次のように:
+
     body
       if ohnoes
         padding 5px
 
 _Will_ yield the following CSS when undefined:
 
+未定義の場合は、次のCSSが取得できる _でしょう。_:
+
     body {
       padding: 5px;
     }
 
 However this will be safe:
+
+しかし、これは安全にできます。:
 
     body
       if ohnoes is defined
