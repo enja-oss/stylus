@@ -542,7 +542,8 @@ However this will be safe:
 
 The ternary operator works as we would expect in most languages. It's the only operator with three operands (the _condition_ expression, the _truth_ expression, and the _false_ expression).
 
-他のほとんどの言語にて期待するように三項演算子も動作します。これは3つのオペランド（_条件_式、_true_の場合の式、_false_の場合の式  ）を持つ唯一の演算子です。
+他のほとんどの言語にて期待するように三項演算子も動作します。
+これは3つのオペランド（ _条件_ 式、 _真_ 式、 _偽_ 式）を持つ唯一の演算子です。
 
     num = 15
     num ? unit(num, 'px') : 20px
@@ -554,7 +555,7 @@ The ternary operator works as we would expect in most languages. It's the only o
 
  As an terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
 
- `unit()`組み込み関数の簡素な代替として、`(式) 単位`構文が接尾語を強要するために使用されるかもしれません。
+ `unit()`組み込み関数の簡素な代替として、接尾語を強要するために`(式) 単位`構文が使用されるかもしれません。
 
     body
       n = 5
@@ -571,7 +572,7 @@ The ternary operator works as we would expect in most languages. It's the only o
 
  Operations on colors provide a terse, expressive way to alter components. For example, we can operate on each RGB:
  
- 色に対する操作は、コンポーネントを変更する簡素な表現方法を提供します。例えば、RGB毎に操作することができます。
+ 色に対する操作は、コンポーネントを変更する簡素な表現方法として提供します。例えば、各RGBごとに操作することができます。
 
     #0e0 + #0e0
     // => #0f0
