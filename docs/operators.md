@@ -141,7 +141,7 @@ With:
 Multiplicative and additive binary operators work as expected. Type conversion is applied within unit type classes, or default to the literal value. For example `5s - 2px` results in `3s`.
 
 加算と減算のバイナリ演算子は期待通りに動作します。
-型変換は、ユニット型クラスの範囲内か初期のリテラル値が適用されます。例えば、 `5s - 2px` の結果は `3s` です。
+型変換は、単位が属する分類の範囲内か初期のリテラル値が適用されます。例えば、 `5s - 2px` の結果は `3s` です。
 
     15px - 5px
     // => 10px
@@ -177,22 +177,23 @@ Multiplicative and additive binary operators work as expected. Type conversion i
     4 % 2
     // => 0
 
-When using `/` within a property value, you **must** wrap with parens. Otherwise the `/` is taken literally (to support CSS `line-height`):
+When using `/` within a property value, you **must** wrap with parens. 
+Otherwise the `/` is taken literally (to support CSS `line-height`):
 
-もし、`/` をプロパティ値の中で使う場合、**必ず** 括弧で囲まなければなりません。
-そうしなければ、 `/` は文字通りに解釈されます（これはCSSが`line-height` をサポートするため）。
+もし、`/` をプロパティ値の中で使う場合、 **必ず** 括弧で囲まなければなりません。
+そうしなければ、 `/` は文字通りに解釈されます（これはCSSが`line-height` をサポートするためです）。
 
     font: 14px/1.5;
 
 But the following is evaluated as `14px` ÷ `1.5`:
 
-しかし、次は`14px` ÷ `1.5` と評価されます。:
+しかし、次のよう評価されます。`14px` ÷ `1.5`:
 
     font: (14px/1.5);
 
 This is _only_ required for the `/` operator.
 
-これは、 `/` 演算子　_のみ_ に必要なことです。
+これは、 `/` 演算子 _のみ_ に必要なことです。
 
 ### Exponent: **
 
@@ -207,7 +208,7 @@ The Exponent operator:
 
 ### Equality & Relational: == != >= <= > <
 
-### 等価と関係（比較）: == != >= <= > <
+### 等価演算子と関係（比較）演算子: == != >= <= > <
 
 Equality operators can be used to equate units, colors, strings, and even identifiers. 
 This is a powerful concept, as even arbitrary identifiers (such as as `wahoo`) can be utilized as atoms. 
@@ -416,9 +417,11 @@ Yielding:
 
 ### 条件付き代入: ?= :=
 
-The conditional assignment operator `?=` (aliased as `:=`) lets us define variables without clobbering old values (if present). This operator expands to an `is defined` binary operation within a ternary. 
+The conditional assignment operator `?=` (aliased as `:=`) lets us define variables without clobbering old values (if present). 
+This operator expands to an `is defined` binary operation within a ternary. 
 
-条件付き代入演算子 `?=` （`:=`）は、古い値（もし存在する場合）を上書きして破壊することなしに、変数を定義することができます。この演算子は三項演算子の中の `is defined` 二項演算子として展開されます。
+条件付き代入演算子 `?=` （`:=`）は、（もし存在する場合）古い値を上書きして破壊することなしに、変数を定義することができます。
+この演算子は三項演算子の中の `is defined` バイナリ演算子として展開されます。
 
 For example, the following are equivalent:
 
@@ -440,7 +443,7 @@ When using plain `=`, we simply reassign:
 
 But when using `?=`, our second attempt fails (since the variable is already defined):
 
-しかし、`?=`を使った場合、（下の例の）2行目の試みは失敗します（既に変数が定義されているので）。:
+しかし、`?=`を使った場合、（下の例の）2行目の試みは（既に変数が定義されているため）失敗します。
 
     color = white
     color ?= black
@@ -454,7 +457,7 @@ But when using `?=`, our second attempt fails (since the variable is already def
 
 Stylus provides a binary operator named `is a` used to type check.
 
-Stylusはタイプチェックのため、 `is a` という名前の二項演算子を提供します。
+Stylusはタイプチェックのため、 `is a` という名前のバイナリ演算子を提供します。
 
     15 is a 'unit'
     // => true
@@ -467,7 +470,7 @@ Stylusはタイプチェックのため、 `is a` という名前の二項演算
 
 Alternatively, we could use the `type()` BIF:
 
-代わりに、`type()` BIF（Built in Function　組み込み関数）を利用することができます。:
+代わりに、`type()` BIF（Built in Function　組み込み関数）を利用することもできます。
 
     type(#fff) == 'rgba'
     // => true                                                                            
@@ -483,7 +486,7 @@ left-hand operand is an `RGBA` or `HSLA` node.
 
 This pseudo binary operator does not accept a right-hand operator, and does _not_ evaluate the left. This allows us to check if a variable has a value assigned to it.
 
-この擬似二項演算子は右辺の演算子を必要としません。
+この擬似バイナリ演算子は右辺の演算子を必要としません。
 また、左辺も評価 _しません。_　
 これは、変数が割り当てられた値を持っている場合のみ、チェックすることが出来ます。
 
@@ -511,7 +514,7 @@ Alternatively, one can use the `lookup(name)` built-in function to do this—or 
 
 This operator is essential, as an undefined identifier is still a truthy value. For example:
 
-この演算子は、未定義の識別子はtrueの値を持っているため必要不可欠です。例えば次のように:
+例えば次のように、未定義の識別子がtrueの値を持っているため、この演算子は必要不可欠です。
 
     body
       if ohnoes
@@ -519,7 +522,7 @@ This operator is essential, as an undefined identifier is still a truthy value. 
 
 _Will_ yield the following CSS when undefined:
 
-未定義の場合は、次のCSSが取得できる _でしょう。_:
+未定義の場合、次のCSSが得られる _でしょう_ 。
 
     body {
       padding: 5px;
@@ -527,7 +530,7 @@ _Will_ yield the following CSS when undefined:
 
 However this will be safe:
 
-しかし、これは安全にできます。:
+しかし、これは正しくなります。
 
     body
       if ohnoes is defined
@@ -535,7 +538,11 @@ However this will be safe:
 
 ## Ternary
 
+## 三項演算子
+
 The ternary operator works as we would expect in most languages. It's the only operator with three operands (the _condition_ expression, the _truth_ expression, and the _false_ expression).
+
+他のほとんどの言語にて期待するように三項演算子も動作します。これは3つのオペランド（_条件_式、_true_の場合の式、_false_の場合の式  ）を持つ唯一の演算子です。
 
     num = 15
     num ? unit(num, 'px') : 20px
@@ -543,7 +550,11 @@ The ternary operator works as we would expect in most languages. It's the only o
 
 ## Casting
 
+## キャスト
+
  As an terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
+
+ `unit()`組み込み関数の簡素な代替として、`(式) 単位`構文が接尾語を強要するために使用されるかもしれません。
 
     body
       n = 5
@@ -556,13 +567,19 @@ The ternary operator works as we would expect in most languages. It's the only o
 
 ## Color Operations
 
+## 色操作
+
  Operations on colors provide a terse, expressive way to alter components. For example, we can operate on each RGB:
  
+ 色に対する操作は、コンポーネントを変更する簡素な表現方法を提供します。例えば、RGB毎に操作することができます。
+
     #0e0 + #0e0
     // => #0f0
 
  Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color, add; to darken, subtract.
- 
+
+ もうひとつの例は、パーセンテージで加算・減算することによって明るさの値を調整することです。色を明るくするには加算します。また、暗くするには減算します。
+
     #888 + 50%
     // => #c3c3c3
 
@@ -571,24 +588,36 @@ The ternary operator works as we would expect in most languages. It's the only o
 
   Adjust the hue is also possible by adding or subtracting with degrees. For example, adding `50deg` to this red value results in a yellow:
   
+  度数を加算・減算することによって色相を調整することが可能です。例えば、 赤色に `50deg` を加算した結果は黄色になります。
+
      #f00 + 50deg
      // => #ffd500
 
   Values clamp appropriately. For example, we can "spin" the hue 180 degrees, and if the current value is `320deg`, it will resolve to `140deg`.
 
+  値は適切な値に固定されます。例えば、現在の値が`320deg` の場合であっても、色相を180度 "回転" させることができます。それは`140deg` として解釈されるでしょう。
+
   We may also tweak several values at once (including the alpha) by using `rgb()`, `rgba()`, `hsl()`, or `hsla()`:
-  
+
+  また、`rgb()`, `rgba()`, `hsl()`, `hsla()` を使用した場合、一度に複数の値を微調整することができます。
+
       #f00 - rgba(100,0,0,0.5)
       // => rgba(155,0,0,0.5)
 
 ## Sprintf
 
+## Sprintf関数
+
  The string sprintf-like operator `%` can be used to generate a literal value, internally passing arguments through the `s()` built-in:
+
+ リテラル値を生成するために、内部の`s()` ビルトイン関数を通して引数を渡す、文字列のsprintf関数のような `%` 演算子を使用することが出来ます。 
 
        'X::Microsoft::Crap(%s)' % #fc0
        // => X::Microsoft::Crap(#fc0)
 
   Multiple values should be parenthesized:
+  
+  複数の値は括弧で囲む必要があります。
   
       '-webkit-gradient(%s, %s, %s)' % (linear (0 0) (0 100%))
       // => -webkit-gradient(linear, 0 0, 0 100%)
