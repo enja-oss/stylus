@@ -115,7 +115,11 @@ With:
        padding add(1,'5')[1]
        // => padding: "a and b must be units";
 
- Here's a more complex example. Now we're invoking the built-in `error()` function with the return error message, whenever the ident (the first value) equals `error`.
+ Here's a more complex example. Now we're invoking the built-in `error()` function with the return error message, 
+ whenever the ident (the first value) equals `error`.
+ 
+ これはより複雑な例です。今、ビルトイン関数の `error()` を戻ってきたエラーメッセージを引数に呼び出しています。
+ 呼び出されるたびに、 `error` と同じ文字（エラーメッセージの最初の値）をインデントしています。
  
      if (val = add(1,'5'))[0] == error
        error(val[1])
