@@ -19,6 +19,10 @@ Google Groupなどを使った連絡についても検討しましたが、GitHu
 これらに関して詳しくは[こちらを参照してください](https://github.com/enja-oss/README/wiki/Review-and-Pull-Request-Flow)。
 特に監訳を依頼する予定の方は必ず目を通しておいてください。
 
+本プロジェクトでは、 @studiomohawk が監訳者です。監訳を希望する方は@マーク付きで監訳依頼をおこなってください。
+
+例: @studiomohawk 監訳お願いします。
+
 **また翻訳に慣れている方は是非、[監訳者リストに記入してください](https://github.com/enja-oss/README/issues/5)。**
 
 ## 書式ガイド
@@ -34,10 +38,19 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 
 ## 翻訳コンテンツ
 
-[Wiki](https://github.com/enja-oss/stylus/wiki/%E7%BF%BB%E8%A8%B3%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E4%B8%80%E8%A6%A7)を参照してください。
+[翻訳コンテンツ一覧@Wiki](https://github.com/enja-oss/stylus/wiki/%E7%BF%BB%E8%A8%B3%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E4%B8%80%E8%A6%A7)を参照してください。
 
 コンテンツの翻訳にご協力くださる方は、ぜひ[着手予定の宣言コーナー](https://github.com/enja-oss/stylus/issues/1)でお知らせください。
 その際に着手予定のパートがすでに他の方と重複していないか確認ください。
+
+## 翻訳参加者
+[翻訳参加者@Wiki](https://github.com/enja-oss/stylus/wiki/%E7%BF%BB%E8%A8%B3%E5%8F%82%E5%8A%A0%E8%80%85)を参照してください。
+
+##管理者
+
+- [@mitsuruog](https://github.com/mitsuruog) (管理者)
+- [@Layzie](https://github.com/Layzie) (管理者)
+- [@studiomohawk](https://github.com/studiomohawk) (監訳・管理者)
 
 ##参照先
 
@@ -47,12 +60,4 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 ##ライセンス・クレジット
 
 LICENSE-MIT を参照してください。
-
-##翻訳参加者
-
-- [@mitsuruog](https://github.com/mitsuruog) (管理者)
-- [@Layzie](https://github.com/Layzie) (管理者)
-- [@studiomohawk](https://github.com/studiomohawk) (監訳・管理者)
-- [@yukihr](https://github.com/yukihr)
-- [@japboy](https://github.com/japboy)
 
