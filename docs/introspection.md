@@ -2,7 +2,7 @@
 (https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/introspection.md 
 "stylus/docs/introspection.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-## イントロスペクション API [原文](http://learnboost.github.com/stylus/docs/functions.html)
+## イントロスペクション API [原文](http://learnboost.github.com/stylus/docs/introspection.html)
 
 Stylusはイントロスペクション（一般的には、リフレクション機能の一種で、依存関係など内部情報を返すインターフェース）APIをサポートしています。
 これによりmixins とfunctionsの呼び出し元に応じて、その振舞いを変更させることが出来ます。
