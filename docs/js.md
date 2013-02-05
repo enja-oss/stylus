@@ -1,14 +1,14 @@
- + Œ³•¶‘: [stylus/docs/js.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 ? LearnBoost/stylus ? GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/js.md "stylus/docs/js.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 ? LearnBoost/stylus ? GitHub")
+ + å…ƒæ–‡æ›¸: [stylus/docs/js.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 ? LearnBoost/stylus ? GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/js.md "stylus/docs/js.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 ? LearnBoost/stylus ? GitHub")
 
-## JavaScript API [Œ´•¶](http://learnboost.github.com/stylus/docs/js.html)
+## JavaScript API [åŸæ–‡](http://learnboost.github.com/stylus/docs/js.html)
 
 Simply `require` the module, and call `render()` with the given string of Stylus code, and (optional) `options` object. 
 
-ƒ‚ƒWƒ…[ƒ‹‚ğ `require` ‚µ‚Ä`render()` ‚ÅŒÄ‚Ño‚µ‚Ü‚·Bˆø”‚Ì•¶š—ñ‚É‚ÍStylusƒR[ƒhA‚Ü‚½A”CˆÓ‚Å `options` ƒIƒuƒWƒFƒNƒg‚ğ“n‚µ‚Ü‚·B
+ã‚·ãƒ³ãƒ—ãƒ«ãª `require` ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚å¼•æ•°ã®æ–‡å­—åˆ—ã«ã¯Stylusã‚³ãƒ¼ãƒ‰ã¨ã€`options` ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼ˆä»»æ„ï¼‰ã‚’æ¸¡ã—ã€`render()` ã§å‘¼ã³å‡ºã—ã¾ã™ã€‚
 
 Frameworks utilizing Stylus should pass the `filename` option to provide better error reporting.
 
-Stylus‚ğ—˜—p‚µ‚½ƒtƒŒ[ƒ€ƒ[ƒN‚É‚¨‚¢‚ÄA‚æ‚è—Ç‚¢ƒGƒ‰[ƒŒƒ|[ƒg‚ğ’ñ‹Ÿ‚·‚é‚½‚ß‚É‚Í `filename` ƒIƒvƒVƒ‡ƒ“‚ğ“n‚·•K—v‚ª‚ ‚è‚Ü‚·B
+ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã«ãŠã„ã¦Stylusã‚’æ´»ç”¨ã™ã‚‹ãŸã‚ã«ã¯ã€ã‚ˆã‚Šè‰¯ã„ã‚¨ãƒ©ãƒ¼ãƒ¬ãƒãƒ¼ãƒˆã‚’æä¾›ã™ã‚‹ `filename` ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æ¸¡ã™ã¹ãã§ã™ã€‚
 
     var stylus = require('stylus');
 
@@ -19,7 +19,7 @@ Stylus‚ğ—˜—p‚µ‚½ƒtƒŒ[ƒ€ƒ[ƒN‚É‚¨‚¢‚ÄA‚æ‚è—Ç‚¢ƒGƒ‰[ƒŒƒ|[ƒg‚ğ’ñ‹Ÿ‚·‚é‚½‚ß‚É‚Í
 
 We can also do the same thing in a more progressive manner:
 
-‚à‚¤ˆê•ài‚ñ‚¾•û–@‚Ås‚¤‚ÆŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B
+ãƒ—ãƒ­ã‚°ãƒ¬ãƒƒã‚·ãƒ–ï¼ˆã‚ˆã‚Šé©æ–°çš„ï¼‰ãªæ–¹æ³•ã§è¡Œã†ã¨æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
 
     var stylus = require('stylus');
 
@@ -33,7 +33,7 @@ We can also do the same thing in a more progressive manner:
 
  Apply a setting such as a `filename`, or import `paths`:
 
- `filename` ‚âƒCƒ“ƒ|[ƒg‚·‚é `paths` ‚Ìİ’è‚È‚Ç‚ğ“K—p‚µ‚Ü‚·B
+ `filename` ã‚„ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹ `paths` ã®è¨­å®šãªã©ã‚’é©ç”¨ã—ã¾ã™ã€‚
  
      .set('filename', __dirname + '/test.styl')
      .set('paths', [__dirname, __dirname + '/mixins'])
@@ -42,7 +42,8 @@ We can also do the same thing in a more progressive manner:
 
   A progressive alternative to `.set('paths',...)` is `.include()`.  This is ideal when exposing external Stylus libraries which expose a path.
 
-  `.set('paths',...)` ‚ğ‚à‚¤ˆê•ài‚ñ‚¾•û–@‚Å’u‚«Š·‚¦‚½ê‡A `.include()` ‚Æ‚È‚è‚Ü‚·B‚±‚ê‚ÍAˆË‘¶‚·‚éŠO•”‚ÌStylusƒ‰ƒCƒuƒ‰ƒŠ‚É‚Â‚¢‚Ä‚ÌƒpƒX‚ğ–¾¦‚·‚éê‡‚Ég—p‚·‚é‚±‚Æ‚ª—‘z“I‚Å‚·B
+  `.set('paths',...)` ã‚’ãƒ—ãƒ­ã‚°ãƒ¬ãƒƒã‚·ãƒ–ãªæ–¹æ³•ã§ç½®ãæ›ãˆãŸã‚‚ã®ãŒã€ `.include()` ã§ã™ã€‚
+  ã“ã‚Œã¯ã€ä¾å­˜ã™ã‚‹å¤–éƒ¨ã®Stylusãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«ã¤ã„ã¦ã®ãƒ‘ã‚¹ã‚’æ˜ç¤ºã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã™ã‚‹ã“ã¨ãŒä¸€èˆ¬çš„ã§ã™ã€‚
 
     stylus(str)
       .include(require('nib').path)
@@ -53,7 +54,8 @@ We can also do the same thing in a more progressive manner:
 
 Defer importing of the given `path` until evaluation is performed. The example below is essentially the same as doing `@import 'mixins/vendor'` within your Stylus sheet.
 
-`path` ‚Å“n‚³‚ê‚½‘ÎÛ‚ÍA•]‰¿‚ªŠJn‚³‚ê‚é‚Ü‚ÅƒCƒ“ƒ|[ƒg‚ª’x‰„‚³‚ê‚Ü‚·B‰º‚Ì—á‚ÍAƒXƒ^ƒCƒ‹ƒV[ƒg“à‚Ås‚í‚ê‚Ä‚¢‚é‚±‚Æ‚Í `@import 'mixins/vendor'` ‚ÆŠî–{“I‚É“¯‚¶‚Å‚·B
+`path` ã§æ¸¡ã•ã‚ŒãŸå¯¾è±¡ã¯ã€è©•ä¾¡ãŒé–‹å§‹ã•ã‚Œã‚‹ã¾ã§ã‚¤ãƒ³ãƒãƒ¼ãƒˆãŒé…å»¶ã•ã‚Œã¾ã™ã€‚
+ä¸‹ã®ä¾‹ã§ã€ã‚¹ã‚¿ã‚¤ãƒ«ã‚·ãƒ¼ãƒˆå†…ã§è¡Œã‚ã‚Œã¦ã„ã‚‹ã“ã¨ã¯ `@import 'mixins/vendor'` ã¨åŸºæœ¬çš„ã«åŒã˜ã§ã™ã€‚
 
       var stylus = require('../')
         , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
@@ -70,18 +72,20 @@ Defer importing of the given `path` until evaluation is performed. The example b
 
  By passing a `Node`, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the **Nib** extension library conditionally supports node-canvas, providing image generation. 
 
- `Node` ‚É“n‚·‚±‚Æ‚ÅAƒOƒ[ƒoƒ‹•Ï”‚ğ’è‹`‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚· B‚±‚ê‚ÍAŠO•”‚©‚ç‚ÌğŒiNode‚É“n‚µ‚½ƒOƒ[ƒoƒ‹•Ï”j‚É‰‚¶‚ÄAƒ‰ƒCƒuƒ‰ƒŠ‚Ì’†‚ÅğŒ•t‚«‹@”\‚ğŒöŠJ‚·‚éê‡‚É—˜—p‚µ‚Ü‚·B —á‚¦‚ÎA**Nib** ‚Ì‰æ‘œ¶¬‹@”\‚ğ’ñ‹Ÿ‚·‚éŠg’£ƒ‰ƒCƒuƒ‰ƒŠ‚ÍAnode-canvas‚ÌğŒ‚É‚æ‚èƒTƒ|[ƒg‚µ‚Ü‚·B
+ `Node` ã«æ¸¡ã™ã“ã¨ã§ã€ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ã‚’å®šç¾©ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ ã€‚
+ ã“ã‚Œã¯ã€å¤–éƒ¨ã‹ã‚‰ã®æ¡ä»¶ï¼ˆNodeã«æ¸¡ã—ãŸã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ï¼‰ã«å¿œã˜ã¦ã€ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ä¸­ã§æ©Ÿèƒ½ã‚’å…¬é–‹ã—ãŸã‚Šã™ã‚‹å ´åˆã«åˆ©ç”¨ã—ã¾ã™ã€‚ 
+ ä¾‹ãˆã°ã€æ‹¡å¼µãƒ©ã‚¤ãƒ–ãƒ©ãƒªã® **Nib** ã¯ã€ã€Œnode-canvasã€ã®æ¡ä»¶ã«ã‚ˆã‚Šç”»åƒç”Ÿæˆæ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ã‹æ±ºå®šã—ã¾ã™ã€‚
  
  However, this is not always available, so Nib may define:
  
- ‚µ‚©‚µA‚±‚ê‚Íí‚É—˜—p‚Å‚«‚é‚Æ‚ÍŒÀ‚è‚Ü‚¹‚ñB‚»‚±‚ÅNib‚Í‚±‚Ì‚æ‚¤‚É’è‹`‚µ‚Ü‚·B
+ ã—ã‹ã—ã€ã“ã‚Œã¯å¸¸ã«åˆ©ç”¨ã§ãã‚‹ã¨ã¯é™ã‚Šã¾ã›ã‚“ã€‚ãã®ãŸã‚Nibã¯ã“ã®ã‚ˆã†ã«å®šç¾©ã—ã¾ã™ã€‚
  
      .define('has-canvas', stylus.nodes.false);
      .define('some-setting', new stylus.nodes.String('some value'));
 
  Stylus also casts JavaScript values to their Stylus equivalents when possible. Here are a few examples:
 
- ‰Â”\‚Èê‡AStylus‚Å‚ÍJavascript‚Ì’l‚ğStylus‚Å‚Ì“¯“™‚È’l‚ÉƒLƒƒƒXƒg‚µ‚Ü‚·B‚±‚±‚ÉŠô‚Â‚©‚Ì—á‚ğ¦‚µ‚Ü‚·B
+ å¯èƒ½ãªå ´åˆã€Stylusã§ã¯Javascriptã®å€¤ã‚’Stylusã§ã®åŒç­‰ãªå€¤ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¾ã™ã€‚ã“ã“ã«å¹¾ã¤ã‹ã®ä¾‹ã‚’ç¤ºã—ã¾ã™ã€‚
 
      .define('string', 'some string')
      .define('number', 15.5)
@@ -93,7 +97,7 @@ Defer importing of the given `path` until evaluation is performed. The example b
 
   These same rules apply to return values in js functions as well:
 
-  ‚±‚ê‚ç‚Æ“¯‚¶ƒ‹[ƒ‹‚ªJSŠÖ”iƒR[ƒ‹ƒoƒbƒNj‚Ì–ß‚è’l‚É‚à“K—p‚³‚ê‚Ü‚·B
+  ã“ã‚Œã‚‰ã¨åŒã˜ãƒ«ãƒ¼ãƒ«ãŒJSé–¢æ•°ï¼ˆã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ï¼‰ã®æˆ»ã‚Šå€¤ã«ã‚‚é©ç”¨ã•ã‚Œã¾ã™ã€‚
 
      .define('get-list', function(){
        return ['foo', 'bar', 'baz'];
@@ -103,11 +107,14 @@ Defer importing of the given `path` until evaluation is performed. The example b
 
  This method allows you to provide a JavaScript-defined function to Stylus. Think of these as you would JavaScript-to-C++ bindings. When there's something you cannot do in Stylus, define it in JavaScript!
 
- ‚±‚Ì•û–@‚É‚æ‚èAStylus‚ÉJavascript‚Å’è‹`‚³‚ê‚½ŠÖ”‚ğ’ñ‹Ÿ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚±‚ê‚ÍAJavascript‚©‚çC++‚Ö‚ÌƒoƒCƒ“ƒfƒBƒ“ƒO‚Ì‚æ‚¤‚Él‚¦‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BStylus‚É‚Äs‚¤‚±‚Æ‚ª‚Å‚«‚È‚¢‰½‚©‚ª‚ ‚éê‡AJavascript‚Å‚»‚ê‚ğ’è‹`‚·‚éI
+ ã“ã®æ–¹æ³•ã«ã‚ˆã‚Šã€Stylusã«Javascriptã§å®šç¾©ã•ã‚ŒãŸé–¢æ•°ã‚’æä¾›ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ ã“ã‚Œã¯ã€Javascriptã‹ã‚‰C++ã¸ã®ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã®ã‚ˆã†ã«è€ƒãˆã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ Stylusã«ã¦è¡Œã†ã“ã¨ãŒã§ããªã„ä½•ã‹ãŒã‚ã‚‹å ´åˆã€Javascriptã§ãã‚Œã‚’å®šç¾©ã™ã‚‹ï¼
 
 In this example, we define four functions: `add()`, `sub()`, `image-width()`, and `image-height()`. These functions must return a `Node`, this constructor and the other nodes are available via `stylus.nodes`.
 
-‚±‚Ì—á‚Å‚ÍA`add()`, `sub()`, `image-width()`, `image-height()` ‚Ì4‚Â‚ÌŠÖ”‚ğ’è‹`‚µ‚Ä‚¢‚Ü‚·B‚±‚ê‚ç‚ÌŠÖ”‚Í`Node`‚ğ•Ô‚·•K—v‚ª‚ ‚è‚Ü‚·B
+ã“ã®ä¾‹ã§ã¯ã€`add()`, `sub()`, `image-width()`, `image-height()` ã®4ã¤ã®é–¢æ•°ã‚’å®šç¾©ã—ã¦ã„ã¾ã™ã€‚
+ã“ã‚Œã‚‰ã®é–¢æ•°ã¯`Node`ã‚’è¿”ã™å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚„ãã®ä»–ã®nodeã¯ `stylus.nodes` ã‚’ä»‹ã—ã¦åˆ©ç”¨ã§ãã¾ã™ã€‚
 
       var stylus = require('../')
         , nodes = stylus.nodes
@@ -166,7 +173,7 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
 
  For further reference (until documentation is complete) please see the following files:
 
- iƒhƒLƒ…ƒƒ“ƒg‚ªŠ®¬‚·‚é‚Ü‚Å‚ÍjQl‚ÉˆÈ‰º‚Ìƒtƒ@ƒCƒ‹‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+ ï¼ˆãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãŒå®Œæˆã™ã‚‹ã¾ã§ã¯ï¼‰å‚è€ƒã«ä»¥ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
  
    - `lib/nodes/*`
    - `lib/utils.js`
@@ -175,7 +182,9 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
 
   When called, the given `fn` is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.
 
-  “n‚³‚ê‚½ `fn` ‚ÍArender()‚ÅŒÄ‚Ño‚³‚ê‚Ü‚·BŒÄ‚Ño‚³‚ê‚½ê‡Aã‹L‚·‚×‚Ä‚ÌAPIŠÖ”‚ğ—˜—p‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚±‚ê‚É‚æ‚èAƒvƒ‰ƒOƒCƒ“‚ª’è‹`‚µ‚Ä‚¢‚éŠÖ”AƒpƒX‚È‚ÇA©•ª©g‚ğŠÈ’P‚ÉŒöŠJ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+  æ¸¡ã•ã‚ŒãŸ `fn` ã¯ã€render()ã§å‘¼ã³å‡ºã•ã‚Œã¾ã™ã€‚
+  å‘¼ã³å‡ºã•ã‚ŒãŸå ´åˆã€ä¸Šè¨˜ã™ã¹ã¦ã®APIé–¢æ•°ã‚’åˆ©ç”¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+  ã“ã‚Œã«ã‚ˆã‚Šã€ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¯å®šç¾©ã—ã¦ã„ã‚‹é–¢æ•°ã€ãƒ‘ã‚¹ãªã©ã€è‡ªåˆ†è‡ªèº«ã‚’ç°¡å˜ã«å…¬é–‹ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 
     var mylib = function(style){
       style.define('add', add);
