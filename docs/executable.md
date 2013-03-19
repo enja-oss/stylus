@@ -1,5 +1,6 @@
++ 元文書: [stylus/docs/executable.md at 22e21d4043913b3e572f95a0b8e10fec73884ec5 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/22e21d4043913b3e572f95a0b8e10fec73884ec5/docs/executable.md "stylus/docs/executable.md at 22e21d4043913b3e572f95a0b8e10fec73884ec5 · LearnBoost/stylus · GitHub")
 
-## Stylus コマンド
+## Stylus コマンド [原文](http://learnboost.github.com/stylus/docs/executable.html)
 
 StylusにはStylus形式のファイルをCSSに変換するための`stylus`コマンドが付属しています。
 
@@ -59,7 +60,7 @@ StylusにはStylus形式のファイルをCSSに変換するための`stylus`コ
 
       $ stylus --line-numbers <path>
 
-  また、[FireStylus Firebug拡張機能](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md)用に、`firebug`オプションを利用できます。
+  また、[FireStylus Firebug拡張機能](http://github.com/LearnBoost/stylus/blob/master/docs/firebug.md)用に、`firebug`オプションを利用できます。
 
       $ stylus --firebug <path>
 
@@ -105,7 +106,7 @@ StylusにはStylus形式のファイルをCSSに変換するための`stylus`コ
      > rgba(color, 0.5)
      => rgba(55,205,255,0.5)
 
-### Utilizing Plugins プラグインを活用する
+### プラグインを活用する
 
  例として、[nib](https://github.com/visionmedia/nib) Stylusプラグインを用いてコマンドの使い方を説明します。
  
