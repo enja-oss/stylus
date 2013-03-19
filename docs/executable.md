@@ -60,7 +60,7 @@ StylusにはStylus形式のファイルをCSSに変換するための`stylus`コ
 
       $ stylus --line-numbers <path>
 
-  また、[FireStylus Firebug拡張機能](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md)用に、`firebug`オプションを利用できます。
+  また、[FireStylus Firebug拡張機能](http://github.com/LearnBoost/stylus/blob/master/docs/firebug.md)用に、`firebug`オプションを利用できます。
 
       $ stylus --firebug <path>
 
