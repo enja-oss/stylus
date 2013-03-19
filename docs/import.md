@@ -2,29 +2,21 @@
 
 ## Import [原文](http://learnboost.github.com/stylus/docs/import.html)
 
- Stylus supports both literal __@import__ for CSS, as well as dynamic importing of other Stylus sheets.
+ スタイラスではCSSの __@import__ 文と、他のStylusシートの動的なインポートに対応しています。
 
- スタイラスではCSSの@importリテラルと、他のStylusシートの動的なインポートに対応しています。
+### CSSの __@import__ 文
 
-### CSSリテラル
-
-  Any filename with the extension `.css` will become a literal. For example:
-
-  拡張子が`.css`のファイル名はリテラルとして扱われます。例えば、
+  拡張子が`.css`のファイル名は記述通りに扱われます。例えば、
   
      @import "reset.css"
 
-Render the literal CSS __@import__ shown below:
-
-これはリテラルのCSS __@import__ として以下のように解釈されます:
+これはCSSの __@import__ 文として以下のように解釈されます:
 
      @import "reset.css"
 
 ### Stylusのインポート
 
  __@import__ を拡張子`.css`以外のものに用いるとスタイラスシートのインポートであると解釈されます(例. `@import "mixins/border-radius"`)
-
- __@import__ works by iterating an array of directories, and checking if this file lives in any of them (similar to node's `require.paths`). This array defaults to a single path, which is derived from the `filename` option's `dirname`. So, if your filename is `/tmp/testing/stylus/main.styl`, then import will look in `/tmp/testing/stylus/`.
 
  __@import__ は(node.jsの`require.paths`と同様に)ディレクトリの配列を走査し、指定されたファイルがそのディレクトリに存在するかをチェックします。この配列にはデフォルトでは一つのパスが格納されており、このパスは`filename`オプションの`dirname`で指定されます。したがって、ファイル名が`/tmp/testing/stylus/main.styl`であるとき、importでは`/tmp/testing/stylus/`が探索されます。
 
