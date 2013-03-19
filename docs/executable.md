@@ -106,7 +106,7 @@ StylusにはStylus形式のファイルをCSSに変換するための`stylus`コ
      > rgba(color, 0.5)
      => rgba(55,205,255,0.5)
 
-### Utilizing Plugins プラグインを活用する
+### プラグインを活用する
 
  例として、[nib](https://github.com/visionmedia/nib) Stylusプラグインを用いてコマンドの使い方を説明します。
  
