@@ -55,7 +55,7 @@
 
         app.use(connect.static(__dirname + '/public'));
 
- オプション、`force`が指定されると、スタイルファイルは無条件で再コンパイルされます。このオプションが設定されなかったとしても、Stylusミドルウェアは`@import`されたファイルを検出できます。
+ オプション、`force`が指定されると、スタイルファイルは無条件で再コンパイルされます。このオプションが設定されなかったとしても、Stylusミドルウェアは`@import`されたファイルの変更を検出できます。
 
  開発目的のために、`firebug`オプションを有効にすることで[FireStylus extension for Firebug](http://github.com/LearnBoost/stylus/blob/master/docs/firebug.md)を使うことができます。これとは別に、`lineos`オプションを有効にして、生成されたCSSにデバッグ情報を付加することもできます。
 
