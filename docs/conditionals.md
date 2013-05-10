@@ -10,7 +10,7 @@ Conditionals provide control flow to a language which is otherwise static,
 providing conditional imports, mixins, functions, and more. 
 The examples below are simply examples, and not recommended :)
 
-条件文は、t言語に条件付きimport、mixins、functionsなどの制御フローを提供します。
+条件文は、言語に条件付きimport、mixins、functionsなどの制御フローを提供します。
 そうでなければ静的です。
 以下の例はシンプルな例であり、あまり推奨しません。
 
