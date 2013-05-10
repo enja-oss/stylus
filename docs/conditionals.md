@@ -10,7 +10,8 @@ Conditionals provide control flow to a language which is otherwise static,
 providing conditional imports, mixins, functions, and more. 
 The examples below are simply examples, and not recommended :)
 
-条件文は言語に制御フローを提供します。**ここから途中**
+条件文は、t言語に条件付きimport、mixins、functionsなどの制御フローを提供します。
+そうでなければ静的です。
 以下の例はシンプルな例であり、あまり推奨しません。
 
 ### if / else if / else
@@ -24,7 +25,7 @@ The examples below are simply examples, and not recommended :)
  
  The example below would conditionally overload the `padding` property, swapping it for `margin`.
  
- 次の例では、`padding` **ここから途中**
+ 次の例では、条件によって `padding` を `margin` で交換して上書きします。
 
     overload-padding = true
 
