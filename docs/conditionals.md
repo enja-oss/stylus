@@ -20,7 +20,7 @@ The examples below are simply examples, and not recommended :)
  evaluating the following block when `true`. 
  Along with `if` are the typical `else if` and `else` tokens, acting as fallbacks.
  
- `if` 条件文はあなたが予想した通りに働きます。単純に評価式を受け入れ、`true` の場合、次のブロックを評価します。
+ `if` 条件文はあなたが期待する評価式を受け入れ、`true` の場合、次のブロックを評価します。
  `if` はフォールバックとして機能する `else if` や `else` トークンを伴うことが一般的です。
  
  The example below would conditionally overload the `padding` property, swapping it for `margin`.
@@ -38,7 +38,7 @@ The examples below are simply examples, and not recommended :)
 
 Another example:
 
-もうひとつの例
+他の例
 
     box(x, y, margin = false)
       padding y x
