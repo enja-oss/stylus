@@ -39,8 +39,7 @@
 
  繰り返しをミックスインと一緒に使うととても便利です。例えば、挿入と繰り返しを使って、式のペアをプロパティとして扱うことができます。
  
- 以下では、カンマ区切りや式のリストがサポートされるように条件付きですべての`arguments`を利用して、`apply()`を定義します。
- Below we define `apply()`, conditionally utilizing all the `arguments` so that comma-delimited _and_ expression lists are supported:
+ 以下では、すべての`arguments`を条件によって活用することで、カンマ区切りと式のリストの _両方_ をサポートできるように`apply()`を定義します。
  
      apply(props)
        props = arguments if length(arguments) > 1
