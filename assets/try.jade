@@ -1,0 +1,49 @@
+!!! 5
+html
+  head
+    title Stylus
+    link(rel='stylesheet', href='try.css')
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    link(rel='stylesheet', href='codemirror.css')
+    script(src='jquery.js')
+    script(src='stylus.min.js')
+    script(src='codemirror.js')
+    script(src='css-mode.js')
+    script(src='try.js')
+  body
+    #container
+      include top
+      #ribbon
+        a(href='http://learnboost.github.com/stylus') View Documentation
+      #content
+        #try
+          h2 Title
+          p Description
+          textarea.stylus
+          textarea.css
+          p.clearfix.buttons
+            a#prev(href='#').minimal prev
+            a#next(href='#').minimal next
+
+        include steps/intro
+        include steps/nesting
+        include steps/syntax
+        include steps/parent-reference
+        include steps/mixins
+        include steps/transparent-mixins
+        include steps/variables
+        include steps/block-properties
+        include steps/language
+        include steps/iteration
+        include steps/interpolation
+        include steps/operators
+        include steps/operators-type-coercion
+        include steps/operators-mod
+        include steps/color-operations
+        include steps/functions
+        include steps/kwargs
+        include steps/bifs-colors
+        include steps/bifs-colors-2
+        //- list, math, opposite-position, add-property
+        include steps/end
+
