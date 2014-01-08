@@ -2,16 +2,23 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: [stylus/docs/extend.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/extend.md 
+“stylus/docs/extend.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<h2 id="extend">Extend</h2>
+<h2 id="extend-httplearnboostgithubcomstylusdocsextendhtml">Extend <a href="http://learnboost.github.com/stylus/docs/extend.html">原文</a></h2>
 
-<p>The Stylus <strong>@extend</strong> directive is inspired by (and essentially the same as) the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASS Implementation</a>, with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.</p>
+<p>Stylus <strong>@extend</strong> ディレィティブは幾つかの微妙な違いはありますが、<a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASSの実装</a>からインスピレーションを得ています。
+  特徴は、他のセマンティックルールセットを継承することによる、メンテナンスの簡素化です。</p>
 
-<h3 id="extending-with-mixins">“Extending” with mixins</h3>
+<h3 id="mixins">mixinsでの“展開”</h3>
 
-<p>Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as &#8220;warning message&#8221;. </p>
+<p>同様の効果を得るためにmixinsを使用することもできますが、これはCSSが重複する可能性があります。
+  複数のクラスを定義する典型的なパターンは、以下に示すように、”警告メッセージ”などで幾つかの要素を組み合わせる場合です。</p>
 
-<p>While this technique works just fine, it&#8217;s difficult to maintain.</p>
+<p>このテクニックはうまく動作しますが、メンテナンスが困難です。</p>
 
 <pre><code>  .message,
   .warning {
@@ -24,9 +31,11 @@
   }
 </code></pre>
 
-<h3 id="using-extend">Using <strong><code>@extend</code></strong></h3>
+<h3 id="extend"><code>__@extend__</code>の使用方法</h3>
 
-<p>To produce this same output with <strong><code>@extend</code></strong>, simply pass it the desired selector (note that <code>@extend</code> and <code>@extends</code> are equal, one is just an alias of another).  Stylus will then append the <code>.warning</code> selector to the existing <code>.message</code> ruleset.  The <code>.warning</code> class then inherits properties from <code>.message</code>.</p>
+<p>単に目的のセレクタを渡すだけで、<code>__@extend__</code> によって同じ出力が得られます。
+  Stylusは <code>.warning</code> セレクタに既存の <code>.message</code> ルールセットを付け加えます。
+  その際に <code>.warning</code> クラスは  <code>.message</code> からプロパティを継承します。</p>
 
 <pre><code>  .message {
     padding: 10px;
@@ -39,7 +48,7 @@
   }
 </code></pre>
 
-<p>Here&#8217;s a more complex example, demonstrating how <strong><code>@extend</code></strong> cascades:</p>
+<p>これは、どのように<code>__@extend__</code> がカスケードされるか検証するためのより複雑な例です。</p>
 
 <pre><code>  red = #E33E1E
   yellow = #E2E21E
@@ -65,7 +74,7 @@
     color: red
 </code></pre>
 
-<p>Yielding the following CSS:</p>
+<p>以下のCSSを生成します。</p>
 
 <pre><code>  .message,
   .warning,
@@ -90,7 +99,7 @@
   }
 </code></pre>
 
-<p>Where Stylus currently differs from SASS is, SASS won&#8217;t allow  <strong><code>@extend</code></strong> nested selectors:</p>
+<p>実際にStylusとSASSの異なる点は、SASSではネストしたセレクタに対する <code>__@extend__</code> を許可しない点です。</p>
 
 <pre><code> form
    button
@@ -103,7 +112,7 @@
    Use --trace for backtrace.
 </code></pre>
 
-<p>With Stylus, as long as the selectors match, it works!</p>
+<p>Stylusではセレクタが一致する限り、それは動作する！</p>
 
 <pre><code>   form
      input[type=text]
@@ -116,7 +125,7 @@
      padding: 10px
 </code></pre>
 
-<p>Yielding:</p>
+<p>結果:</p>
 
 <pre><code>    form input[type=text],
     form textarea {
@@ -129,36 +138,4 @@
     }
 </code></pre>
 
-<h3 id="extending-placeholder-selectors">Extending placeholder selectors</h3>
-
-<p>Stylus have the feature similar to the one in <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders">Sass</a> — placeholder selectors.</p>
-
-<p>Those selectors should start <code>$</code> symbol (for example, <code>$foo</code>), and are not yielded in the resulting CSS. But you still can extend them:</p>
-
-<pre><code>$foo
-  color: #FFF
-
-$foo2
-  color: red
-
-.bar
-  background: #000
-  @extends $foo
-
-.baz
-  @extends $foo
-</code></pre>
-
-<p>Yielding:</p>
-
-<pre><code>.bar,
-.baz {
-  color: #fff;
-}
-.bar {
-  background: #000;
-}
-</code></pre>
-
-<p>Note that if the selector is not extended, it won&#8217;t be in the resulting CSS, so it&#8217;s a powerful way to create a library of extendable code. While you can insert code through mixins, they would insert the same code every time you use them, while extending placeholders would give you compact output.</p>
 </div></div></body></html>

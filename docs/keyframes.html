@@ -2,10 +2,15 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: [stylus/docs/keyframes.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/keyframes.md 
+“stylus/docs/keyframes.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<h2 id="keyframes">@keyframes</h2>
+<h2 id="keyframes-httplearnboostgithubcomstylusdocskeyframeshtml">@keyframes <a href="http://learnboost.github.com/stylus/docs/keyframes.html">原文</a></h2>
 
-<p>Stylus supports the <code>@keyframes</code> at-rule, which is converted to <code>@-webkit-keyframes</code> when compiled:</p>
+<p>Stylusは <code>@keyframes</code> @ルールをサポートしています。コンパイル時に <code>@-webkit-keyframes</code> に変換されます。</p>
 
 <pre><code> @keyframes pulse
    0%
@@ -26,7 +31,7 @@
      -webkit-transform scale(1.0) rotate(0deg)
 </code></pre>
 
-<p>yielding:</p>
+<p>結果:</p>
 
 <pre><code>  @-webkit-keyframes pulse {
     0% {
@@ -56,11 +61,11 @@
   }
 </code></pre>
 
-<h2 id="expansion">Expansion</h2>
+<h2 id="section">展開</h2>
 
-<p>By using <code>@keyframes</code>, your rules are automatically expanded to the vendor prefixes defined by the <code>vendors</code> variable (default: <code>webkit moz official</code>). This means we can alter it at any time for the expansion to take effect immediately. </p>
+<p><code>@keyframes</code> を使うことによって、ルールは <code>vendors</code> 変数にて定義されているベンダープレフィックス（デフォルトは<code>webkit moz official</code>）に自動的に展開されます。これは、ベンダープレフィックスをいつでも変更でき、変更をすぐに反映できることを意味します。</p>
 
-<p>For example, consider the following:</p>
+<p>例えば、次の点を考慮します。</p>
 
 <pre><code>@keyframes foo {
   from {
@@ -72,7 +77,7 @@
 }
 </code></pre>
 
-<p>This expands to our two default vendors, and the official syntax:</p>
+<p>これは2つのデフォルトベンダープレフィックスと、1つの公式な構文に展開されます。</p>
 
 <pre><code>@-moz-keyframes foo {
   0% {
@@ -103,7 +108,7 @@
 }
 </code></pre>
 
-<p>If we wanted to limit to the official syntax only, simply alter <code>vendors</code>:</p>
+<p>もし、唯一の公式な構文のみに制限したい場合は、単に <code>vendors</code> を変更します。</p>
 
 <pre><code>vendors = official
 
@@ -117,7 +122,7 @@
 }
 </code></pre>
 
-<p>Yielding:</p>
+<p>結果:</p>
 
 <pre><code>@keyframes foo {
   0% {

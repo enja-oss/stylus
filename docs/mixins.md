@@ -1,10 +1,12 @@
-## Mixins
++ 元文書: [stylus/docs/mixins.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/mixins.md "stylus/docs/mixins.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-Both mixins and functions are defined in the same manner, but they are applied in different ways. 
+## ミックスイン [原文](http://learnboost.github.com/stylus/docs/mixins.html)
 
-For example, we have a `border-radius(n)` function defined below, which is invoked as a _mixin_ (i.e., invoked as a statement, rather than part of an expression).
+ミックスインと関数は同じ形で定義されますが、利用のされ方が異なります。
 
-When `border-radius()` is invoked within a selector, the properties are expanded and copied into the selector.
+例えば、下の`border-radius(n)`関数は _ミックスイン_ として実行されます。つまり、式の一部としてではなく文として扱われます。
+
+`border-radius()`がセレクターの中で実行される時、プロパティはセレクターの中に展開されてコピーされます。
 
     border-radius(n)
       -webkit-border-radius n
@@ -14,7 +16,7 @@ When `border-radius()` is invoked within a selector, the properties are expanded
     form input[type=button]
       border-radius(5px)
 
-Compiles to:
+これは下のように展開されます。
 
     form input[type=button] {
       -webkit-border-radius: 5px;
@@ -22,7 +24,7 @@ Compiles to:
       border-radius: 5px;
     }
 
-When using mixins you can omit the parentheses altogether, providing fantastic transparent vendor property support!
+ミックスインでは、括弧を完全に省略可能です。これにより、ベンダー独自のプロパティを意識せずに利用することが可能です！
 
     border-radius(n)
       -webkit-border-radius n
@@ -32,18 +34,18 @@ When using mixins you can omit the parentheses altogether, providing fantastic t
     form input[type=button]
       border-radius 5px
 
-Note that the `border-radius` within our mixin is treated as a property, and not a recursive function invocation. 
+ミックスイン定義の中の`border-radius`は再帰的な関数呼び出しではなく、通常のプロパティとして扱われることに注意してください。
 
-To take this further, we can utilize the automatic `arguments` local variable, containing the expression passed, allowing multiple values to be passed:
+更に、自動で定義される`arguments`ローカル変数を利用して、関数に渡される式や複数の引数を扱うことができます。
 
     border-radius()
       -webkit-border-radius arguments
       -moz-border-radius arguments
       border-radius arguments
 
-Now we can pass values like `border-radius 1px 2px / 3px 4px`!
+このような定義により、`border-radius 1px 2px / 3px 4px`のような形で引数を渡すことが可能です！
 
-Another great use of this is the addition of transparent support for vendor-specifics—such as `opacity` support for IE:
+さらに便利な利用方法として、ベンダー独自の仕様を意識せずに利用できることがあります。たとえば、IE固有の`opacity`をサポートするには次のように書くことができます。
 
         support-for-ie ?= true
 
@@ -56,18 +58,18 @@ Another great use of this is the addition of transparent support for vendor-spec
           &:hover
             opacity 0.5
 
-Rendering:
+これは次のように展開されます。
 
         #logo:hover {
           opacity: 0.5;
           filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
         }
 
-### Parent References
+### 親要素の参照
 
- Mixins may utilize the parent reference character `&`, acting on the parent instead of further nesting. 
+ ミックスイン定義の中では、親要素を`&`で参照できます。これにより入れ子構造を作ることなく親要素にアクセスできます。
  
- For example, let's say we want to create a `stripe(even, odd)` mixin for striping table rows. We provide both `even` and `odd` with default color values, and assign the `background-color` property on the row. Nested within the `tr` we use `&` to reference the `tr`, providing the `even` color.
+ 例えば、テーブルの行の色を１行おきに変えるために、`stripe(even, odd)`というミックスインを定義することを考えてみましょう。偶数行のために`even`、奇数行のために`odd`という初期値を定義し、テーブル行に`background-color`プロパティを適用します。
  
      stripe(even = #fff, odd = #eee)
        tr
@@ -76,7 +78,7 @@ Rendering:
          &:nth-child(even)
            background-color even
 
-We may then utilize the mixin as shown below:
+このミックスインは以下のように利用できます。
 
      table
        stripe()
@@ -88,7 +90,7 @@ We may then utilize the mixin as shown below:
        td
          color white
 
-Alternatively, `stripe()` could be defined without parent references:
+次のように、`stripe()`を親要素の参照を利用せずに定義することもできます。
 
     stripe(even = #fff, odd = #eee)
       tr
@@ -97,37 +99,16 @@ Alternatively, `stripe()` could be defined without parent references:
       tr:nth-child(even)
         background-color even
 
-If we wished, we could invoke `stripe()` as if it were a property:
+`stripe()`を通常のプロパティであるかのように利用することもできます。
 
     stripe #fff #000
 
-### Block mixins
+### ミックスインのなかでミックスインを使う
 
-You can pass blocks to mixins by calling mixin with `+` prefix:
-
-    +foo()
-      width: 10px
-
-The passed block would be available inside the mixin as `block` variable, that then could be used with interpolation:
-
-    foo()
-      .bar
-        {block}
-
-    +foo()
-      width: 10px
-
-    => .bar {
-         width: 10px;
-       }
-
-This feature is in its rough state ATM, but would be enhanced in the future.
-
-### Mixing Mixins in Mixins
-
- Mixins can (of course!) utilize other mixins, building upon their own selectors and properties. 
+ もちろん、ミックスインの中で他のミックスインを利用することも可能です！
  
- For example, below we create `comma-list()` to inline (via `inline-list()`) and comma-separate an unordered list.
+ 例として、下では`comma-list()`というミックスインを`inline-list()`というミックスインを利用して定義しています。
+ `inline-list()`はリストを１行にし、`comma-list()`はリストを１行のカンマで区切った形式で表示します。
  
  
      inline-list()
@@ -145,7 +126,7 @@ This feature is in its rough state ATM, but would be enhanced in the future.
      ul
        comma-list()
 
-Rendering:
+これは以下のように展開されます。
 
     ul li:after {
       content: ", ";

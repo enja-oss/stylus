@@ -1,10 +1,10 @@
++ 元文書: [stylus/docs/vargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/vargs.md "stylus/docs/vargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-## Rest Parameters
+## 可変長引数 [原文](http://learnboost.github.com/stylus/docs/vargs.html)
 
- Stylus supports rest parameters in the form of `name...`. These params consume the remaining arguments passed to a mixin or function. This is useful when utilizing (for example) the implicit function call support to apply vendor prefixes like `-webkit` or `-moz`.
- 
+ Stylusでは`name...`の形で定義することで可変長引数を利用可能です。この引数のなかにミックスインや関数に渡されたすべての引数が含まれます。これは、（例えば）`-webkit`や`-moz`のようなベンダープレフィックスを適用するために暗黙的な関数呼び出しを行う際に便利です。
 
-In the example below, we consume all the arguments passed, and simply apply them to multiple properties.
+次の例では、単純に渡されたすべての引数を複数のプロパティに適用しています。
 
      box-shadow(args...)
        -webkit-box-shadow args
@@ -14,7 +14,7 @@ In the example below, we consume all the arguments passed, and simply apply them
      #login
        box-shadow 1px 2px 5px #eee
 
-Yielding:
+これは次のように展開されます:
 
       #login {
         -webkit-box-shadow: 1px 2px 5px #eee;
@@ -22,7 +22,7 @@ Yielding:
         box-shadow: 1px 2px 5px #eee;
       }
 
-If we wanted to peek at a specific argument—say, `x-offset`—we could simply use `args[0]`. Or, we may wish to redefine the mixin:
+特定の引数-例えば`x-offset`-を参照したいとき、単純に`args[0]`のように参照できます。またはミックスイン定義を次のように書き換えても良いでしょう:
 
         box-shadow(offset-x, args...)
           got-offset-x offset-x
@@ -33,7 +33,7 @@ If we wanted to peek at a specific argument—say, `x-offset`—we could simply 
         #login
           box-shadow 1px 2px 5px #eee
 
-Yielding:
+これは次のように展開されます:
 
         #login {
           got-offset-x: 1px;
@@ -42,11 +42,11 @@ Yielding:
           box-shadow: 1px 2px 5px #eee;
         }
 
-### arguments
+### arguments変数
 
-  The `arguments` variable is injected into mixin and function bodies, containing the exact expression passed. This is useful for several reasons (especially vendor support) as you get the _exact_ expression, commas and all.
+  `arguments`引数はミックスインや関数定義の中で用いることができ、渡された式を正確に保持しています。これはカンマなどを含めた _正確な_ 式を保持しているため、特にベンダー特有のプロパティをサポートするためなどの目的に便利です。
 
-  For example, if we use a rest param, the comma is consumed (since it is an expression delimiter):
+  例えば、可変長引数を用いると、カンマは式の区切り文字なので無視されます。
   
       box-shadow(args...)
         -webkit-box-shadow args
@@ -56,7 +56,7 @@ Yielding:
       #login
         box-shadow #ddd 1px 1px, #eee 2px 2px 
 
-Yielding undesired results:
+これでは望んだ結果になりません:
 
       #login {
         -webkit-box-shadow: #ddd 1px 1px #eee 2px 2px;
@@ -64,7 +64,7 @@ Yielding undesired results:
         box-shadow: #ddd 1px 1px #eee 2px 2px;
       }
 
-Let's redefine the mixin using `arguments`:
+このミックスインを`arguments`を用いて定義しなおしてみましょう:
 
       box-shadow()
         -webkit-box-shadow arguments
@@ -74,7 +74,7 @@ Let's redefine the mixin using `arguments`:
       body
         box-shadow #ddd 1px 1px, #eee 2px 2px
 
-Now, yielding the desired result:
+これで望んだ結果が得られます:
 
       body {
         -webkit-box-shadow: #ddd 1px 1px, #eee 2px 2px;

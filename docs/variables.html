@@ -2,10 +2,15 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: [stylus/docs/variables.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/variables.md 
+“stylus/docs/variables.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<h2 id="variables">Variables</h2>
+<h2 id="httplearnboostgithubcomstylusdocsvariableshtml">変数 <a href="http://learnboost.github.com/stylus/docs/variables.html">原文</a></h2>
 
-<p>We may assign expressions to variables and use them throughout our stylesheet:</p>
+<p>変数を割り当てることができ、スタイルシートの至る所で使用できます。</p>
 
 <pre><code> font-size = 14px
 
@@ -13,14 +18,14 @@
    font font-size Arial, sans-serif
 </code></pre>
 
-<p>Compiles to:</p>
+<p>コンパイル後:</p>
 
 <pre><code> body {
    font: 14px Arial, sans-serif;
  }
 </code></pre>
 
-<p>Variables can even consist of an expression list:</p>
+<p>変数はリスト表現としても成立します。</p>
 
 <pre><code>font-size = 14px
 font = font-size "Lucida Grande", Arial
@@ -29,14 +34,14 @@ body
   font font sans-serif
 </code></pre>
 
-<p>Compiles to:</p>
+<p>コンパイル後:</p>
 
 <pre><code>body {
   font: 14px "Lucida Grande", Arial sans-serif;
 }
 </code></pre>
 
-<p>Identifiers (variable names, functions, etc.) may also include the <code>$</code> character. For example:</p>
+<p>例えば次のように、（変数名、関数などの）識別子は <code>$</code> 文字を含めることができます。</p>
 
 <pre><code>$font-size = 14px
 body {
@@ -44,10 +49,11 @@ body {
 }
 </code></pre>
 
-<h2 id="property-lookup">Property Lookup</h2>
+<h2 id="property">Property検索</h2>
 
-<p>Another cool feature unique to Stylus is the ability to reference
- properties defined <em>without</em> assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element (typically done using percentages and negative margins, as follows):</p>
+<p>別のStylus固有のクールな機能として、変数にこれらの値を割り当てる <em>ことなく</em> 、定義されたプロパティを参照できることが挙げられます。
+この良い例は　エレメントが垂直方向と水平方法の中心となるようなロジックが必要な場合です。
+（次のように、パーセントやマイナスのマージンにて使うことが一般的です。）</p>
 
 <pre><code> #logo
    position: absolute
@@ -59,8 +65,8 @@ body {
    margin-top: -(h / 2)
 </code></pre>
 
-<p>Instead of assigning the variables <code>w</code> and <code>h</code>, we can simply prepend the <code>@</code>
-  character to the property name to access the value:</p>
+<p><code>w</code> や <code>h</code> などの変数を割り当てる代わりに、
+プロパティの先頭に <code>@</code> 文字を追加することでもっと単純に値にアクセスすることができます。</p>
 
 <pre><code> #logo
    position: absolute
@@ -72,7 +78,9 @@ body {
    margin-top: -(@height / 2)
 </code></pre>
 
-<p>Another use-case is conditionally defining properties within mixins based on the existence of others . In the following example, we apply a default <code>z-index</code> of <code>1</code>—but <em>only</em> if <code>z-index</code> was not previously specified:</p>
+<p>別の使用方法は、mixinsの中において、他の場所に存在するという前提条件付きで定義するプロパティです。
+次の例の中で、<code>z-index</code> にデフォルト値の <code>1</code> を定義していますが、
+これは、事前に <code>z-index</code> が指定されていない場合 <em>のみ</em> 使われます。</p>
 
 <pre><code>  position()
     position: arguments
@@ -86,7 +94,8 @@ body {
     position: absolute
 </code></pre>
 
-<p>Property lookup will &#8220;bubble up&#8221; the stack until found, or return <code>null</code> if the property cannot be resolved. In the following example, <code>@color</code> will resolve to <code>blue</code>:</p>
+<p>プロパティ検索はその名前が見つかるか、名前解決できず <code>null</code> が返されるまでスタックを遡っていきます。 
+次の例の中では、<code>@color</code> は <code>blue</code> として解釈されます。</p>
 
 <pre><code>  body
     color: red

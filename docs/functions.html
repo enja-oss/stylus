@@ -2,37 +2,40 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/functions.md" title="stylus/docs/functions.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub">stylus/docs/functions.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<h2 id="functions">Functions</h2>
+<h2 id="httplearnboostgithubcomstylusdocsfunctionshtml">関数 <a href="http://learnboost.github.com/stylus/docs/functions.html">原文</a></h2>
 
-<p>Stylus features powerful in-language function definitions. Function definitions appear identical to mixins; however, functions may return a value.</p>
+<p>Stylusにはパワフルな関数の仕組みが用意されています。関数の定義はミックスインと同じですが、値を返せるところがミックスインと異なります。</p>
 
-<h3 id="return-values">Return Values</h3>
+<h3 id="section">返り値</h3>
 
-<p>Let&#8217;s try a trivial example: creating a function that adds two numbers.</p>
+<p>簡単な例から始めてみましょう: ２つの値を加算する関数を作ってみます。</p>
 
 <pre><code>add(a, b)
   a + b
 </code></pre>
 
-<p>We can then use this function in conditions, in property values, etc.</p>
+<p>この関数は、条件文やプロパティの値などに用いることができます。</p>
 
-<pre><code> body 
+<pre><code> body
    padding add(10px, 5)
 </code></pre>
 
-<p>Rendering:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code> body {
    padding: 15px;
  }
 </code></pre>
 
-<h3 id="argument-defaults">Argument Defaults</h3>
+<h3 id="section-1">デフォルト引数</h3>
 
-<p>Optional arguments may default to a given expression. With Stylus we may even default arguments to earlier arguments! </p>
+<p>オプションの引数は与えられた値をデフォルトにとります。Stylusでは、前方の引数にもデフォルト値を設定出来ます!</p>
 
-<p>For example:</p>
+<p>例えば:</p>
 
 <pre><code> add(a, b = a)
    a + b
@@ -44,27 +47,15 @@
  // =&gt; 20
 </code></pre>
 
-<p><strong>Note:</strong> Since argument defaults are assignments, we can also use function calls for defaults:</p>
+<p><strong>注記:</strong> デフォルト引数の定義は通常の代入なので、その定義の中で関数を使うことも可能です:</p>
 
 <pre><code> add(a, b = unit(a, px))
    a + b
 </code></pre>
 
-<h3 id="named-parameters">Named Parameters</h3>
+<h3 id="section-2">関数の定義</h3>
 
-<p>Functions accept named parameters. This frees you from remembering the order of parameters, or simply improves the readability of your code.</p>
-
-<p>For example:</p>
-
-<pre><code>subtract(a, b)
-  a - b
-
-subtract(b: 10, a: 25)
-</code></pre>
-
-<h3 id="function-bodies">Function Bodies</h3>
-
-<p>We can take our simple <code>add()</code> function further. Let&#8217;s casting all units passed as <code>px</code> via the <code>unit()</code> built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.</p>
+<p>さらに、シンプルな<code>add()</code>関数を見て行きましょう。組み込み関数である<code>unit()</code>を用いてすべての値の単位が<code>px</code>になるようにします。これによりそれぞれの引数が再代入され、単位を示す文字列が付け加えられます。単位の変換は行われません。</p>
 
 <pre><code> add(a, b = a)
    a = unit(a, px)
@@ -75,11 +66,11 @@ subtract(b: 10, a: 25)
  // =&gt; 25
 </code></pre>
 
-<h3 id="multiple-return-values">Multiple Return Values</h3>
+<h3 id="section-3">複数の返り値</h3>
 
-<p>Stylus functions can return several values—just as you can assign several values to a variable. </p>
+<p>Stylusでは、関数は複数の値を返すことができます。また、ひとつの変数に複数の値を代入することも同様に可能です。</p>
 
-<p>For example, the following is a valid assignment:</p>
+<p>例えば、次の代入は正しく実行されます:</p>
 
 <pre><code>   sizes = 15px 10px
  
@@ -87,7 +78,7 @@ subtract(b: 10, a: 25)
    // =&gt; 15px 
 </code></pre>
 
-<p>Similarly, we may return several values:</p>
+<p>同様に、関数で複数の値を返す事もできます:</p>
 
 <pre><code>   sizes()
      15px 10px
@@ -96,13 +87,13 @@ subtract(b: 10, a: 25)
    // =&gt; 15px
 </code></pre>
 
-<p>One slight exception is when return values are identifiers. For example, the following looks like a property assignment to Stylus (since no operators are present):</p>
+<p>返却値が識別子であるときは例外となります。例えば、以下の例には演算子が存在しないため、プロパティに値を代入しているとしてStylusに認識されてしまいます。</p>
 
 <pre><code> swap(a, b)
    b a
 </code></pre>
 
-<p>To disambiguate, we can either wrap with parentheses, or use the <code>return</code> keyword:</p>
+<p>このようなときは複数の値を返すことを明確にするため、括弧で２つの値を囲みましょう。<code>return</code>キーワードを使うこともできます:</p>
 
 <pre><code>  swap(a, b)
     (b a)
@@ -111,9 +102,9 @@ subtract(b: 10, a: 25)
     return b a
 </code></pre>
 
-<h3 id="conditionals">Conditionals</h3>
+<h3 id="section-4">条件文</h3>
 
-<p>Let&#8217;s say we want to create a function named <code>stringish()</code> to determine whether the argument can be transformed to a string. We check if <code>val</code> is a string, or an ident (which is string-like). Because undefined identifiers yield themselves as the value, we may compare them to themselves as shown below (where <code>yes</code> and <code>no</code> are used in place of <code>true</code> and <code>false</code>):</p>
+<p>引数で渡された値が文字列に変換可能か確かめるために<code>stringish()</code>という関数を定義することを考えてみましょう。<code>val</code>が文字列であるかident(文字列のようなデータ)であるかを判別します。未定義の識別子は展開される際にそれ自身の値と置き換わるので、次で示すように、それらをそれら自身と比較すれば良ことになります（ここで、<code>yes</code>と<code>no</code>は、それぞれ<code>true</code>と<code>false</code>を意味します）。</p>
 
 <pre><code> stringish(val)
    if val is a 'string' or val is a 'ident'
@@ -122,7 +113,7 @@ subtract(b: 10, a: 25)
      no
 </code></pre>
 
-<p>Usage:</p>
+<p>使い方:</p>
 
 <pre><code> stringish('yay') == yes
  // =&gt; true
@@ -134,9 +125,9 @@ subtract(b: 10, a: 25)
  // =&gt; true
 </code></pre>
 
-<p><strong>note</strong>: <code>yes</code> and <code>no</code> are not boolean literals. They are simply undefined identifiers in this case.</p>
+<p><strong>注意</strong>: <code>yes</code>と<code>no</code>はブーリアン型のリテラルではなく、単に未定義の識別子であることに注意してください。</p>
 
-<p>Another example:</p>
+<p>別の例:</p>
 
 <pre><code>compare(a, b)
   if a &gt; b
@@ -147,7 +138,7 @@ subtract(b: 10, a: 25)
     equal
 </code></pre>
 
-<p>Usage:</p>
+<p>使い方:</p>
 
 <pre><code>compare(5, 2)
 // =&gt; higher
@@ -159,9 +150,9 @@ compare(10, 10)
 // =&gt; equal
 </code></pre>
 
-<h3 id="aliasing">Aliasing</h3>
+<h3 id="section-5">エイリアス</h3>
 
-<p>To alias a function, simply assign a function&#8217;s name to a new identifier. For example, our <code>add()</code> function could be aliased as <code>plus()</code>, like so:</p>
+<p>関数のエイリアスを作るには、単に関数の名前を新しい識別子に代入してください。例えば、次のようにすれば<code>add()</code>関数を<code>plus()</code>関数としてエイリアスを作ることができます:</p>
 
 <pre><code>  plus = add
   
@@ -169,9 +160,9 @@ compare(10, 10)
   // =&gt; 3
 </code></pre>
 
-<h3 id="variable-functions">Variable Functions</h3>
+<h3 id="section-6">関数を引数にとる関数</h3>
 
-<p>In the same way that we can &#8220;alias&#8221; a function, we can pass a function as well. Here, our <code>invoke()</code> function accepts a function, so we can pass it <code>add()</code> or <code>sub()</code>.</p>
+<p>関数の”エイリアスを作る”ことが可能なのと同じで、関数を関数の引数として渡すことも可能です。次の例では<code>invoke()</code>関数は関数を引数に取るので<code>add()</code>や<code>sub()</code>を渡すことができます。</p>
 
 <pre><code>invoke(a, b, fn)
   fn(a, b)
@@ -184,7 +175,7 @@ body
   padding invoke(5, 10, sub)
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>body {
   padding: 15;
@@ -192,11 +183,11 @@ body
 }
 </code></pre>
 
-<h3 id="arguments">arguments</h3>
+<h3 id="arguments">argumentsローカル変数</h3>
 
-<p>The <code>arguments</code> local is available to all function bodies, and contains all the arguments passed. </p>
+<p><code>arguments</code>ローカル変数がすべての関数の定義のなかで利用できます。この変数は関数に渡されたすべての引数を格納しています。</p>
 
-<p>For example:</p>
+<p>例:</p>
 
 <pre><code> sum()
    n = 0
@@ -207,16 +198,15 @@ body
  // =&gt; 15
 </code></pre>
 
-<h3 id="hash-example">Hash Example</h3>
+<h3 id="section-7">ハッシュの例</h3>
 
-<p>Below we define the <code>get(hash, key)</code> function, which returns the
- value of <code>key</code> (or <code>null</code>). We iterate each <code>pair</code> in <code>hash</code>, returning the pair&#8217;s second node when the first (the <code>key</code>) matches. </p>
+<p>次の例では、<code>get(hash, key)</code>関数を定義しています。これはハッシュのキー値<code>key</code>をもとにその内容を返す(もしキー値に対応する値が見つからなければ<code>null</code>を返す)関数です。この関数の中では、<code>hash</code>のなかのそれぞれのペア<code>pair</code>を走査し、ペアの一つ目の値と<code>key</code>がマッチすればそのペアの２つ目のノードを返すということを行なっています。</p>
 
 <pre><code>  get(hash, key)
     return pair[1] if pair[0] == key for pair in hash
 </code></pre>
 
-<p>As demonstrated below, in-language functions—paired with robust Stylus expressions—can provide great flexibility:</p>
+<p>次で示すように、言語組み込みの関数がStylusの強力な式と一緒に使われると、素晴らしい柔軟性を発揮します。</p>
 
 <pre><code>  hash = (one 1) (two 2) (three 3)
   

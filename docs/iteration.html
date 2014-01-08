@@ -2,22 +2,25 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/iteration.md" title="stylus/docs/iteration.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub">stylus/docs/iteration.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<h2 id="iteration">Iteration</h2>
+<h2 id="httplearnboostgithubiostylusdocsiterationhtml">繰り返し <a href="http://learnboost.github.io/stylus/docs/iteration.html">原文</a></h2>
 
-<p>Stylus allows you to iterate expressions via the <code>for/in</code> construct, taking the form of:</p>
+<p>Stylusでは、<code>for/in</code>構文を使って式を反復することができます。これは次のような形をとります:</p>
 
 <pre><code>  for &lt;val-name&gt; [, &lt;key-name&gt;] in &lt;expression&gt;
 </code></pre>
 
-<p>For example:</p>
+<p>例えば、以下の表現は:</p>
 
 <pre><code>body
   for num in 1 2 3
     foo num
 </code></pre>
 
-<p>Yields:</p>
+<p>次のように展開されます:</p>
 
 <pre><code>  body {
     foo: 1;
@@ -26,7 +29,7 @@
   }
 </code></pre>
 
-<p>The example below shows how to use the <code>&lt;key-name&gt;</code>:</p>
+<p>次の例は、<code>&lt;key‐name&gt;</code>の利用法を示します:</p>
 
 <pre><code>  body
     fonts = Impact Arial sans-serif
@@ -34,7 +37,7 @@
       foo i font
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>    body {
       foo: 0 Impact;
@@ -43,29 +46,11 @@
     }
 </code></pre>
 
-<p>And here&#8217;s how you do a regular for loop</p>
+<h3 id="section">ミックスイン</h3>
 
-<pre><code>body
-  for num in (1..5)
-    foo num
-</code></pre>
+<p>繰り返しをミックスインと一緒に使うととても便利です。例えば、挿入と繰り返しを使って、式のペアをプロパティとして扱うことができます。</p>
 
-<p>Yields:</p>
-
-<pre><code>body {
-  foo: 1;
-  foo: 2;
-  foo: 3;
-  foo: 4;
-  foo: 5;
-}
-</code></pre>
-
-<h3 id="mixins">Mixins</h3>
-
-<p>We can use iteration within mixins to produce powerful functionality. For example, we can apply expression pairs as properties using interpolation and iteration. </p>
-
-<p>Below we define <code>apply()</code>, conditionally utilizing all the <code>arguments</code> so that comma-delimited <em>and</em> expression lists are supported:</p>
+<p>以下では、すべての<code>arguments</code>を条件によって活用することで、カンマ区切りと式のリストの <em>両方</em> をサポートできるように<code>apply()</code>を定義します。</p>
 
 <pre><code> apply(props)
    props = arguments if length(arguments) &gt; 1
@@ -80,9 +65,9 @@
    apply(list)
 </code></pre>
 
-<h3 id="functions">Functions</h3>
+<h3 id="section-1">関数</h3>
 
-<p>Stylus functions may also contain for-loops. Below are some example use-cases:</p>
+<p>Stylusでは関数の中でもforループを使うことができます。以下にいくつかの利用例を挙げます。</p>
 
 <p>Sum:</p>
 
@@ -109,9 +94,9 @@
   // =&gt; "foo, bar, baz"
 </code></pre>
 
-<h3 id="postfix">Postfix</h3>
+<h3 id="section-2">後置記法</h3>
 
-<p>Much like <code>if</code> / <code>unless</code> may be utilized post-statement, the same can be done with <code>for</code>. Below are the same examples as above utilizing the postfix syntax:</p>
+<p><code>if</code>や<code>unless</code>と同様に、<code>for</code>でも後置記法が使えます。以下の例は、上記の例を後置記法を使って書きなおしたものです。</p>
 
 <pre><code>   sum(nums)
      sum = 0
@@ -123,8 +108,7 @@
      buf += i ? delim + arg : arg for arg, i in args
 </code></pre>
 
-<p>We can also <strong>return</strong> from within a loop, below is an example returning the
- number when <code>n % 2 == 0</code> evaluates to <strong>true</strong>.</p>
+<p>ループの中で、 <strong>return</strong> を使うこともできます。以下の例では、<code>n % 2 == 0</code>が <strong>true</strong> を返した場合に<code>n</code>を返しています。</p>
 
 <pre><code> first-even(nums)
    return n if n % 2 == 0 for n in nums

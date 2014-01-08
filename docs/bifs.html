@@ -2,12 +2,15 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/21e225a06ab260551ce506e850ceab7969b219c3/docs/bifs.md" title="stylus/docs/bifs.md at 21e225a06ab260551ce506e850ceab7969b219c3 · LearnBoost/stylus · GitHub">stylus/docs/bifs.md at 21e225a06ab260551ce506e850ceab7969b219c3 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<h2 id="built-in-functions">Built-in Functions</h2>
+<h2 id="httplearnboostgithubcomstylusdocsbifshtml">組み込み関数 <a href="http://learnboost.github.com/stylus/docs/bifs.html">原文</a></h2>
 
 <h3 id="redcolor">red(color)</h3>
 
-<p>Return the red component of the given <code>color</code>.</p>
+<p>与えられた<code>color</code>の赤色の値を返します。</p>
 
 <pre><code> red(#c00)
  // =&gt; 204
@@ -15,7 +18,7 @@
 
 <h3 id="greencolor">green(color)</h3>
 
-<p>Return the green component of the given <code>color</code>.</p>
+<p>与えられた<code>color</code>の緑色の値を返します。</p>
 
 <pre><code> green(#0c0)
  // =&gt; 204
@@ -23,26 +26,26 @@
 
 <h3 id="bluecolor">blue(color)</h3>
 
-<p>Return the blue component of the given <code>color</code>.</p>
+<p>与えられた<code>color</code>の青色の値を返します。</p>
 
-<pre><code> blue(#00c)
+<pre><code> red(#00c)
  // =&gt; 204
 </code></pre>
 
 <h3 id="alphacolor">alpha(color)</h3>
 
-<p>Return the alpha component of the given <code>color</code>.</p>
+<p>与えられた<code>color</code>のアルファ値を返します。</p>
 
 <pre><code>  alpha(#fff)
   // =&gt; 1
-
+  
   alpha(rgba(0,0,0,0.3))
   // =&gt; 0.3
 </code></pre>
 
 <h3 id="darkcolor">dark(color)</h3>
 
-<p>Check if <code>color</code> is dark:</p>
+<p><code>color</code>が暗色であるか判別します。</p>
 
 <pre><code>  dark(black)
   // =&gt; true
@@ -56,7 +59,7 @@
 
 <h3 id="lightcolor">light(color)</h3>
 
-<p>Check if <code>color</code> is light:</p>
+<p><code>color</code>が明色であるか判別します。</p>
 
 <pre><code>light(black)
 // =&gt; false
@@ -70,7 +73,7 @@ light(#00FF40)
 
 <h3 id="huecolor">hue(color)</h3>
 
-<p>Return the hue of the given <code>color</code>.</p>
+<p>与えられた<code>color</code>の色相を返します。</p>
 
 <pre><code>hue(hsla(50deg, 100%, 80%))
 // =&gt; 50deg
@@ -78,7 +81,7 @@ light(#00FF40)
 
 <h3 id="saturationcolor">saturation(color)</h3>
 
-<p>Return the saturation of the given <code>color</code>.</p>
+<p>与えられた<code>color</code>の彩度を返します。</p>
 
 <pre><code>saturation(hsla(50deg, 100%, 80%))
 // =&gt; 100%
@@ -86,15 +89,15 @@ light(#00FF40)
 
 <h3 id="lightnesscolor">lightness(color)</h3>
 
-<p>Return the lightness of the given <code>color</code>.</p>
+<p>与えられた<code>color</code>の明度を返します。</p>
 
 <pre><code>lightness(hsla(50deg, 100%, 80%))
 // =&gt; 80%
 </code></pre>
 
-<h3 id="pushexpr-args">push(expr, args&#8230;)</h3>
+<h3 id="pushexpr-args">push(expr, args…)</h3>
 
-<p>Push the given <code>args</code> to <code>expr</code>.</p>
+<p>与えられた引数<code>args</code>を<code>expr</code>の後方に追加(push)します。</p>
 
 <pre><code> nums = 1 2
  push(nums, 3, 4, 5)
@@ -103,11 +106,11 @@ light(#00FF40)
  // =&gt; 1 2 3 4 5
 </code></pre>
 
-<p>Aliased as <code>append()</code></p>
+<p><code>append()</code>にエイリアスが付けられています。</p>
 
-<h3 id="unshiftexpr-args">unshift(expr, args&#8230;)</h3>
+<h3 id="unshiftexpr-args">unshift(expr, args…)</h3>
 
-<p>Unshift the given <code>args</code> to <code>expr</code>.</p>
+<p>与えられた引数<code>args</code>を<code>expr</code>の前方に追加(unshift)します。</p>
 
 <pre><code> nums = 4 5
  unshift(nums, 3, 2, 1)
@@ -116,11 +119,11 @@ light(#00FF40)
  // =&gt; 1 2 3 4 5
 </code></pre>
 
-<p>Aliased as <code>prepend()</code></p>
+<p><code>prepend()</code>にエイリアスが付けられています。</p>
 
 <h3 id="keyspairs">keys(pairs)</h3>
 
-<p>Return keys in the given <code>pairs</code>:</p>
+<p>与えられたハッシュ<code>pairs</code>のキー値の集合を返します。</p>
 
 <pre><code> pairs = (one 1) (two 2) (three 3)
  keys(pairs)
@@ -129,7 +132,7 @@ light(#00FF40)
 
 <h3 id="valuespairs">values(pairs)</h3>
 
-<p>Return values in the given <code>pairs</code>:</p>
+<p>与えられたハッシュ<code>pairs</code>の値の集合を返します。</p>
 
 <pre><code> pairs = (one 1) (two 2) (three 3)
  values(pairs)
@@ -138,14 +141,14 @@ light(#00FF40)
 
 <h3 id="typeofnode">typeof(node)</h3>
 
-<p>Return type of <code>node</code> as a string.</p>
+<p><code>node</code>の種類を文字列で返します。</p>
 
 <pre><code>  type(12)
   // =&gt; 'unit'
 
   typeof(12)
   // =&gt; 'unit'
-
+  
   typeof(#fff)
   // =&gt; 'rgba'
 
@@ -153,12 +156,12 @@ light(#00FF40)
   // =&gt; 'rgba'
 </code></pre>
 
-<p>Aliased as <code>type-of</code> and <code>type</code>.</p>
+<p><code>type-of</code>と<code>type</code>にエイリアスが付けられています。</p>
 
 <h3 id="unitunit-type">unit(unit[, type])</h3>
 
-<p>Return a string for the type of <code>unit</code> or an empty string,
-or assign the given <code>type</code> without unit conversion.</p>
+<p><code>unit</code>の単位の文字列、または空の文字列を返します。
+また、与えられた<code>type</code>を<code>unit</code>に加えます（単位の変換は行いません）。</p>
 
 <pre><code>unit(10)
 // =&gt; ''
@@ -175,7 +178,7 @@ unit(15%, px)
 
 <h3 id="matchpattern-string">match(pattern, string)</h3>
 
-<p>Test if <code>string</code> matches the given <code>pattern</code>.</p>
+<p><code>string</code>が<code>pattern</code>にマッチするかどうか判定します。</p>
 
 <pre><code>match('^foo(bar)?', foo)
 match('^foo(bar)?', foobar)
@@ -219,34 +222,16 @@ match('^foo(bar)?', 'bar')
   // =&gt; 5px
 </code></pre>
 
-<h3 id="sinangle">sin(angle)</h3>
+<p><strong>注記:</strong> すべての四捨五入関数はオプションの<code>precision</code>引数をとります。この引数には小数点のあとに続く数字の数を指定出来ます:</p>
 
-<p>Returns the value of sine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
+<pre><code>  ceil(5.52px,1)
+  // =&gt; 5.6px
 
-<pre><code>sin(30deg)
-// =&gt; 0.5
+  floor(5.57px,1)
+  // =&gt; 5.5px
 
-sin(3*PI/4)
-// =&gt; 0.707106781
-</code></pre>
-
-<h3 id="cosangle">cos(angle)</h3>
-
-<p>Returns the value of cosine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
-
-<pre><code>cos(180deg)
-// =&gt; -1
-</code></pre>
-
-<h3 id="tanangle">tan(angle)</h3>
-
-<p>Returns the value of tangent for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
-
-<pre><code>tan(45deg)
-// =&gt; 1
-
-tan(90deg)
-// =&gt; Infinity
+  round(5.52px,1)
+  // =&gt; 5.5px
 </code></pre>
 
 <h3 id="mina-b">min(a, b)</h3>
@@ -285,30 +270,16 @@ tan(90deg)
  // =&gt; 2
 </code></pre>
 
-<h3 id="base-convertnum-base-width">base-convert(num, base, width)</h3>
+<h3 id="joindelim-vals">join(delim, vals…)</h3>
 
-<p>Returns a <code>Literal</code> <code>num</code> converted to the provided <code>base</code>, padded to <code>width</code> with zeroes (default width is 2)</p>
-
-<pre><code>base-convert(1, 10, 3)
-// =&gt; 001
-
-base-convert(14, 16, 1)
-// =&gt; e
-
-base-convert(42, 1)
-// =&gt; 101010
-</code></pre>
-
-<h3 id="joindelim-vals">join(delim, vals&#8230;)</h3>
-
-<p>Join the given <code>vals</code> with <code>delim</code>.</p>
+<p>与えられた<code>vals</code>を<code>delim</code>で結合します。</p>
 
 <pre><code>  join(' ', 1 2 3)
   // =&gt; "1 2 3"
-
+  
   join(',', 1 2 3)
   // =&gt; "1,2,3"
-
+  
   join(', ', foo bar baz)
   // =&gt; "foo, bar, baz"
 
@@ -321,43 +292,41 @@ base-convert(42, 1)
 
 <h3 id="hslacolor--hsla">hsla(color | h,s,l,a)</h3>
 
-<p>Convert the given <code>color</code> to an <code>HSLA</code> node,
-or h,s,l,a component values.</p>
+<p>与えられた<code>color</code>、またはh,s,l,aの成分を<code>HSLA</code>ノードに変換します。</p>
 
-<pre><code> hslaa(10deg, 50%, 30%, 0.5)
- // =&gt; HSLA
-
- hslaa(#ffcc00)
- // =&gt; HSLA
-</code></pre>
-
-<h3 id="hslacolor--hsl">hsla(color | h,s,l)</h3>
-
-<p>Convert the given <code>color</code> to an <code>HSLA</code> node,
-or h,s,l component values.</p>
-
-<pre><code> hsla(10, 50, 30)
+<pre><code> hsla(10deg, 50%, 30%, 0.5)
  // =&gt; HSLA
 
  hsla(#ffcc00)
  // =&gt; HSLA
 </code></pre>
 
+<h3 id="hslcolor--hsl">hsl(color | h,s,l)</h3>
+
+<p>与えられた<code>color</code>、またはh,s,lの成分を<code>HSLA</code>ノードに変換します。</p>
+
+<pre><code> hsl(10, 50, 30)
+ // =&gt; HSLA
+
+ hsl(#ffcc00)
+ // =&gt; HSLA
+</code></pre>
+
 <h3 id="rgbacolor--rgba">rgba(color | r,g,b,a)</h3>
 
-<p>Return <code>RGBA</code> from the r,g,b,a channels or provide a <code>color</code> to tweak the alpha.</p>
+<p>r,g,b,aの各成分からRGBAを返します。または、<code>color</code>のアルファ値を調整したものを返します。</p>
 
 <pre><code>  rgba(255,0,0,0.5)
   // =&gt; rgba(255,0,0,0.5)
-
+  
   rgba(255,0,0,1)
   // =&gt; #ff0000
-
+  
   rgba(#ffcc00, 0.5)
   // rgba(255,204,0,0.5)
 </code></pre>
 
-<p>Alternatively stylus supports the <code>#rgba</code> and <code>#rrggbbaa</code> notations as well:</p>
+<p>また、Stylusでは<code>#rgba</code>と<code>#rrggbbaa</code>の記法もサポートされています。</p>
 
 <pre><code>#fc08
 // =&gt; rgba(255,204,0,0.5)
@@ -368,7 +337,7 @@ or h,s,l component values.</p>
 
 <h3 id="rgbcolor--rgb">rgb(color | r,g,b)</h3>
 
-<p>Return a <code>RGBA</code> from the r,g,b channels or cast to an <code>RGBA</code> node.</p>
+<p>r,g,bの成分から<code>RGBA</code>を返します。または<code>RGBA</code>に変換します。</p>
 
 <pre><code>rgb(255,204,0)
 // =&gt; #ffcc00
@@ -379,9 +348,7 @@ rgb(#fff)
 
 <h3 id="lightencolor-amount">lighten(color, amount)</h3>
 
-<p>Lighten the given <code>color</code> by <code>amount</code>. This function is
-unit-sensitive, for example supporting percentages as shown
-below.</p>
+<p>与えられた<code>color</code>を<code>amount</code>に従って明るくします。この関数は単位を判別します。次は、パーセンテージを用いた例になります。</p>
 
 <pre><code>lighten(#2c2c2c, 30)
 // =&gt; #787878
@@ -392,9 +359,7 @@ lighten(#2c2c2c, 30%)
 
 <h3 id="darkencolor-amount">darken(color, amount)</h3>
 
-<p>Darken the given <code>color</code> by <code>amount</code>.This function is
-unit-sensitive, for example supporting percentages as shown
-below.</p>
+<p>与えられた<code>color</code>を<code>amount</code>に従って暗くします。この関数は単位を判別します。次は、パーセンテージを用いた例になります。</p>
 
 <pre><code>darken(#D62828, 30)
 // =&gt; #551010
@@ -405,7 +370,7 @@ darken(#D62828, 30%)
 
 <h3 id="desaturatecolor-amount">desaturate(color, amount)</h3>
 
-<p>Desaturate the given <code>color</code> by <code>amount</code>.</p>
+<p>与えられた<code>color</code>の彩度を<code>amount</code>に従って低くします。</p>
 
 <pre><code>desaturate(#f00, 40%)
 // =&gt; #c33
@@ -413,59 +378,27 @@ darken(#D62828, 30%)
 
 <h3 id="saturatecolor-amount">saturate(color, amount)</h3>
 
-<p>Saturate the given <code>color</code> by <code>amount</code>.</p>
+<p>与えられた<code>color</code>の彩度を<code>amount</code>に従って高くします。</p>
 
 <pre><code>saturate(#c33, 40%)
 // =&gt; #f00
 </code></pre>
 
-<h3 id="complementcolor">complement(color)</h3>
-
-<p>Gives the complementary color. Equals to spinning hue to 180deg.</p>
-
-<pre><code>complement(#fd0cc7)
-// =&gt; #0cfd42
-</code></pre>
-
 <h3 id="invertcolor">invert(color)</h3>
 
-<p>Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.</p>
+<p>色を反転します。赤、緑、青の値は反転されますが、アルファ値は変わりません。</p>
 
 <pre><code>invert(#d62828)
 // =&gt; #29d7d7
 </code></pre>
 
-<h3 id="grayscalecolor">grayscale(color)</h3>
-
-<p>Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.</p>
-
-<pre><code>grayscale(#fd0cc7)
-// =&gt; #0cfd42
-</code></pre>
-
-<h3 id="tintcolor-amount">tint(color, amount)</h3>
-
-<p>Mix the given color with white.</p>
-
-<pre><code>tint(#fd0cc7,66%)
-// =&gt; #feaceb
-</code></pre>
-
-<h3 id="shadecolor-amount">shade(color, amount)</h3>
-
-<p>Mix the given color with black.</p>
-
-<pre><code>shade(#fd0cc7,66%)
-// =&gt; #560443
-</code></pre>
-
 <h3 id="unquotestr--ident">unquote(str | ident)</h3>
 
-<p>Unquote the given <code>str</code> and returned as a <code>Literal</code> node.</p>
+<p>与えられた<code>str</code>のクォートを外して<code>Literal</code>ノードを返します。</p>
 
 <pre><code>   unquote("sans-serif")
    // =&gt; sans-serif
-
+ 
    unquote(sans-serif)
    // =&gt; sans-serif
 
@@ -473,10 +406,9 @@ darken(#D62828, 30%)
    // =&gt; 1px / 2px
 </code></pre>
 
-<h3 id="sfmt-">s(fmt, &#8230;)</h3>
+<h3 id="sfmt-">s(fmt, …)</h3>
 
-<p>The <code>s()</code> function is similar to <code>unquote()</code>, in that it returns
- a <code>Literal</code> node, however it accepts a format string much like C&#8217;s <code>sprintf()</code>. Currently the only specifier is <code>%s</code>.</p>
+<p><code>s()</code>関数は<code>Literal</code>ノードを返す点で<code>unquote()</code>に似ていますが、C言語の<code>sprintf()</code>のようにフォーマット文字列を受け取ることができます。現状では<code>%s</code>指定子のみがサポートされています。</p>
 
 <pre><code>    s('bar()');
     // =&gt; bar()
@@ -486,25 +418,25 @@ darken(#D62828, 30%)
 
     s('bar(%s)', baz);
     // =&gt; bar(baz)
-
+    
     s('bar(%s)', 15px);
     // =&gt; bar(15px)
-
+    
     s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
     // =&gt; rgba(255, 100, 50, 0.5)
-
+    
     s('bar(%Z)', 15px);
     // =&gt; bar(%Z)
-
+    
     s('bar(%s, %s)', 15px);
     // =&gt; bar(15px, null)
 </code></pre>
 
-<p>Check out the <code>%</code> string operator for equivalent behaviour.</p>
+<p>文字列演算子<code>%</code>も同様の効果を得るために利用できます。</p>
 
 <h3 id="operateop-left-right">operate(op, left, right)</h3>
 
-<p>Perform the given <code>op</code> on the <code>left</code> and <code>right</code> operands:</p>
+<p>与えられた<code>op</code>を<code>left</code>と<code>right</code>のオペランドに適用します:</p>
 
 <pre><code>  op = '+'
   operate(op, 15, 5)
@@ -513,20 +445,20 @@ darken(#D62828, 30%)
 
 <h3 id="lengthexpr">length([expr])</h3>
 
-<p>Parenthesized expressions may act as tuples, the <code>length()</code> function returns the length of such expressions.</p>
+<p>括弧に囲まれた式はタプルとして認識されます。<code>length()</code>関数はそのような式の長さを返します。</p>
 
 <pre><code>length((1 2 3 4))
 // =&gt; 4
 
 length((1 2))
 // =&gt; 2
-
+  
 length((1))
 // =&gt; 1
-
+  
 length(())
 // =&gt; 0
-
+  
 length(1 2 3)
 // =&gt; 3
 
@@ -537,30 +469,16 @@ length()
 // =&gt; 0
 </code></pre>
 
-<h3 id="selector">selector()</h3>
-
-<p>Returns the compiled current selector or <code>&amp;</code> if called at root level.</p>
-
-<pre><code>.foo
-  selector()
-// =&gt; '.foo'
-
-.foo
-  &amp;:hover
-    selector()
-// '.foo:hover'
-</code></pre>
-
 <h3 id="warnmsg">warn(msg)</h3>
 
-<p>Warn with the given error <code>msg</code>, does not exit.</p>
+<p>与えられたエラー<code>msg</code>を警告します。これは、Stylusのコンパイルを中止しません。</p>
 
 <pre><code>  warn("oh noes!")
 </code></pre>
 
 <h3 id="errormsg">error(msg)</h3>
 
-<p>Exits with the given error <code>msg</code>.</p>
+<p>与えられたエラー<code>msg</code>を発し、Stylusのコンパイルを中止します。</p>
 
 <pre><code>add(a, b)
   unless a is a 'unit' and b is a 'unit'
@@ -570,13 +488,13 @@ length()
 
 <h3 id="lastexpr">last(expr)</h3>
 
-<p>Return the <em>last</em> value in the given <code>expr</code>:</p>
+<p>与えられた<code>expr</code>のなかの <em>最後</em> の値を返します:</p>
 
 <pre><code>  nums = 1 2 3
   last(nums)
   last(1 2 3)
   // =&gt; 3
-
+  
   list = (one 1) (two 2) (three 3)
   last(list)
   // =&gt; (three 3)
@@ -584,7 +502,7 @@ length()
 
 <h3 id="pexpr">p(expr)</h3>
 
-<p>Inspect the given <code>expr</code>:</p>
+<p>与えられた<code>expr</code>の詳細を調べます:</p>
 
 <pre><code> fonts = Arial, sans-serif
  p('test')
@@ -593,14 +511,14 @@ length()
  p(fonts)
  p(#fff)
  p(rgba(0,0,0,0.2))
-
+ 
  add(a, b)
    a + b
 
  p(add)
 </code></pre>
 
-<p>stdout:</p>
+<p>標準出力:</p>
 
 <pre><code> inspect: "test"
  inspect: 123
@@ -613,7 +531,7 @@ length()
 
 <h3 id="opposite-positionpositions">opposite-position(positions)</h3>
 
-<p>Return the opposites of the given <code>positions</code>.</p>
+<p>与えられた<code>positions</code>の逆のものを返します。</p>
 
 <pre><code> opposite-position(right)
  // =&gt; left
@@ -627,7 +545,7 @@ length()
 
 <h3 id="image-sizepath">image-size(path)</h3>
 
-<p>Returns the <code>width</code> and <code>height</code> of the image found at <code>path</code>. Lookups are performed in the same manner as <code>@import</code>, altered by the <code>paths</code> setting.</p>
+<p><code>path</code>に見つかった画像の<code>width</code>と<code>height</code>を返します。画像ファイルの探索は<code>@import</code>と同様に行われます。これは、設定<code>paths</code>で変更できます。</p>
 
 <pre><code>  width(img)
     return image-size(img)[0]
@@ -644,9 +562,9 @@ length()
 
 <h3 id="add-propertyname-expr">add-property(name, expr)</h3>
 
-<p>Adds property <code>name</code>, with the given <code>expr</code> to the closest block.</p>
+<p>呼び出し箇所に最も近いブロックに、プロパティ<code>name</code>を<code>expr</code>の値で追加します。</p>
 
-<p>For example:</p>
+<p>例:</p>
 
 <pre><code>  something()
     add-property('bar', 1 2 3)
@@ -656,7 +574,7 @@ length()
     foo: something()
 </code></pre>
 
-<p>yields:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>  body {
     bar: 1 2 3;
@@ -664,10 +582,9 @@ length()
   }
 </code></pre>
 
-<p>Next the &#8220;magic&#8221; <code>current-property</code> local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property&#8217;s name, and value.</p>
+<p>次に”魔法の”<code>current-property</code>ローカル変数を見てみましょう。この変数は関数定義の中で準備なく利用可能で、現在のプロパティの名前と値を持っています。</p>
 
-<p>For example if we were to inspect this local variable using <code>p()</code>, we
-  get the following:</p>
+<p>例えば、<code>p()</code>関数を使ってこの変数をインスペクトしてみると、次のようになります。</p>
 
 <pre><code>    p(current-property)
     // =&gt; "foo" (foo __CALL__ bar baz)
@@ -679,7 +596,7 @@ length()
     // =&gt; foo __CALL__ bar baz
 </code></pre>
 
-<p>Using <code>current-property</code> we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.</p>
+<p><code>current-preperty</code>を用いてもう少し高度な例を見ていきましょう。プロパティを複製し、別の値を持つようにします。また、関数がプロパティの値の箇所で用いられていることを確実にするために条件文を付け足します。</p>
 
 <pre><code>    something(n)
       if current-property
@@ -694,7 +611,7 @@ length()
     }
 </code></pre>
 
-<p>yields:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>    body {
       foo: -webkit-something(15px);
@@ -703,9 +620,9 @@ length()
     }
 </code></pre>
 
-<p>If you noticed in the example above, <code>bar</code> is only present for the initial call, since we returned <code>something(15px)</code>, it remained in-place within the expression, however the others do not take the rest of the expression into account.</p>
+<p>上の例でお気づきかもしれませんが、<code>bar</code>は<code>something(15px)</code>を返したあとにしか存在していません。<code>bar</code>はこの式の中では元の位置のままですが、他の式では考慮に入れられていません。</p>
 
-<p>Our more robust solution below, defines a function named <code>replace()</code> which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace <code>__CALL__</code> within the expressions, which represents the cyclic call to <code>something()</code>.</p>
+<p>この更に良い解決策が次になります。まず、<code>replace()</code>という関数を定義します。この関数の中では、式の変更を防ぐためにまず式を複製し、複製された式の中の文字列を与えられた文字列で置き換え、複製された式を返すという事を行なっています。式の中の<code>__CALL__</code>が置き換えられていますが、これは<code>something()</code>の循環的な呼び出しを表しています。</p>
 
 <pre><code>    replace(expr, str, val)
       expr = clone(expr)
@@ -726,7 +643,7 @@ length()
         error('something() must be used within a property')
 </code></pre>
 
-<p>yields:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>      body {
         foo: foo -webkit-something(5px) bar baz;
@@ -735,56 +652,13 @@ length()
       }
 </code></pre>
 
-<p>Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.</p>
+<p>これで、関数がコールされるプロパティとプロパティの中での位置の点で透過的に動作できる関数が定義されました。この強力な仕組みのおかげでグラデーションなどのベンダープレフィックスを意識せずに利用することが容易になります。</p>
 
-<h3 id="usepath">use(path)</h3>
+<h3 id="section">未定義の関数</h3>
 
-<p>You can use any given js-plugin at given <code>path</code> with <code>use()</code> function right inside your &#8216;.styl&#8217; files, like this:</p>
+<p>未定義の関数はリテラルとして出力されます。例として<code>rgba-stop(50%, #fff)</code>をcssの中で呼び出すことを考えてみましょう。これは期待通りに出力されます。ヘルパーの中でも同様に用いることができます。</p>
 
-<pre><code>use("plugins/add.js")
-
-width add(10, 100)
-// =&gt; width: 110
-</code></pre>
-
-<p>And the <code>add.js</code> plugin in this case looks this way:</p>
-
-<pre><code>var plugin = function(){
-  return function(style){
-    style.define('add', function(a, b) {
-      return a.operate('+', b);
-    });
-  };
-};
-module.exports = plugin;
-</code></pre>
-
-<p>If you&#8217;d like to return any Stylus objects like <code>RGBA</code>, <code>Ident</code> or <code>Unit</code>, you could use the provided Stylus nodes like this:</p>
-
-<pre><code>var plugin = function(){
-  return function(style){
-    var nodes = this.nodes;
-    style.define('something', function() {
-      return new nodes.Ident('foobar');
-    });
-  };
-};
-module.exports = plugin;
-</code></pre>
-
-<p>You can pass any options as an optional second argument, using the <a href="hashes.html">hash object</a>:</p>
-
-<pre><code>use("plugins/add.js", { foo: bar })
-</code></pre>
-
-<h3 id="undefined-functions">Undefined Functions</h3>
-
-<p>Undefined functions will output as literals, so for example
-  we may call <code>rgba-stop(50%, #fff)</code> within our css, and it will
-  output as you would expect. We can use this within helpers as well.</p>
-
-<p>In the example below we simply define the function <code>stop()</code> which
-  returns the literal <code>rgba-stop()</code> call.</p>
+<p>次の例ではシンプルな<code>stop()</code>関数を定義します。この関数はリテラルの<code>rgba-stop()</code>関数コールを返します。</p>
 
 <pre><code>stop(pos, rgba)
   rgba-stop(pos, rgba)

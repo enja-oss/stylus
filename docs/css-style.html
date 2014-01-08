@@ -2,14 +2,20 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: [stylus/docs/css-style.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/css-style.md 
+“stylus/docs/css-style.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<h2 id="css-style">CSS Style</h2>
+<h2 id="css-style-httplearnboostgithubcomstylusdocscss-stylehtml">CSS Style <a href="http://learnboost.github.com/stylus/docs/css-style.html">原文</a></h2>
 
-<p>Stylus transparently supports a regular CSS-style syntax. This means you don&#8217;t need an alternative parser, or specify that a certain file uses a specific style.</p>
+<p>Stylusは正規のCSSスタイルを標準でサポートしています。
+これは、パーサーを選択したり、特定のファイルで使用する詳細なスタイルについて明示する必要がないことを意味します。</p>
 
-<h3 id="example">Example</h3>
+<h3 id="section">例</h3>
 
-<p>Below is a small style using the indented approach:</p>
+<p>以下の小さなスタイルは（Stylusの）インデントアプローチを利用しています:</p>
 
 <pre><code> border-radius()
    -webkit-border-radius arguments
@@ -27,7 +33,7 @@
    border-radius 5px
 </code></pre>
 
-<p>Since braces, colons, and semi-colons are optional, we could write this example just as we would with normal CSS:</p>
+<p>この例は、（通常書くであろう）CSSとしても書くことが出来ます。つまり、括弧、コロン、セミコロンは任意です:</p>
 
 <pre><code> border-radius() {
    -webkit-border-radius: arguments;
@@ -48,7 +54,7 @@
  }
 </code></pre>
 
-<p>Since we may mix and match the two variants, the following is valid as well:</p>
+<p>この2種類のスタイルを混在させることが可能なため、以下も有効です:</p>
 
 <pre><code> border-radius()
    -webkit-border-radius: arguments;
@@ -67,7 +73,7 @@
    border-radius: 5px;
 </code></pre>
 
-<p>Variables, functions, mixins, and all the other features provided by Stylus still work as expected:</p>
+<p>その場合であっても、Variables、functions、mixinsなど、Stylusが提供するすべての機能は正しく動作します。</p>
 
 <pre><code> main-color = white
  main-hover-color = black
@@ -80,6 +86,9 @@
  body a { color: main-color; &amp;:hover { color: main-hover-color; }}
 </code></pre>
 
-<p>There are a few caveats to this rule: since the two styles may be mixed and matched, some indentation rules still apply. So although not <em>every</em> plain-CSS stylesheet will work with zero modification, this feature allows those who prefer CSS syntax to continue doing so while leveraging Stylus&#8217; other powerful features.</p>
+<p>しかし、このルールには幾つかの注意点があります。
+ 2つのスタイルを混在させることができるのですが、インデントルールは適用されたままとなります。
+ そのため、まったく変更せずに、 <em>すべての</em> プレーンなCSSが動作するわけではありませんが、
+ この機能により、CSS構文を維持しながら、Stylusの他の強力な機能を活用することができます。</p>
 
 </div></div></body></html>

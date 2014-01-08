@@ -2,11 +2,19 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
-<h2 id="javascript-api">JavaScript API</h2>
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/js.md" title="stylus/docs/js.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 ? LearnBoost/stylus ? GitHub">stylus/docs/js.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 ? LearnBoost/stylus ? GitHub</a></li>
+</ul>
+
+<h2 id="javascript-api-httplearnboostgithubcomstylusdocsjshtml">JavaScript API <a href="http://learnboost.github.com/stylus/docs/js.html">原文</a></h2>
 
 <p>Simply <code>require</code> the module, and call <code>render()</code> with the given string of Stylus code, and (optional) <code>options</code> object. </p>
 
+<p>シンプルな <code>require</code> モジュールです。引数の文字列にはStylusコードと、<code>options</code> オブジェクト（任意）を渡し、<code>render()</code> で呼び出します。</p>
+
 <p>Frameworks utilizing Stylus should pass the <code>filename</code> option to provide better error reporting.</p>
+
+<p>フレームワークにおいてStylusを活用するためには、より良いエラーレポートを提供する <code>filename</code> オプションを渡すべきです。</p>
 
 <pre><code>var stylus = require('stylus');
 
@@ -17,6 +25,8 @@ stylus.render(str, { filename: 'nesting.css' }, function(err, css){
 </code></pre>
 
 <p>We can also do the same thing in a more progressive manner:</p>
+
+<p>プログレッシブ（より革新的）な方法で行うと次のようになります。</p>
 
 <pre><code>var stylus = require('stylus');
 
@@ -31,6 +41,8 @@ stylus(str)
 
 <p>Apply a setting such as a <code>filename</code>, or import <code>paths</code>:</p>
 
+<p><code>filename</code> やインポートする <code>paths</code> の設定などを適用します。</p>
+
 <pre><code> .set('filename', __dirname + '/test.styl')
  .set('paths', [__dirname, __dirname + '/mixins'])
 </code></pre>
@@ -38,6 +50,9 @@ stylus(str)
 <h3 id="includepath">.include(path)</h3>
 
 <p>A progressive alternative to <code>.set('paths',...)</code> is <code>.include()</code>.  This is ideal when exposing external Stylus libraries which expose a path.</p>
+
+<p><code>.set('paths',...)</code> をプログレッシブな方法で置き換えたものが、 <code>.include()</code> です。
+  これは、依存する外部のStylusライブラリについてのパスを明示するために使用することが一般的です。</p>
 
 <pre><code>stylus(str)
   .include(require('nib').path)
@@ -48,6 +63,9 @@ stylus(str)
 <h3 id="importpath">.import(path)</h3>
 
 <p>Defer importing of the given <code>path</code> until evaluation is performed. The example below is essentially the same as doing <code>@import 'mixins/vendor'</code> within your Stylus sheet.</p>
+
+<p><code>path</code> で渡された対象は、評価が開始されるまでインポートが遅延されます。
+下の例で、スタイルシート内で行われていることは <code>@import 'mixins/vendor'</code> と基本的に同じです。</p>
 
 <pre><code>  var stylus = require('../')
     , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
@@ -65,13 +83,21 @@ stylus(str)
 
 <p>By passing a <code>Node</code>, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the <strong>Nib</strong> extension library conditionally supports node-canvas, providing image generation. </p>
 
+<p><code>Node</code> に渡すことで、グローバル変数を定義することができます 。
+ これは、外部からの条件（Nodeに渡したグローバル変数）に応じて、ライブラリの中で機能を公開したりする場合に利用します。 
+ 例えば、拡張ライブラリの <strong>Nib</strong> は、「node-canvas」の条件により画像生成機能を提供するか決定します。</p>
+
 <p>However, this is not always available, so Nib may define:</p>
+
+<p>しかし、これは常に利用できるとは限りません。そのためNibはこのように定義します。</p>
 
 <pre><code> .define('has-canvas', stylus.nodes.false);
  .define('some-setting', new stylus.nodes.String('some value'));
 </code></pre>
 
 <p>Stylus also casts JavaScript values to their Stylus equivalents when possible. Here are a few examples:</p>
+
+<p>可能な場合、StylusではJavascriptの値をStylusでの同等な値にキャストします。ここに幾つかの例を示します。</p>
 
 <pre><code> .define('string', 'some string')
  .define('number', 15.5)
@@ -84,6 +110,8 @@ stylus(str)
 
 <p>These same rules apply to return values in js functions as well:</p>
 
+<p>これらと同じルールがJS関数（コールバック）の戻り値にも適用されます。</p>
+
 <pre><code> .define('get-list', function(){
    return ['foo', 'bar', 'baz'];
  })
@@ -91,9 +119,16 @@ stylus(str)
 
 <h3 id="definename-fn">.define(name, fn)</h3>
 
-<p>This method allows you to provide a JavaScript-defined function to Stylus. Think of these as you would JavaScript-to-C++ bindings. When there&#8217;s something you cannot do in Stylus, define it in JavaScript!</p>
+<p>This method allows you to provide a JavaScript-defined function to Stylus. Think of these as you would JavaScript-to-C++ bindings. When there’s something you cannot do in Stylus, define it in JavaScript!</p>
+
+<p>この方法により、StylusにJavascriptで定義された関数を提供することができます。
+ これは、JavascriptからC++へのバインディングのように考えることができます。
+ Stylusにて行うことができない何かがある場合、Javascriptでそれを定義する！</p>
 
 <p>In this example, we define four functions: <code>add()</code>, <code>sub()</code>, <code>image-width()</code>, and <code>image-height()</code>. These functions must return a <code>Node</code>, this constructor and the other nodes are available via <code>stylus.nodes</code>.</p>
+
+<p>この例では、<code>add()</code>, <code>sub()</code>, <code>image-width()</code>, <code>image-height()</code> の4つの関数を定義しています。
+これらの関数は<code>Node</code>を返す必要があります。このコンストラクタやその他のnodeは <code>stylus.nodes</code> を介して利用できます。</p>
 
 <pre><code>  var stylus = require('../')
     , nodes = stylus.nodes
@@ -153,6 +188,8 @@ stylus(str)
 
 <p>For further reference (until documentation is complete) please see the following files:</p>
 
+<p>（ドキュメントが完成するまでは）参考に以下のファイルを参照してください。</p>
+
 <ul>
   <li><code>lib/nodes/*</code></li>
   <li><code>lib/utils.js</code></li>
@@ -161,6 +198,10 @@ stylus(str)
 <h3 id="usefn">.use(fn)</h3>
 
 <p>When called, the given <code>fn</code> is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.</p>
+
+<p>渡された <code>fn</code> は、render()で呼び出されます。
+  呼び出された場合、上記すべてのAPI関数を利用することができます。
+  これにより、プラグインは定義している関数、パスなど、自分自身を簡単に公開することができます。</p>
 
 <pre><code>var mylib = function(style){
   style.define('add', add);

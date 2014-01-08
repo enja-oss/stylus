@@ -2,15 +2,26 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
-<h2 id="data-uri-image-inlining">Data URI Image Inlining</h2>
+<ul>
+  <li>元文書: [stylus/docs/functions.url.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/functions.url.md 
+“stylus/docs/functions.url.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<p>Stylus is bundled with an optional function named <code>url()</code>, which replaces the literal <code>url()</code> calls (and conditionally inlines them using base64 <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URIs</a>).</p>
+<h2 id="url-httplearnboostgithubcomstylusdocsfunctionsurlhtml">画像データURLのインライン化 <a href="http://learnboost.github.com/stylus/docs/functions.url.html">原文</a></h2>
 
-<h3 id="example">Example</h3>
+<p>Stylusは <code>url()</code> という、CSSの <code>url()</code> リテラルを変換するためのオプション機能を持っています
+（内部では条件付きでbase64エンコード <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URIs</a>を使用しています。）。</p>
 
-<p>The function itself is available via <code>require('stylus').url</code>. It accepts an <code>options</code> object, returning a function that Stylus calls internally when it sees <code>url()</code>.</p>
+<h3 id="section">例</h3>
 
-<p>The <code>.define(name, callback)</code> method assigned a JavaScript function that can be called from Stylus source. In this case, since our images are in <code>./css/images</code>,  we can ignore the <code>paths</code> option (by default image lookups are performed relative to the file being rendered).  But if desired, this behavior can be altered:</p>
+<p>関数自体は <code>require('stylus').url</code> 経由で利用可能です。
+<code>options</code> オブジェクトを引数で受け入れて、Stylusが <code>url()</code> を参照する際に、（内部で）呼び出される関数を返します。</p>
+
+<p><code>.define(name, callback)</code> メソッドは、Stylusのソースから呼び出すことができるよう割り当てられたJavaScriptの関数です。
+この場合、画像ファイルが <code>./css/images</code> にあるため、<code>paths</code> オプションを無視できます
+（デフォルトでは、画像の検索はレンダリングされているファイルから相対的に行われます。）。
+しかし、必要に応じてこの動作は変更できます。</p>
 
 <pre><code>  stylus(str)
     .set('filename', __dirname + '/css/test.styl')
@@ -20,9 +31,10 @@
     });
 </code></pre>
 
-<p>For example, imagine our images live in <code>./public/images</code>.  We want to use <code>url(images/tobi.png)</code>.  We could pass <code>paths</code> our public directory, so that it becomes part of the lookup process. </p>
+<p>例えば、画像ファイルが<code>./public/images</code> に存在すると仮定します。
+<code>url(images/tobi.png)</code> を使いたい場合、画像検索のプロセスの一部となるように、publicディレクトリを <code>paths</code> に渡します。</p>
 
-<p>Likewise, if instead we wanted <code>url(tobi.png)</code>, we could pass <code>paths: [__dirname + '/public/images']</code>.</p>
+<p>代わりに <code>url(tobi.png)</code> を使う場合は、同様に <code>paths: [__dirname + '/public/images']</code> を渡します。</p>
 
 <pre><code>  stylus(str)
     .set('filename', __dirname + '/css/test.styl')
@@ -35,7 +47,7 @@
 <h3 id="options">Options</h3>
 
 <ul>
-  <li><code>limit</code> bytesize limit defaulting to 30Kb (30000)</li>
-  <li><code>paths</code> image resolution path(s)</li>
+  <li><code>limit</code> バイトサイズ制限。デフォルトは30Kb (30000)</li>
+  <li><code>paths</code> 画像パス（複数可）</li>
 </ul>
 </div></div></body></html>

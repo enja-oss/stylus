@@ -2,23 +2,42 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/comments.md">stylus/docs/comments.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
 <h2 id="comments">Comments</h2>
 
+<h2 id="httplearnboostgithubcomstylusdocscommentshtml">コメント <a href="http://learnboost.github.com/stylus/docs/comments.html">原文</a></h2>
+
 <p>Stylus supports three kinds of comments: single-line, and multi-line comments, and multi-line buffered comments.</p>
+
+<p>Stylus は次の3 種類のコメントに対応しています: 1 行コメントと、複数行コメントと、複数行バッファコメントです。</p>
 
 <h2 id="single-line">Single-line</h2>
 
+<h2 id="section">1 行コメント</h2>
+
 <p>Single-line comments look like JavaScript comments, and do not output in the resulting CSS:</p>
+
+<p>1 行コメントは JavaScript コメントのような形で、結果の CSS には出力されません:</p>
 
 <pre><code>// I'm a comment!
 body
   padding 5px // some awesome padding
+
+// 私がコメントだ。
+body
+  padding 5px // ちょっとしたスゴい padding
 </code></pre>
 
 <h2 id="multi-line">Multi-line</h2>
 
+<h2 id="section-1">複数行コメント</h2>
+
 <p>Multi-line comments look identical to regular CSS comments. However, they only output when the <code>compress</code> option is not enabled.</p>
+
+<p>複数行コメントは普通の CSS コメントと同一です。しかし、<code>compress</code> オプションが有効でない場合のみ出力されます。</p>
 
 <pre><code>/*
  * Adds the given numbers together.
@@ -26,11 +45,22 @@ body
 
 add(a, b)
   a + b
+
+/*
+ * 与えられた数を足算
+ */
+
+add(a ,b)
+  a + b
 </code></pre>
 
 <h2 id="multi-line-buffered">Multi-line buffered</h2>
 
+<h2 id="section-2">複数行バッファコメント</h2>
+
 <p>Multi-line comments which are not suppressed start with <code>/*!</code>. This tells Stylus to output the comment regardless of compression.</p>
+
+<p>複数行コメントの出力が抑制されない場合は <code>/*!</code> で始まります。この場合 Stylus は圧縮に関係なくコメントを出力します。</p>
 
 <pre><code>/*!
  * Adds the given numbers together.
@@ -38,6 +68,12 @@ add(a, b)
 
 add(a, b)
   a + b
-</code></pre>
 
+/*!
+ * 与えられた数を足算
+ */
+
+add(a, b)
+  a + b
+</code></pre>
 </div></div></body></html>

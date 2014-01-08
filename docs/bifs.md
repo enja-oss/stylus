@@ -1,40 +1,41 @@
++ 元文書: [stylus/docs/bifs.md at 21e225a06ab260551ce506e850ceab7969b219c3 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/21e225a06ab260551ce506e850ceab7969b219c3/docs/bifs.md "stylus/docs/bifs.md at 21e225a06ab260551ce506e850ceab7969b219c3 · LearnBoost/stylus · GitHub")
 
-## Built-in Functions
+## 組み込み関数 [原文](http://learnboost.github.com/stylus/docs/bifs.html)
 
 ### red(color)
 
-Return the red component of the given `color`.
+与えられた`color`の赤色の値を返します。
 
      red(#c00)
      // => 204
 
 ### green(color)
 
-Return the green component of the given `color`.
+与えられた`color`の緑色の値を返します。
 
      green(#0c0)
      // => 204
 
 ### blue(color)
 
-Return the blue component of the given `color`.
+与えられた`color`の青色の値を返します。
 
-     blue(#00c)
+     red(#00c)
      // => 204
 
 ### alpha(color)
 
-Return the alpha component of the given `color`.
+与えられた`color`のアルファ値を返します。
 
       alpha(#fff)
       // => 1
-
+      
       alpha(rgba(0,0,0,0.3))
       // => 0.3
 
 ### dark(color)
 
-Check if `color` is dark:
+`color`が暗色であるか判別します。
 
       dark(black)
       // => true
@@ -48,107 +49,107 @@ Check if `color` is dark:
 
 ### light(color)
 
-Check if `color` is light:
+`color`が明色であるか判別します。
 
     light(black)
     // => false
 
     light(white)
     // => true
-
+    
     light(#00FF40)
     // => true
 
 ### hue(color)
 
-Return the hue of the given `color`.
+与えられた`color`の色相を返します。
 
     hue(hsla(50deg, 100%, 80%))
     // => 50deg
 
 ### saturation(color)
 
-Return the saturation of the given `color`.
+与えられた`color`の彩度を返します。
 
     saturation(hsla(50deg, 100%, 80%))
     // => 100%
 
 ### lightness(color)
 
-Return the lightness of the given `color`.
+与えられた`color`の明度を返します。
 
     lightness(hsla(50deg, 100%, 80%))
     // => 80%
 
 ### push(expr, args...)
 
- Push the given `args` to `expr`.
+ 与えられた引数`args`を`expr`の後方に追加(push)します。
 
      nums = 1 2
      push(nums, 3, 4, 5)
 
      nums
      // => 1 2 3 4 5
-
- Aliased as `append()`
+ 
+ `append()`にエイリアスが付けられています。
 
 ### unshift(expr, args...)
 
- Unshift the given `args` to `expr`.
+ 与えられた引数`args`を`expr`の前方に追加(unshift)します。
 
      nums = 4 5
      unshift(nums, 3, 2, 1)
 
      nums
      // => 1 2 3 4 5
-
- Aliased as `prepend()`
+ 
+ `prepend()`にエイリアスが付けられています。
 
 ### keys(pairs)
 
-  Return keys in the given `pairs`:
-
+  与えられたハッシュ`pairs`のキー値の集合を返します。
+  
      pairs = (one 1) (two 2) (three 3)
      keys(pairs)
      // => one two three
 
 ### values(pairs)
 
-  Return values in the given `pairs`:
-
+  与えられたハッシュ`pairs`の値の集合を返します。
+  
      pairs = (one 1) (two 2) (three 3)
      values(pairs)
      // => 1 2 3
 
 ### typeof(node)
 
-Return type of `node` as a string.
+`node`の種類を文字列で返します。
 
       type(12)
       // => 'unit'
 
       typeof(12)
       // => 'unit'
-
+      
       typeof(#fff)
       // => 'rgba'
 
       type-of(#fff)
       // => 'rgba'
 
-Aliased as `type-of` and `type`.
+`type-of`と`type`にエイリアスが付けられています。
 
 ### unit(unit[, type])
 
-Return a string for the type of `unit` or an empty string,
-or assign the given `type` without unit conversion.
+`unit`の単位の文字列、または空の文字列を返します。
+また、与えられた`type`を`unit`に加えます（単位の変換は行いません）。
 
     unit(10)
     // => ''
-
+    
     unit(15in)
     // => 'in'
-
+    
     unit(15%, 'px')
     // => 15px
 
@@ -157,7 +158,7 @@ or assign the given `type` without unit conversion.
 
 ### match(pattern, string)
 
-Test if `string` matches the given `pattern`.
+`string`が`pattern`にマッチするかどうか判定します。
 
     match('^foo(bar)?', foo)
     match('^foo(bar)?', foobar)
@@ -166,7 +167,7 @@ Test if `string` matches the given `pattern`.
     match('^foo(bar)?', 'foo')
     match('^foo(bar)?', 'foobar')
     // => true
-
+    
     match('^foo(bar)?', 'bar')
     // => false
 
@@ -196,32 +197,16 @@ Test if `string` matches the given `pattern`.
       round(5.4px)
       // => 5px
 
-### sin(angle)
+**注記:** すべての四捨五入関数はオプションの`precision`引数をとります。この引数には小数点のあとに続く数字の数を指定出来ます:
 
-Returns the value of sine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
+      ceil(5.52px,1)
+      // => 5.6px
 
-    sin(30deg)
-    // => 0.5
+      floor(5.57px,1)
+      // => 5.5px
 
-    sin(3*PI/4)
-    // => 0.707106781
-
-### cos(angle)
-
-Returns the value of cosine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
-
-    cos(180deg)
-    // => -1
-
-### tan(angle)
-
-Returns the value of tangent for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
-
-    tan(45deg)
-    // => 1
-
-    tan(90deg)
-    // => Infinity
+      round(5.52px,1)
+      // => 5.5px
 
 ### min(a, b)
 
@@ -253,30 +238,16 @@ Returns the value of tangent for the given `angle`. If the angle is given as a d
      avg(1 2 3)
      // => 2
 
-### base-convert(num, base, width)
-
-Returns a `Literal` `num` converted to the provided `base`, padded to `width` with zeroes (default width is 2)
-
-    base-convert(1, 10, 3)
-    // => 001
-
-    base-convert(14, 16, 1)
-    // => e
-
-    base-convert(42, 1)
-    // => 101010
-
-
 ### join(delim, vals...)
 
-  Join the given `vals` with `delim`.
+  与えられた`vals`を`delim`で結合します。
 
       join(' ', 1 2 3)
       // => "1 2 3"
-
+      
       join(',', 1 2 3)
       // => "1,2,3"
-
+      
       join(', ', foo bar baz)
       // => "foo, bar, baz"
 
@@ -288,41 +259,39 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
 
 ### hsla(color | h,s,l,a)
 
-Convert the given `color` to an `HSLA` node,
-or h,s,l,a component values.
+与えられた`color`、またはh,s,l,aの成分を`HSLA`ノードに変換します。
 
-     hslaa(10deg, 50%, 30%, 0.5)
-     // => HSLA
-
-     hslaa(#ffcc00)
-     // => HSLA
-
-### hsla(color | h,s,l)
-
-Convert the given `color` to an `HSLA` node,
-or h,s,l component values.
-
-     hsla(10, 50, 30)
+     hsla(10deg, 50%, 30%, 0.5)
      // => HSLA
 
      hsla(#ffcc00)
      // => HSLA
 
+### hsl(color | h,s,l)
+
+与えられた`color`、またはh,s,lの成分を`HSLA`ノードに変換します。
+
+     hsl(10, 50, 30)
+     // => HSLA
+
+     hsl(#ffcc00)
+     // => HSLA
+
 ### rgba(color | r,g,b,a)
 
-Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
+r,g,b,aの各成分からRGBAを返します。または、`color`のアルファ値を調整したものを返します。
 
       rgba(255,0,0,0.5)
       // => rgba(255,0,0,0.5)
-
+  
       rgba(255,0,0,1)
       // => #ff0000
-
+  
       rgba(#ffcc00, 0.5)
       // rgba(255,204,0,0.5)
 
- Alternatively stylus supports the `#rgba` and `#rrggbbaa` notations as well:
-
+ また、Stylusでは`#rgba`と`#rrggbbaa`の記法もサポートされています。
+ 
     #fc08
     // => rgba(255,204,0,0.5)
 
@@ -331,19 +300,17 @@ Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
 
 ### rgb(color | r,g,b)
 
-Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
-
+r,g,bの成分から`RGBA`を返します。または`RGBA`に変換します。
+    
     rgb(255,204,0)
     // => #ffcc00
-
+    
     rgb(#fff)
     // => #fff
 
 ### lighten(color, amount)
 
-Lighten the given `color` by `amount`. This function is
-unit-sensitive, for example supporting percentages as shown
-below.
+与えられた`color`を`amount`に従って明るくします。この関数は単位を判別します。次は、パーセンテージを用いた例になります。
 
     lighten(#2c2c2c, 30)
     // => #787878
@@ -353,9 +320,7 @@ below.
 
 ### darken(color, amount)
 
-Darken the given `color` by `amount`.This function is
-unit-sensitive, for example supporting percentages as shown
-below.
+与えられた`color`を`amount`に従って暗くします。この関数は単位を判別します。次は、パーセンテージを用いた例になります。
 
     darken(#D62828, 30)
     // => #551010
@@ -365,60 +330,32 @@ below.
 
 ### desaturate(color, amount)
 
-Desaturate the given `color` by `amount`.
+与えられた`color`の彩度を`amount`に従って低くします。
 
     desaturate(#f00, 40%)
     // => #c33
 
 ### saturate(color, amount)
 
-Saturate the given `color` by `amount`.
+与えられた`color`の彩度を`amount`に従って高くします。
 
     saturate(#c33, 40%)
     // => #f00
 
-### complement(color)
-
-Gives the complementary color. Equals to spinning hue to 180deg.
-
-    complement(#fd0cc7)
-    // => #0cfd42
-
 ### invert(color)
 
-Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.
+色を反転します。赤、緑、青の値は反転されますが、アルファ値は変わりません。
 
     invert(#d62828)
     // => #29d7d7
 
-### grayscale(color)
-
-Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
-
-    grayscale(#fd0cc7)
-    // => #0cfd42
-
-### tint(color, amount)
-
-Mix the given color with white.
-
-    tint(#fd0cc7,66%)
-    // => #feaceb
-
-### shade(color, amount)
-
-Mix the given color with black.
-
-    shade(#fd0cc7,66%)
-    // => #560443
-
 ### unquote(str | ident)
 
-  Unquote the given `str` and returned as a `Literal` node.
-
+  与えられた`str`のクォートを外して`Literal`ノードを返します。
+ 
        unquote("sans-serif")
        // => sans-serif
-
+ 
        unquote(sans-serif)
        // => sans-serif
 
@@ -427,8 +364,7 @@ Mix the given color with black.
 
 ### s(fmt, ...)
 
- The `s()` function is similar to `unquote()`, in that it returns
- a `Literal` node, however it accepts a format string much like C's `sprintf()`. Currently the only specifier is `%s`.
+ `s()`関数は`Literal`ノードを返す点で`unquote()`に似ていますが、C言語の`sprintf()`のようにフォーマット文字列を受け取ることができます。現状では`%s`指定子のみがサポートされています。
 
         s('bar()');
         // => bar()
@@ -438,45 +374,45 @@ Mix the given color with black.
 
         s('bar(%s)', baz);
         // => bar(baz)
-
+        
         s('bar(%s)', 15px);
         // => bar(15px)
-
+        
         s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
         // => rgba(255, 100, 50, 0.5)
-
+        
         s('bar(%Z)', 15px);
         // => bar(%Z)
-
+        
         s('bar(%s, %s)', 15px);
         // => bar(15px, null)
-
-Check out the `%` string operator for equivalent behaviour.
+        
+文字列演算子`%`も同様の効果を得るために利用できます。
 
 ### operate(op, left, right)
 
-  Perform the given `op` on the `left` and `right` operands:
-
+  与えられた`op`を`left`と`right`のオペランドに適用します:
+  
       op = '+'
       operate(op, 15, 5)
       // => 20
 
 ### length([expr])
 
-  Parenthesized expressions may act as tuples, the `length()` function returns the length of such expressions.
+  括弧に囲まれた式はタプルとして認識されます。`length()`関数はそのような式の長さを返します。
 
     length((1 2 3 4))
     // => 4
 
     length((1 2))
     // => 2
-
+  
     length((1))
     // => 1
-
+  
     length(())
     // => 0
-
+  
     length(1 2 3)
     // => 3
 
@@ -486,28 +422,15 @@ Check out the `%` string operator for equivalent behaviour.
     length()
     // => 0
 
-### selector()
-
-Returns the compiled current selector or `&` if called at root level.
-
-    .foo
-      selector()
-    // => '.foo'
-
-    .foo
-      &:hover
-        selector()
-    // '.foo:hover'
-
 ### warn(msg)
 
-  Warn with the given error `msg`, does not exit.
+  与えられたエラー`msg`を警告します。これは、Stylusのコンパイルを中止しません。
 
       warn("oh noes!")
 
 ### error(msg)
 
-  Exits with the given error `msg`.
+  与えられたエラー`msg`を発し、Stylusのコンパイルを中止します。
 
     add(a, b)
       unless a is a 'unit' and b is a 'unit'
@@ -516,21 +439,21 @@ Returns the compiled current selector or `&` if called at root level.
 
 ### last(expr)
 
- Return the _last_ value in the given `expr`:
-
+ 与えられた`expr`のなかの _最後_ の値を返します:
+ 
       nums = 1 2 3
       last(nums)
       last(1 2 3)
       // => 3
-
+      
       list = (one 1) (two 2) (three 3)
       last(list)
       // => (three 3)
 
 ### p(expr)
 
- Inspect the given `expr`:
-
+ 与えられた`expr`の詳細を調べます:
+ 
      fonts = Arial, sans-serif
      p('test')
      p(123)
@@ -538,13 +461,13 @@ Returns the compiled current selector or `&` if called at root level.
      p(fonts)
      p(#fff)
      p(rgba(0,0,0,0.2))
-
+     
      add(a, b)
        a + b
-
+    
      p(add)
 
-stdout:
+標準出力:
 
      inspect: "test"
      inspect: 123
@@ -556,8 +479,8 @@ stdout:
 
 ### opposite-position(positions)
 
- Return the opposites of the given `positions`.
-
+ 与えられた`positions`の逆のものを返します。
+  
      opposite-position(right)
      // => left
 
@@ -569,7 +492,7 @@ stdout:
 
 ### image-size(path)
 
-  Returns the `width` and `height` of the image found at `path`. Lookups are performed in the same manner as `@import`, altered by the `paths` setting.
+  `path`に見つかった画像の`width`と`height`を返します。画像ファイルの探索は`@import`と同様に行われます。これは、設定`paths`で変更できます。
 
       width(img)
         return image-size(img)[0]
@@ -585,9 +508,9 @@ stdout:
 
 ### add-property(name, expr)
 
-  Adds property `name`, with the given `expr` to the closest block.
+  呼び出し箇所に最も近いブロックに、プロパティ`name`を`expr`の値で追加します。
 
-  For example:
+  例:
 
       something()
         add-property('bar', 1 2 3)
@@ -596,18 +519,17 @@ stdout:
       body
         foo: something()
 
-yields:
+これは次のように展開されます:
 
       body {
         bar: 1 2 3;
         foo: bar;
       }
 
-  Next the "magic" `current-property` local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property's name, and value.
+  次に"魔法の"`current-property`ローカル変数を見てみましょう。この変数は関数定義の中で準備なく利用可能で、現在のプロパティの名前と値を持っています。
 
-  For example if we were to inspect this local variable using `p()`, we
-  get the following:
-
+  例えば、`p()`関数を使ってこの変数をインスペクトしてみると、次のようになります。
+  
         p(current-property)
         // => "foo" (foo __CALL__ bar baz)
 
@@ -617,7 +539,7 @@ yields:
         p(current-property[1])
         // => foo __CALL__ bar baz
 
-  Using `current-property` we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.
+  `current-preperty`を用いてもう少し高度な例を見ていきましょう。プロパティを複製し、別の値を持つようにします。また、関数がプロパティの値の箇所で用いられていることを確実にするために条件文を付け足します。
 
         something(n)
           if current-property
@@ -631,7 +553,7 @@ yields:
           foo: something(15px) bar;
         }
 
-yields:
+これは次のように展開されます:
 
         body {
           foo: -webkit-something(15px);
@@ -639,9 +561,9 @@ yields:
           foo: something(15px) bar;
         }
 
-  If you noticed in the example above, `bar` is only present for the initial call, since we returned `something(15px)`, it remained in-place within the expression, however the others do not take the rest of the expression into account.
-
-  Our more robust solution below, defines a function named `replace()` which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace `__CALL__` within the expressions, which represents the cyclic call to `something()`.
+  上の例でお気づきかもしれませんが、`bar`は`something(15px)`を返したあとにしか存在していません。`bar`はこの式の中では元の位置のままですが、他の式では考慮に入れられていません。
+  
+  この更に良い解決策が次になります。まず、`replace()`という関数を定義します。この関数の中では、式の変更を防ぐためにまず式を複製し、複製された式の中の文字列を与えられた文字列で置き換え、複製された式を返すという事を行なっています。式の中の`__CALL__`が置き換えられていますが、これは`something()`の循環的な呼び出しを表しています。
 
         replace(expr, str, val)
           expr = clone(expr)
@@ -661,7 +583,7 @@ yields:
           else
             error('something() must be used within a property')
 
-yields:
+これは次のように展開されます:
 
           body {
             foo: foo -webkit-something(5px) bar baz;
@@ -669,53 +591,14 @@ yields:
             foo: foo something(5px) bar baz;
           }
 
-Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
+これで、関数がコールされるプロパティとプロパティの中での位置の点で透過的に動作できる関数が定義されました。この強力な仕組みのおかげでグラデーションなどのベンダープレフィックスを意識せずに利用することが容易になります。
 
-### use(path)
+### 未定義の関数
 
-You can use any given js-plugin at given `path` with `use()` function right inside your '.styl' files, like this:
-
-    use("plugins/add.js")
-
-    width add(10, 100)
-    // => width: 110
-
-And the `add.js` plugin in this case looks this way:
-
-    var plugin = function(){
-      return function(style){
-        style.define('add', function(a, b) {
-          return a.operate('+', b);
-        });
-      };
-    };
-    module.exports = plugin;
-
-If you'd like to return any Stylus objects like `RGBA`, `Ident` or `Unit`, you could use the provided Stylus nodes like this:
-
-    var plugin = function(){
-      return function(style){
-        var nodes = this.nodes;
-        style.define('something', function() {
-          return new nodes.Ident('foobar');
-        });
-      };
-    };
-    module.exports = plugin;
-
-You can pass any options as an optional second argument, using the [hash object](hashes.html):
-
-    use("plugins/add.js", { foo: bar })
-
-### Undefined Functions
-
-  Undefined functions will output as literals, so for example
-  we may call `rgba-stop(50%, #fff)` within our css, and it will
-  output as you would expect. We can use this within helpers as well.
-
-  In the example below we simply define the function `stop()` which
-  returns the literal `rgba-stop()` call.
-
+  未定義の関数はリテラルとして出力されます。例として`rgba-stop(50%, #fff)`をcssの中で呼び出すことを考えてみましょう。これは期待通りに出力されます。ヘルパーの中でも同様に用いることができます。
+  
+  次の例ではシンプルな`stop()`関数を定義します。この関数はリテラルの`rgba-stop()`関数コールを返します。
+  
     stop(pos, rgba)
       rgba-stop(pos, rgba)
 

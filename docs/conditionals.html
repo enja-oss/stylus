@@ -2,16 +2,25 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: [stylus/docs/conditionals.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/conditionals.md 
+“stylus/docs/conditionals.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<h2 id="conditionals">Conditionals</h2>
+<h2 id="httplearnboostgithubiostylusdocsconditionalshtml">条件文<a href="http://learnboost.github.io/stylus/docs/conditionals.html">原文</a></h2>
 
-<p>Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more. The examples below are simply examples, and not recommended :)</p>
+<p>条件文は条件付きimport、mixins、functionなどを介して制御フローを提供し、言語を動的に処理させることを可能にします。
+以下の例はシンプルな例であり、あまり推奨しません。:)</p>
 
 <h3 id="if--else-if--else">if / else if / else</h3>
 
-<p>The <code>if</code> conditional works as you would expect, simply accepting an expression, evaluating the following block when <code>true</code>. Along with <code>if</code> are the typical <code>else if</code> and <code>else</code> tokens, acting as fallbacks.</p>
+<p>Along with <code>if</code> are the typical <code>else if</code> and <code>else</code> tokens, acting as fallbacks.</p>
 
-<p>The example below would conditionally overload the <code>padding</code> property, swapping it for <code>margin</code>.</p>
+<p><code>if</code> 条件文は期待通りに動作します。評価式を受け入れ、<code>true</code> の場合、次のブロックを評価します。
+ <code>if</code> はフォールバックとして機能する 典型的な <code>else if</code> や <code>else</code> トークンを伴います。</p>
+
+<p>次の例では、条件によって <code>padding</code> を <code>margin</code> で交換して上書きします。</p>
 
 <pre><code>overload-padding = true
 
@@ -23,7 +32,7 @@ body
   padding 5px 10px
 </code></pre>
 
-<p>Another example:</p>
+<p>他の例:</p>
 
 <pre><code>box(x, y, margin = false)
   padding y x
@@ -34,7 +43,7 @@ body
   box(5px, 10px, true)
 </code></pre>
 
-<p>Another <code>box()</code> helper:</p>
+<p>他の <code>box()</code> ヘルパー:</p>
 
 <pre><code>box(x, y, margin-only = false)
   if margin-only
@@ -45,9 +54,12 @@ body
 
 <h3 id="unless">unless</h3>
 
-<p>For users familiar with the Ruby programming language, we have the <code>unless</code> conditional. It’s basically the opposite of <code>if</code>—essentially <code>if (!(expr))</code>.</p>
+<p>Rubyプログラミングに親しい人向けに <code>unless</code> 条件文を持っています。
+ これは基本的に <code>if</code> の反対（本質的には <code>if (!(expr))</code> ）の作用をします。</p>
 
-<p>In the example below, if <code>disable-padding-override</code> is <code>undefined</code> or <code>false</code>, <code>padding</code> will be overridden, displaying <code>margin</code> instead. But if it’s <code>true</code>, <code>padding</code> will continue outputting <code>padding 5px 10px</code> as expected.</p>
+<p>以下の例では、<code>disable-padding-override</code> が <code>undefined</code> または <code>false</code> の場合、
+<code>padding</code> が上書きされ、代わりに <code>margin</code> で表示します。
+しかし、<code>true</code> の場合、<code>padding</code> は予定通り <code>padding 5px 10px</code> のまま出力されます。</p>
 
 <pre><code> disable-padding-override = true
 
@@ -59,11 +71,14 @@ body
    padding 5px 10px
 </code></pre>
 
-<h3 id="postfix-conditionals">Postfix Conditionals</h3>
+<h3 id="section">後置条件文</h3>
 
-<p>Stylus supports postfix conditionals. This means that <code>if</code> and <code>unless</code> act as operators; they evaluate the left-hand operand when the right-hand expression is truthy.</p>
+<p>Stylusは後置条件文をサポートしています。
+  これは、<code>if</code> や <code>unless</code> がオペレータのように振舞うことを意味しています。
+  右辺の式がtrueと評価される場合、左辺のオペレータが評価されます。  </p>
 
-<p>For example let&#8217;s define <code>negative()</code> to perform some basic type checking. Below we use block-style conditionals:</p>
+<p>例えば、幾つかの基本型のチェックをするために、<code>negative()</code> を定義してみましょう。
+  以下では、ブロックスタイルの条件文を使用しています。</p>
 
 <pre><code>  negative(n)
     unless n is a 'unit'
@@ -74,7 +89,7 @@ body
       no
 </code></pre>
 
-<p>Next, we utilize postfix conditionals to keep our function terse.</p>
+<p>続いて、関数を簡潔に保つために後置条件文を使用します。</p>
 
 <pre><code>  negative(n)
     error('invalid number') unless n is a 'unit'
@@ -82,9 +97,11 @@ body
     no
 </code></pre>
 
-<p>Of course, we could take this further.  For example, we could write <code>n &lt; 0 ? yes : no</code>, or simply stick with booleans: <code>n &lt; 0</code>.</p>
+<p>もちろんこれをさらに改良することもできます。
+  例えば、<code>n &lt; 0 ? yes : no</code> と書くことも出来ますし、次のように単純にブール値とすることもできます。<code>n &lt; 0</code>　</p>
 
-<p>Postfix conditionals may be applied to most single-line statements. For example, <code>@import</code>, <code>@charset</code>, mixins—and of course, properties as shown below:</p>
+<p>後置条件文はほとんどのシングルライン文に適用することができます。
+  例えば、<code>@import</code> や <code>@charset</code> やmixins。もちろん次に示すようにプロパティにも。</p>
 
 <pre><code>  pad(types = margin padding, n = 5px)
     padding unit(n, px) if padding in types
@@ -101,7 +118,7 @@ body
     pad(padding, 10) if apply-mixins
 </code></pre>
 
-<p>yielding:</p>
+<p>結果:</p>
 
 <pre><code>  body {
     padding: 5px;
@@ -112,7 +129,6 @@ body
   }
   body {
     padding: 10px;
-  }
+  } 
 </code></pre>
-
 </div></div></body></html>

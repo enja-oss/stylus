@@ -2,18 +2,25 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: [stylus/docs/introspection.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/introspection.md 
+“stylus/docs/introspection.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<h2 id="introspection-api">Introspection API</h2>
+<h2 id="api-httplearnboostgithubcomstylusdocsintrospectionhtml">イントロスペクション API <a href="http://learnboost.github.com/stylus/docs/introspection.html">原文</a></h2>
 
-<p>Stylus supports an introspection API. This allows mixins and functions to reflect relative to the caller, etc.</p>
+<p>Stylusはイントロスペクション（一般的には、リフレクション機能の一種で、依存関係など内部情報を返すインターフェース）APIをサポートしています。
+これによりmixins とfunctionsの呼び出し元に応じて、その振舞いを変更させることが出来ます。</p>
 
 <h2 id="mixin">mixin</h2>
 
-<p>The <code>mixin</code> local variable is automatically assigned within function bodies.
-  It contains the string <code>root</code> if the function was called at the root
-  level, or <code>block</code> indicating otherwise, and finally <code>false</code> if the invoked function expects a return value.</p>
+<p><code>mixin</code> は、関数内部に自動的に割り当てられるローカル変数です。
+  <code>mixin</code>  は、トップレベルから呼び出されたことを示す <code>root</code> 文字列、
+  それ以外からの呼び出しを示す <code>block</code> 文字列、そして関数として戻り値を期待された場合を示す <code>false</code> で構成されています。</p>
 
-<p>In the following example, we define <code>reset()</code> to alter its behaviour depending on whether it&#8217;s mixed into root, into another block, or into a return value, as used in the <code>foo</code> property below:</p>
+<p>次の例では、<code>reset()</code> を定義し、下の3パターンに応じてその振舞いを変更しています。
+  トップレベルから呼び出された場合、それ以外から呼び出された場合、そして、<code>foo</code> プロパティの中で戻り値を期待されている場合。</p>
 
 <pre><code>  reset()
     if mixin == 'root'
@@ -31,7 +38,7 @@
     foo reset()
 </code></pre>
 
-<p>Compiles to:</p>
+<p>コンパイル後:</p>
 
 <pre><code>    got {
       root: true;

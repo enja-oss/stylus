@@ -1,12 +1,10 @@
++ 元文書: [stylus/docs/kwargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/kwargs.md "stylus/docs/kwargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-## Keyword Arguments
+## キーワード引数 [原文](http://learnboost.github.com/stylus/docs/kwargs.html)
 
- Stylus supports keyword arguments, or "kwargs". These allow you to reference arguents by their associated parameter name.
+ Stylus はキーワード引数("kwargs")をサポートしています。キーワード引数を使うと、関連付けられたパラメータの名前によって引数を参照することが可能になります。
 
- The examples shown below are functionally equivalent. However, we can
- place keyword arguments anywhere within the list. The remaining arguments
- that are _not_ keyed will be applied to the parameters that have not
- been satisfied.
+ 次に上げる例は、すべて同じ形に展開されます。キーワード引数はどのような順番でも関数に渡すことができますが、残りのキーワードのついて _いない_ 引数はまだ割り当てられていないパラメータに順次適用されます。
 
       body {
         color: rgba(255, 200, 100, 0.5);
@@ -15,7 +13,7 @@
         color: rgba(alpha: 0.5, blue: 100, 255, 200);
       }
 
- Yielding:
+ これは次のように展開されます:
  
        body {
          color: rgba(255,200,100,0.5);
@@ -25,10 +23,10 @@
        }
 
 
- To see what parameters a function or mixin accept, use the `p()` function:
+ 関数やミックスインがどのようなパラメータを受け取るのか調べるには`p()`関数を使います:
  
     p(rgba)
 
- Yielding:
+ これは次のように展開されます:
 
     inspect: rgba(red, green, blue, alpha)

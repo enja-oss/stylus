@@ -2,10 +2,15 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: [stylus/docs/operators.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/operators.md 
+“stylus/docs/operators.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<h2 id="operator-precedence">Operator Precedence</h2>
+<h2 id="httplearnboostgithubcomstylusdocsoperatorshtml">演算子の優先順位 <a href="http://learnboost.github.com/stylus/docs/operators.html">原文</a></h2>
 
-<p>Below is the operator precedence table, highest to lowest:</p>
+<p>下は演算子を優先順位の高いものから並べた表です。</p>
 
 <pre><code> []
  ! ~ + -
@@ -24,9 +29,9 @@
  if unless
 </code></pre>
 
-<h2 id="unary-operators">Unary Operators</h2>
+<h2 id="section">単項演算子</h2>
 
-<p>The following unary operators are available, <code>!</code>, <code>not</code>, <code>-</code>, <code>+</code>, and <code>~</code>.</p>
+<p>次の単項演算子が利用できます。 <code>!</code>, <code>not</code>, <code>-</code>, <code>+</code>, <code>~</code></p>
 
 <pre><code>!0
 // =&gt; true
@@ -53,7 +58,7 @@ not not true
 // =&gt; true
 </code></pre>
 
-<p>The logical <code>not</code> operator has low precedence, therefore the following example could be replaced with</p>
+<p><code>not</code> 論理演算子は優先度が低いため、次の例は置き換えることができます。</p>
 
 <pre><code>a = 0
 b = 1
@@ -61,22 +66,25 @@ b = 1
 !a and !b
 // =&gt; false
 // pased as: (!a) and (!b)
+// このように評価される: (!a) and (!b)
 </code></pre>
 
-<p>With:</p>
+<p>置き換え後:</p>
 
 <pre><code>not a or b
 // =&gt; false
 // parsed as: not (a or b)
+// このように評価される: not (a or b)
 </code></pre>
 
-<h2 id="binary-operators">Binary Operators</h2>
+<h2 id="section-1">バイナリ演算子</h2>
 
-<h3 id="subscript-">Subscript []</h3>
+<h3 id="section-2">記号 []()</h3>
 
-<p>The subscript operator allows us to grab a value inside an expression via index. Parenthesized expressions may act as tuples (e.g. <code>(15px 5px)</code>, <code>(1 2 3)</code>).</p>
+<p>記号（<code>[]</code>）は、インデックス経由で式の中の値を取得することが出来ます。
+ 括弧（<code>()</code>）で囲まれた表現はタプルとして振舞います（例えば、 <code>(15px 5px)</code>, <code>(1 2 3)</code>）。 </p>
 
-<p>Below is an example that uses tuples for error handling (and showcasing the versatility of this construct):</p>
+<p>次は、エラーハンドリングのためにタプルを使う（そして、この構造の汎用性を紹介する）例です。</p>
 
 <pre><code> add(a, b)
    if a is a 'unit' and b is a 'unit'
@@ -98,15 +106,16 @@ b = 1
    // =&gt; padding: "a and b must be units";
 </code></pre>
 
-<p>Here&#8217;s a more complex example. Now we&#8217;re invoking the built-in <code>error()</code> function with the return error message, whenever the ident (the first value) equals <code>error</code>.</p>
+<p>これはより複雑な例です。今、ビルトイン関数の <code>error()</code> を戻ってきたエラーメッセージを引数に呼び出しています。
+ 呼び出されるたびに、 <code>error</code> と同じ文字（エラーメッセージの最初の値）をインデントしています。</p>
 
 <pre><code> if (val = add(1,'5'))[0] == error
    error(val[1])
 </code></pre>
 
-<h2 id="range--">Range .. &#8230;</h2>
+<h2 id="section-3">範囲 .. …</h2>
 
-<p>Both the inclusive (<code>..</code>) and exclusive (<code>...</code>) range operators are provided, expanding to expressions:</p>
+<p>包含的（<code>..</code>）と排他的（<code>...</code>）両方の範囲記号が提供されており、次のような式に展開されます。</p>
 
 <pre><code> 1..5
  // =&gt; 1 2 3 4 5
@@ -115,9 +124,9 @@ b = 1
  // =&gt; 1 2 3 4
 </code></pre>
 
-<h3 id="additive---">Additive: + -</h3>
+<h3 id="section-4">加算減算: + -</h3>
 
-<p>Multiplicative and additive binary operators work as expected. Type conversion is applied within unit type classes, or default to the literal value. For example <code>5s - 2px</code> results in <code>3s</code>.</p>
+<p>型変換は、単位が属する分類の範囲内か初期のリテラル値が適用されます。例えば、 <code>5s - 2px</code> の結果は <code>3s</code> です。</p>
 
 <pre><code>15px - 5px
 // =&gt; 10px
@@ -141,10 +150,10 @@ b = 1
 // =&gt; "num 15"
 </code></pre>
 
-<h3 id="multiplicative---">Multiplicative: / * %</h3>
+<h3 id="section-5">乗算除算: / * %</h3>
 
 <pre><code>2000ms + (1s * 2)
-// =&gt; 4000ms
+// =&gt; 4ms
 
 5s / 2
 // =&gt; 2.5s
@@ -153,29 +162,32 @@ b = 1
 // =&gt; 0
 </code></pre>
 
-<p>When using <code>/</code> within a property value, you <strong>must</strong> wrap with parens. Otherwise the <code>/</code> is taken literally (to support CSS <code>line-height</code>):</p>
+<p>もし、<code>/</code> をプロパティ値の中で使う場合、 <strong>必ず</strong> 括弧で囲まなければなりません。
+そうしなければ、 <code>/</code> は文字通りに解釈されます（これはCSSが<code>line-height</code> をサポートするためです）。</p>
 
 <pre><code>font: 14px/1.5;
 </code></pre>
 
-<p>But the following is evaluated as <code>14px</code> ÷ <code>1.5</code>:</p>
+<p>しかし、次のよう評価されます。<code>14px</code> ÷ <code>1.5</code>:</p>
 
 <pre><code>font: (14px/1.5);
 </code></pre>
 
-<p>This is <em>only</em> required for the <code>/</code> operator.</p>
+<p>これは、 <code>/</code> 演算子 <em>のみ</em> に必要なことです。</p>
 
-<h3 id="exponent-">Exponent: **</h3>
+<h3 id="section-6">指数: **</h3>
 
-<p>The Exponent operator:</p>
+<p>指数演算子:</p>
 
 <pre><code>2 ** 8
 // =&gt; 256
 </code></pre>
 
-<h3 id="equality--relational------">Equality &amp; Relational: == != &gt;= &lt;= &gt; &lt;</h3>
+<h3 id="section-7">等価演算子と関係（比較）演算子: == != &gt;= &lt;= &gt; &lt;</h3>
 
-<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers (such as as <code>wahoo</code>) can be utilized as atoms. A function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised). </p>
+<p>等価演算子は色や文字列や識別子でさえ、同一視するものに使用できます。
+これは任意の識別子（ <code>wahoo</code> などなど）を比較対象（原文:atoms アトム）として利用することができる、強力な概念です。
+関数も <code>true</code> か <code>false</code> の代わりに <code>yes</code> か <code>no</code> を返すことができました（これは、あまりお勧めしませんが）。</p>
 
 <pre><code>5 == 5
 // =&gt; true
@@ -217,24 +229,26 @@ true is true
 // =&gt; false
 </code></pre>
 
-<p>Only exact values match. For example, <code>0 == false</code> and <code>null == false</code> are both <code>false</code>.</p>
+<p>正確な値のみがマッチします。例えば <code>0 == false</code> と<code>null == false</code> は両方 <code>false</code> です。</p>
 
-<p>Aliases:</p>
+<p>エイリアス:</p>
 
 <pre><code>==    is
 !=    is not
 !=    isnt
 </code></pre>
 
-<h2 id="truthfulness">Truthfulness</h2>
+<h2 id="section-8">真偽</h2>
 
-<p>Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix. Even <code>0%</code>, <code>0px</code>, etc. will resolve to <code>true</code> (because it&#8217;s common in Stylus for mixins or functions to accept units as valid). </p>
+<p>Stylusではほぼすべての単位は接尾語を持つ単位すら、 true として解釈されます。
+ <code>0%</code>, <code>0px</code>, などでさえも <code>true</code> として解釈されます。
+ （なぜなら、Stylusではmixinsやfunctionsのため、これらを有効な単位として受け入れることが一般的であるためです。）</p>
 
-<p>However, <code>0</code> itself is <code>false</code> in terms of arithmetic. </p>
+<p>しかし、<code>0</code> 自体は算術の観点から <code>false</code> です。</p>
 
-<p>Expressions (or &#8220;lists&#8221;) with a length greater than 1 are considered truthy.</p>
+<p>lengthが1より大きい値を持つ式（またはリスト）はtrueと見なされます。</p>
 
-<p><code>true</code> examples:</p>
+<p><code>true</code> の例:</p>
 
 <pre><code>  0% 
   0px
@@ -247,7 +261,7 @@ true is true
   ('' '')
 </code></pre>
 
-<p><code>false</code> examples:</p>
+<p><code>false</code> の例:</p>
 
 <pre><code> 0 
  null
@@ -255,9 +269,9 @@ true is true
  ''
 </code></pre>
 
-<h3 id="logical-operators---and-or">Logical Operators: &amp;&amp; || and or</h3>
+<h3 id="and-or">論理演算子: &amp;&amp; || and or</h3>
 
-<p>Logical operators <code>&amp;&amp;</code> and <code>||</code> are aliased <code>and</code> / <code>or</code> which apply the same precedence.</p>
+<p>論理演算子の <code>&amp;&amp;</code> と <code>||</code> は<code>and</code> / <code>or</code> と同じ優先順位が適用されるエイリアスです。</p>
 
 <pre><code>5 &amp;&amp; 3
 // =&gt; 3
@@ -272,11 +286,11 @@ true is true
 // =&gt; true
 </code></pre>
 
-<h3 id="existence-operator-in">Existence Operator: in</h3>
+<h3 id="in">存在演算子: in</h3>
 
-<p>Checks for the existence of the <em>left-hand</em> operand within the <em>right-hand</em> expression.</p>
+<p><em>右辺</em> の式の中に、 <em>左辺</em> のオペランドが存在することをチェックします。</p>
 
-<p>Simple examples:</p>
+<p>単純な例:</p>
 
 <pre><code>  nums = 1 2 3
   1 in nums
@@ -286,7 +300,7 @@ true is true
   // =&gt; false
 </code></pre>
 
-<p>Some undefined identifiers:</p>
+<p>いくつかの未定義な識別子の例:</p>
 
 <pre><code>  words = foo bar baz
   bar in words
@@ -296,7 +310,7 @@ true is true
   // =&gt; false
 </code></pre>
 
-<p>Works with tuples too:</p>
+<p>タプルでの動作の例:</p>
 
 <pre><code>  vals = (error 'one') (error 'two')
   error in vals
@@ -312,7 +326,7 @@ true is true
   // =&gt; false
 </code></pre>
 
-<p>Example usage in mixin:</p>
+<p>mixinでの使用例:</p>
 
 <pre><code>  pad(types = padding, n = 5px)
     if padding in types
@@ -330,7 +344,7 @@ true is true
     pad(padding margin, 10px)
 </code></pre>
 
-<p>Yielding:</p>
+<p>結果:</p>
 
 <pre><code>  body {
     padding: 5px;
@@ -344,18 +358,19 @@ true is true
   }
 </code></pre>
 
-<h3 id="conditional-assignment--">Conditional Assignment: ?= :=</h3>
+<h3 id="section-9">条件付き代入: ?= :=</h3>
 
-<p>The conditional assignment operator <code>?=</code> (aliased as <code>:=</code>) lets us define variables without clobbering old values (if present). This operator expands to an <code>is defined</code> binary operation within a ternary. </p>
+<p>条件付き代入演算子 <code>?=</code> （<code>:=</code>）は、（もし存在する場合）古い値を上書きして破壊することなしに、変数を定義することができます。
+この演算子は三項演算子の中の <code>is defined</code> バイナリ演算子として展開されます。</p>
 
-<p>For example, the following are equivalent:</p>
+<p>以下の例は等価です。:</p>
 
 <pre><code>color := white
 color ?= white
 color = color is defined ? color : white
 </code></pre>
 
-<p>When using plain <code>=</code>, we simply reassign:</p>
+<p><code>=</code> を使った場合、簡単に再割り当てできます。</p>
 
 <pre><code>color = white
 color = black
@@ -364,7 +379,7 @@ color
 // =&gt; black
 </code></pre>
 
-<p>But when using <code>?=</code>, our second attempt fails (since the variable is already defined):</p>
+<p>しかし、<code>?=</code>を使った場合、（下の例の）2行目の試みは（既に変数が定義されているため）失敗します。</p>
 
 <pre><code>color = white
 color ?= black
@@ -373,9 +388,9 @@ color
 // =&gt; white
 </code></pre>
 
-<h3 id="instance-check-is-a">Instance Check: is a</h3>
+<h3 id="is-a">インスタンスチェック: is a</h3>
 
-<p>Stylus provides a binary operator named <code>is a</code> used to type check.</p>
+<p>Stylusはタイプチェックのため、 <code>is a</code> という名前のバイナリ演算子を提供します。</p>
 
 <pre><code>15 is a 'unit'
 // =&gt; true
@@ -387,18 +402,19 @@ color
 // =&gt; false
 </code></pre>
 
-<p>Alternatively, we could use the <code>type()</code> BIF:</p>
+<p>代わりに、<code>type()</code> BIF（Built in Function　組み込み関数）を利用することもできます。</p>
 
 <pre><code>type(#fff) == 'rgba'
 // =&gt; true                                                                            
 </code></pre>
 
-<p><strong>Note:</strong> <code>color</code> is the only special-case, evaluating to <code>true</code> when the
-left-hand operand is an <code>RGBA</code> or <code>HSLA</code> node.</p>
+<p><strong>注意:</strong> <code>color</code> は左辺のオペランドが <code>RGBA</code> や <code>HSLA</code> ノードである場合に <code>true</code> と評価される、唯一の特殊なケースです。</p>
 
-<h3 id="variable-definition-is-defined">Variable Definition: is defined</h3>
+<h3 id="is-defined">変数定義: is defined</h3>
 
-<p>This pseudo binary operator does not accept a right-hand operator, and does <em>not</em> evaluate the left. This allows us to check if a variable has a value assigned to it.</p>
+<p>この擬似バイナリ演算子は右辺の演算子を必要としません。
+また、左辺も評価 <em>しません。</em>　
+これは、変数が割り当てられた値を持っている場合のみ、チェックすることが出来ます。</p>
 
 <pre><code>foo is defined
 // =&gt; false
@@ -411,7 +427,7 @@ foo is defined
 // =&gt; 'invalid "is defined" check on non-variable #fff'
 </code></pre>
 
-<p>Alternatively, one can use the <code>lookup(name)</code> built-in function to do this—or to perform dynamic lookups:</p>
+<p>代わりに、組み込み関数 <code>lookup(name)</code> を使ってこれを行うことが出来ます。または動的な探索を行うことでも可能です。</p>
 
 <pre><code>name = 'blue'
 lookup('light-' + name)
@@ -422,39 +438,40 @@ lookup('light-' + name)
 // =&gt; #80e2e9
 </code></pre>
 
-<p>This operator is essential, as an undefined identifier is still a truthy value. For example:</p>
+<p>例えば次のように、未定義の識別子がtrueの値を持っているため、この演算子は必要不可欠です。</p>
 
 <pre><code>body
   if ohnoes
     padding 5px
 </code></pre>
 
-<p><em>Will</em> yield the following CSS when undefined:</p>
+<p>未定義の場合、次のCSSが得られる <em>でしょう</em> 。</p>
 
 <pre><code>body {
   padding: 5px;
 }
 </code></pre>
 
-<p>However this will be safe:</p>
+<p>しかし、以下の場合は期待通りに振る舞います。</p>
 
 <pre><code>body
   if ohnoes is defined
     padding 5px
 </code></pre>
 
-<h2 id="ternary">Ternary</h2>
+<h2 id="section-10">三項演算子</h2>
 
-<p>The ternary operator works as we would expect in most languages. It&#8217;s the only operator with three operands (the <em>condition</em> expression, the <em>truth</em> expression, and the <em>false</em> expression).</p>
+<p>他のほとんどの言語にて期待するように三項演算子も動作します。
+これは3つのオペランド（ <em>条件</em> 式、 <em>真</em> 式、 <em>偽</em> 式）を持つ唯一の演算子です。</p>
 
 <pre><code>num = 15
 num ? unit(num, 'px') : 20px
 // =&gt; 15px
 </code></pre>
 
-<h2 id="casting">Casting</h2>
+<h2 id="section-11">キャスト</h2>
 
-<p>As an terse alternative to the <code>unit()</code> built-in function, the syntax <code>(expr) unit</code> may be used to force the suffix. </p>
+<p><code>unit()</code>組み込み関数の簡素な代替として、接尾語を強要するために<code>(式) 単位</code>構文が使用されるかもしれません。</p>
 
 <pre><code>body
   n = 5
@@ -466,15 +483,15 @@ num ? unit(num, 'px') : 20px
   foo: unit(5 + 180 / 2, deg)
 </code></pre>
 
-<h2 id="color-operations">Color Operations</h2>
+<h2 id="section-12">色操作</h2>
 
-<p>Operations on colors provide a terse, expressive way to alter components. For example, we can operate on each RGB:</p>
+<p>色に対する操作は、コンポーネントを変更する簡素な表現方法として提供します。例えば、各RGBごとに操作することができます。</p>
 
 <pre><code>#0e0 + #0e0
 // =&gt; #0f0
 </code></pre>
 
-<p>Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color, add; to darken, subtract.</p>
+<p>もうひとつの例は、パーセンテージで加算・減算することによって明るさの値を調整することです。色を明るくするには加算します。また、暗くするには減算します。</p>
 
 <pre><code>#888 + 50%
 // =&gt; #c3c3c3
@@ -483,29 +500,29 @@ num ? unit(num, 'px') : 20px
 // =&gt; #444
 </code></pre>
 
-<p>Adjust the hue is also possible by adding or subtracting with degrees. For example, adding <code>50deg</code> to this red value results in a yellow:</p>
+<p>度数を加算・減算することによって色相を調整することが可能です。例えば、 赤色に <code>50deg</code> を加算した結果は黄色になります。</p>
 
 <pre><code> #f00 + 50deg
  // =&gt; #ffd500
 </code></pre>
 
-<p>Values clamp appropriately. For example, we can &#8220;spin&#8221; the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
+<p>値は適切な値に固定されます。例えば、現在の値が<code>320deg</code> の場合であっても、色相を180度 “回転” させることができます。それは<code>140deg</code> として解釈されるでしょう。</p>
 
-<p>We may also tweak several values at once (including the alpha) by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
+<p>また、<code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, <code>hsla()</code> を使用した場合、一度に複数の値を微調整することができます。</p>
 
 <pre><code>  #f00 - rgba(100,0,0,0.5)
   // =&gt; rgba(155,0,0,0.5)
 </code></pre>
 
-<h2 id="sprintf">Sprintf</h2>
+<h2 id="sprintf">Sprintf関数</h2>
 
-<p>The string sprintf-like operator <code>%</code> can be used to generate a literal value, internally passing arguments through the <code>s()</code> built-in:</p>
+<p>リテラル値を生成するために、内部の<code>s()</code> ビルトイン関数を通して引数を渡す、文字列のsprintf関数のような <code>%</code> 演算子を使用することが出来ます。 </p>
 
 <pre><code>   'X::Microsoft::Crap(%s)' % #fc0
    // =&gt; X::Microsoft::Crap(#fc0)
 </code></pre>
 
-<p>Multiple values should be parenthesized:</p>
+<p>複数の値は括弧で囲む必要があります。</p>
 
 <pre><code>  '-webkit-gradient(%s, %s, %s)' % (linear (0 0) (0 100%))
   // =&gt; -webkit-gradient(linear, 0 0, 0 100%)

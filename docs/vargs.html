@@ -2,12 +2,15 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/vargs.md" title="stylus/docs/vargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub">stylus/docs/vargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<h2 id="rest-parameters">Rest Parameters</h2>
+<h2 id="httplearnboostgithubcomstylusdocsvargshtml">可変長引数 <a href="http://learnboost.github.com/stylus/docs/vargs.html">原文</a></h2>
 
-<p>Stylus supports rest parameters in the form of <code>name...</code>. These params consume the remaining arguments passed to a mixin or function. This is useful when utilizing (for example) the implicit function call support to apply vendor prefixes like <code>-webkit</code> or <code>-moz</code>.</p>
+<p>Stylusでは<code>name...</code>の形で定義することで可変長引数を利用可能です。この引数のなかにミックスインや関数に渡されたすべての引数が含まれます。これは、（例えば）<code>-webkit</code>や<code>-moz</code>のようなベンダープレフィックスを適用するために暗黙的な関数呼び出しを行う際に便利です。</p>
 
-<p>In the example below, we consume all the arguments passed, and simply apply them to multiple properties.</p>
+<p>次の例では、単純に渡されたすべての引数を複数のプロパティに適用しています。</p>
 
 <pre><code> box-shadow(args...)
    -webkit-box-shadow args
@@ -18,7 +21,7 @@
    box-shadow 1px 2px 5px #eee
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>  #login {
     -webkit-box-shadow: 1px 2px 5px #eee;
@@ -27,7 +30,7 @@
   }
 </code></pre>
 
-<p>If we wanted to peek at a specific argument—say, <code>x-offset</code>—we could simply use <code>args[0]</code>. Or, we may wish to redefine the mixin:</p>
+<p>特定の引数-例えば<code>x-offset</code>-を参照したいとき、単純に<code>args[0]</code>のように参照できます。またはミックスイン定義を次のように書き換えても良いでしょう:</p>
 
 <pre><code>    box-shadow(offset-x, args...)
       got-offset-x offset-x
@@ -39,7 +42,7 @@
       box-shadow 1px 2px 5px #eee
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>    #login {
       got-offset-x: 1px;
@@ -49,11 +52,11 @@
     }
 </code></pre>
 
-<h3 id="arguments">arguments</h3>
+<h3 id="arguments">arguments変数</h3>
 
-<p>The <code>arguments</code> variable is injected into mixin and function bodies, containing the exact expression passed. This is useful for several reasons (especially vendor support) as you get the <em>exact</em> expression, commas and all.</p>
+<p><code>arguments</code>引数はミックスインや関数定義の中で用いることができ、渡された式を正確に保持しています。これはカンマなどを含めた <em>正確な</em> 式を保持しているため、特にベンダー特有のプロパティをサポートするためなどの目的に便利です。</p>
 
-<p>For example, if we use a rest param, the comma is consumed (since it is an expression delimiter):</p>
+<p>例えば、可変長引数を用いると、カンマは式の区切り文字なので無視されます。</p>
 
 <pre><code>  box-shadow(args...)
     -webkit-box-shadow args
@@ -64,7 +67,7 @@
     box-shadow #ddd 1px 1px, #eee 2px 2px 
 </code></pre>
 
-<p>Yielding undesired results:</p>
+<p>これでは望んだ結果になりません:</p>
 
 <pre><code>  #login {
     -webkit-box-shadow: #ddd 1px 1px #eee 2px 2px;
@@ -73,7 +76,7 @@
   }
 </code></pre>
 
-<p>Let&#8217;s redefine the mixin using <code>arguments</code>:</p>
+<p>このミックスインを<code>arguments</code>を用いて定義しなおしてみましょう:</p>
 
 <pre><code>  box-shadow()
     -webkit-box-shadow arguments
@@ -84,7 +87,7 @@
     box-shadow #ddd 1px 1px, #eee 2px 2px
 </code></pre>
 
-<p>Now, yielding the desired result:</p>
+<p>これで望んだ結果が得られます:</p>
 
 <pre><code>  body {
     -webkit-box-shadow: #ddd 1px 1px, #eee 2px 2px;

@@ -1,32 +1,32 @@
++ 元文書: [stylus/docs/functions.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/functions.md "stylus/docs/functions.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-## Functions
+## 関数 [原文](http://learnboost.github.com/stylus/docs/functions.html)
 
- Stylus features powerful in-language function definitions. Function definitions appear identical to mixins; however, functions may return a value.
+ Stylusにはパワフルな関数の仕組みが用意されています。関数の定義はミックスインと同じですが、値を返せるところがミックスインと異なります。
 
-### Return Values
+### 返り値
 
- Let's try a trivial example: creating a function that adds two numbers.
+ 簡単な例から始めてみましょう: ２つの値を加算する関数を作ってみます。
 
     add(a, b)
       a + b
 
- We can then use this function in conditions, in property values, etc.
+ この関数は、条件文やプロパティの値などに用いることができます。
  
-     body 
+     body
        padding add(10px, 5)
 
- Rendering:
+ これは次のように展開されます:
      
      body {
        padding: 15px;
      }
 
-### Argument Defaults
+### デフォルト引数
 
- Optional arguments may default to a given expression. With Stylus we may even default arguments to earlier arguments! 
+ オプションの引数は与えられた値をデフォルトにとります。Stylusでは、前方の引数にもデフォルト値を設定出来ます!
  
- For example:
- 
+ 例えば:
  
      add(a, b = a)
        a + b
@@ -37,25 +37,14 @@
      add(10)
      // => 20
 
-**Note:** Since argument defaults are assignments, we can also use function calls for defaults:
+**注記:** デフォルト引数の定義は通常の代入なので、その定義の中で関数を使うことも可能です:
 
      add(a, b = unit(a, px))
        a + b
 
-### Named Parameters
+### 関数の定義
 
-Functions accept named parameters. This frees you from remembering the order of parameters, or simply improves the readability of your code.
-
-For example:
-
-    subtract(a, b)
-      a - b
-
-    subtract(b: 10, a: 25)
-
-### Function Bodies
-
- We can take our simple `add()` function further. Let's casting all units passed as `px` via the `unit()` built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.
+ さらに、シンプルな`add()`関数を見て行きましょう。組み込み関数である`unit()`を用いてすべての値の単位が`px`になるようにします。これによりそれぞれの引数が再代入され、単位を示す文字列が付け加えられます。単位の変換は行われません。
  
      add(a, b = a)
        a = unit(a, px)
@@ -65,18 +54,18 @@ For example:
      add(15%, 10deg)
      // => 25
 
-### Multiple Return Values
+### 複数の返り値
 
- Stylus functions can return several values—just as you can assign several values to a variable. 
+ Stylusでは、関数は複数の値を返すことができます。また、ひとつの変数に複数の値を代入することも同様に可能です。
  
- For example, the following is a valid assignment:
+ 例えば、次の代入は正しく実行されます:
  
        sizes = 15px 10px
      
        sizes[0]
        // => 15px 
 
-Similarly, we may return several values:
+同様に、関数で複数の値を返す事もできます:
 
        sizes()
          15px 10px
@@ -84,12 +73,12 @@ Similarly, we may return several values:
        sizes()[0]
        // => 15px
 
-One slight exception is when return values are identifiers. For example, the following looks like a property assignment to Stylus (since no operators are present):
+返却値が識別子であるときは例外となります。例えば、以下の例には演算子が存在しないため、プロパティに値を代入しているとしてStylusに認識されてしまいます。
 
      swap(a, b)
        b a
 
-To disambiguate, we can either wrap with parentheses, or use the `return` keyword:
+このようなときは複数の値を返すことを明確にするため、括弧で２つの値を囲みましょう。`return`キーワードを使うこともできます:
 
       swap(a, b)
         (b a)
@@ -97,10 +86,9 @@ To disambiguate, we can either wrap with parentheses, or use the `return` keywor
       swap(a, b)
         return b a
 
-### Conditionals
+### 条件文
 
- Let's say we want to create a function named `stringish()` to determine whether the argument can be transformed to a string. We check if `val` is a string, or an ident (which is string-like). Because undefined identifiers yield themselves as the value, we may compare them to themselves as shown below (where `yes` and `no` are used in place of `true` and `false`):
- 
+ 引数で渡された値が文字列に変換可能か確かめるために`stringish()`という関数を定義することを考えてみましょう。`val`が文字列であるかident(文字列のようなデータ)であるかを判別します。未定義の識別子は展開される際にそれ自身の値と置き換わるので、次で示すように、それらをそれら自身と比較すれば良ことになります（ここで、`yes`と`no`は、それぞれ`true`と`false`を意味します）。
  
      stringish(val)
        if val is a 'string' or val is a 'ident'
@@ -108,7 +96,7 @@ To disambiguate, we can either wrap with parentheses, or use the `return` keywor
        else
          no
 
-Usage:
+使い方:
 
      stringish('yay') == yes
      // => true
@@ -119,9 +107,9 @@ Usage:
      stringish(0) == no
      // => true
 
-__note__: `yes` and `no` are not boolean literals. They are simply undefined identifiers in this case.
+__注意__: `yes`と`no`はブーリアン型のリテラルではなく、単に未定義の識別子であることに注意してください。
 
-Another example:
+別の例:
 
     compare(a, b)
       if a > b
@@ -131,7 +119,7 @@ Another example:
       else
         equal
 
-Usage:
+使い方:
 
     compare(5, 2)
     // => higher
@@ -142,18 +130,18 @@ Usage:
     compare(10, 10)
     // => equal
 
-### Aliasing
+### エイリアス
 
-  To alias a function, simply assign a function's name to a new identifier. For example, our `add()` function could be aliased as `plus()`, like so:
+  関数のエイリアスを作るには、単に関数の名前を新しい識別子に代入してください。例えば、次のようにすれば`add()`関数を`plus()`関数としてエイリアスを作ることができます:
   
       plus = add
       
       plus(1, 2)
       // => 3
 
-### Variable Functions
+### 関数を引数にとる関数
 
-  In the same way that we can "alias" a function, we can pass a function as well. Here, our `invoke()` function accepts a function, so we can pass it `add()` or `sub()`.
+  関数の"エイリアスを作る"ことが可能なのと同じで、関数を関数の引数として渡すことも可能です。次の例では`invoke()`関数は関数を引数に取るので`add()`や`sub()`を渡すことができます。
 
     invoke(a, b, fn)
       fn(a, b)
@@ -165,18 +153,18 @@ Usage:
       padding invoke(5, 10, add)
       padding invoke(5, 10, sub)
 
-Yielding:
+これは次のように展開されます:
 
     body {
       padding: 15;
       padding: -5;
     }
 
-### arguments
+### argumentsローカル変数
 
- The `arguments` local is available to all function bodies, and contains all the arguments passed. 
+ `arguments`ローカル変数がすべての関数の定義のなかで利用できます。この変数は関数に渡されたすべての引数を格納しています。
  
- For example:
+ 例:
  
      sum()
        n = 0
@@ -186,15 +174,14 @@ Yielding:
      sum(1,2,3,4,5)
      // => 15
 
-### Hash Example
+### ハッシュの例
 
- Below we define the `get(hash, key)` function, which returns the
- value of `key` (or `null`). We iterate each `pair` in `hash`, returning the pair's second node when the first (the `key`) matches. 
+ 次の例では、`get(hash, key)`関数を定義しています。これはハッシュのキー値`key`をもとにその内容を返す(もしキー値に対応する値が見つからなければ`null`を返す)関数です。この関数の中では、`hash`のなかのそれぞれのペア`pair`を走査し、ペアの一つ目の値と`key`がマッチすればそのペアの２つ目のノードを返すということを行なっています。
 
       get(hash, key)
         return pair[1] if pair[0] == key for pair in hash
 
-As demonstrated below, in-language functions—paired with robust Stylus expressions—can provide great flexibility:
+次で示すように、言語組み込みの関数がStylusの強力な式と一緒に使われると、素晴らしい柔軟性を発揮します。
       
       hash = (one 1) (two 2) (three 3)
       

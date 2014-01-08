@@ -1,36 +1,36 @@
-## Import
++ 元文書: [stylus/docs/import.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/import.md "stylus/docs/import.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-Stylus supports both literal __@import__ for CSS, as well as dynamic importing or requiring of other Stylus sheets.
+## Import [原文](http://learnboost.github.com/stylus/docs/import.html)
 
-### Literal CSS
+ スタイラスではCSSの __@import__ 文と、他のStylusシートの動的なインポートに対応しています。
 
-  Any filename with the extension `.css` will become a literal. For example:
+### CSSの __@import__ 文
+
+  拡張子が`.css`のファイル名は記述通りに扱われます。例えば、
+  
+     @import "reset.css"
+
+これはCSSの __@import__ 文として以下のように解釈されます:
 
      @import "reset.css"
 
-Render the literal CSS __@import__ shown below:
+### Stylusのインポート
 
-     @import "reset.css"
+ __@import__ を拡張子`.css`以外のものに用いるとスタイラスシートのインポートであると解釈されます(例. `@import "mixins/border-radius"`)
 
-### Stylus Import
+ __@import__ は(node.jsの`require.paths`と同様に)ディレクトリの配列を走査し、指定されたファイルがそのディレクトリに存在するかをチェックします。この配列にはデフォルトでは一つのパスが格納されており、このパスは`filename`オプションの`dirname`で指定されます。したがって、ファイル名が`/tmp/testing/stylus/main.styl`であるとき、importでは`/tmp/testing/stylus/`が探索されます。
 
-*Disclaimer: In all places the __@import__ is used with Stylus sheets, the __@require__ could be used*
+ __@import__ はindexスタイルもサポートしています。これは、`@import blueprint`とした時に`blueprint.styl` **と** `blueprint/index.styl` **の両方を** 探すことを意味します。この機能はライブラリのすべての機能を提供するとともに、機能ごとのサブセットにファイルを分けておくときに便利です。
 
- When using __@import__ without the `.css` extension, it's assumed to be a Stylus sheet (e.g., `@import "mixins/border-radius"`).
-
- __@import__ works by iterating an array of directories, and checking if this file lives in any of them (similar to node's `require.paths`). This array defaults to a single path, which is derived from the `filename` option's `dirname`. So, if your filename is `/tmp/testing/stylus/main.styl`, then import will look in `/tmp/testing/stylus/`.
-
- __@import__ also supports index styles. This means when you `@import blueprint`, it will resolve **either** `blueprint.styl` **or** `blueprint/index.styl`.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported.
-
- For example, a common lib structure might be:
+ 例えば、一般的なライブラリのファイル構造は以下のようになるでしょう:
 
     ./tablet
-      |-- index.styl
-      |-- vendor.styl
-      |-- buttons.styl
-      |-- images.styl
+      |-- index.styl 
+      |-- vendor.styl 
+      |-- buttons.styl 
+      |-- images.styl 
 
- In the example below, we set the `paths` options to provide additional paths to Stylus. Within `./test.styl`, we could then `@import "mixins/border-radius"`, or `@import "border-radius"` (since `./mixins` is exposed to Stylus).
+ 下の例では、`paths`オプションを用いてStylusに追加のパスを指定しています。`./mixins`がStylusの`paths`オプションに追加されているので、`./test.styl`のなかで、`@import "mixins/border-radius"`と`@import "border-radius"`のどちらでも用いることができます。
 
       /**
        * Module dependencies.
@@ -52,40 +52,9 @@ Render the literal CSS __@import__ shown below:
           console.log(css);
         });
 
-### Require
-
-Along with `@import`, Stylus have also `@require`. It works almost in the same way, with the exception of importing any given file only once.
-
-### File globbing
-
-Stylus supports [globbing](https://github.com/isaacs/node-glob#readme). With it you could import many files using a file mask:
-
-    @import 'product/*'
-
-This would import all the stylus sheets from the `product` directory in such structure:
-
-    ./product
-      |-- body.styl
-      |-- foot.styl
-      |-- head.styl
-
-Note that this works with `@require` too, so if you would have also a `./product/index.styl` with this content:
-
-    @require 'head'
-    @require 'body'
-    @require 'foot'
-
-then `@require 'product/*'` would include each individual sheet only once.
-
-### Resolving relative urls inside imports
-
-By default Stylus don't resolve the urls in imported `.styl` files, so if you'd happen to have a `foo.styl` with `@import "bar/bar.styl"` which would have `url("baz.png")`, it would be `url("baz.png")` too in a resulting CSS.
-
-But you can alter this behavior by using `--resolve-url` (or just `-r`) CLI option to get `url("bar/baz.png")` in your resulting CSS.
-
 ### JavaScript Import API
 
- When using the `.import(path)` method, these imports are deferred until evaluation:
+ `.import(path)`メソッドを使うとき、このファイルインポートは展開時に遅延実行されます。
 
        var stylus = require('../')
          , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
@@ -98,11 +67,11 @@ But you can alter this behavior by using `--resolve-url` (or just `-r`) CLI opti
          console.log(css);
        });
 
- The following statement...
+ 次の宣言は...
 
      @import 'mixins/vendor'
 
-...is equivalent to...
+...次と同様です...
 
-     .import('mixins/vendor')
-
+     .import('mixins/vendor') 
+ 

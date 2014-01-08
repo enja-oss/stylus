@@ -2,42 +2,44 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
-<h2 id="import">Import</h2>
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/import.md" title="stylus/docs/import.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub">stylus/docs/import.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<p>Stylus supports both literal <strong>@import</strong> for CSS, as well as dynamic importing or requiring of other Stylus sheets.</p>
+<h2 id="import-httplearnboostgithubcomstylusdocsimporthtml">Import <a href="http://learnboost.github.com/stylus/docs/import.html">原文</a></h2>
 
-<h3 id="literal-css">Literal CSS</h3>
+<p>スタイラスではCSSの <strong>@import</strong> 文と、他のStylusシートの動的なインポートに対応しています。</p>
 
-<p>Any filename with the extension <code>.css</code> will become a literal. For example:</p>
+<h3 id="css-import-">CSSの <strong>@import</strong> 文</h3>
+
+<p>拡張子が<code>.css</code>のファイル名は記述通りに扱われます。例えば、</p>
 
 <pre><code> @import "reset.css"
 </code></pre>
 
-<p>Render the literal CSS <strong>@import</strong> shown below:</p>
+<p>これはCSSの <strong>@import</strong> 文として以下のように解釈されます:</p>
 
 <pre><code> @import "reset.css"
 </code></pre>
 
-<h3 id="stylus-import">Stylus Import</h3>
+<h3 id="stylus">Stylusのインポート</h3>
 
-<p><em>Disclaimer: In all places the <strong>@import</strong> is used with Stylus sheets, the <strong>@require</strong> could be used</em></p>
+<p><strong>@import</strong> を拡張子<code>.css</code>以外のものに用いるとスタイラスシートのインポートであると解釈されます(例. <code>@import "mixins/border-radius"</code>)</p>
 
-<p>When using <strong>@import</strong> without the <code>.css</code> extension, it&#8217;s assumed to be a Stylus sheet (e.g., <code>@import "mixins/border-radius"</code>).</p>
+<p><strong>@import</strong> は(node.jsの<code>require.paths</code>と同様に)ディレクトリの配列を走査し、指定されたファイルがそのディレクトリに存在するかをチェックします。この配列にはデフォルトでは一つのパスが格納されており、このパスは<code>filename</code>オプションの<code>dirname</code>で指定されます。したがって、ファイル名が<code>/tmp/testing/stylus/main.styl</code>であるとき、importでは<code>/tmp/testing/stylus/</code>が探索されます。</p>
 
-<p><strong>@import</strong> works by iterating an array of directories, and checking if this file lives in any of them (similar to node&#8217;s <code>require.paths</code>). This array defaults to a single path, which is derived from the <code>filename</code> option&#8217;s <code>dirname</code>. So, if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
+<p><strong>@import</strong> はindexスタイルもサポートしています。これは、<code>@import blueprint</code>とした時に<code>blueprint.styl</code> <strong>と</strong> <code>blueprint/index.styl</code> <strong>の両方を</strong> 探すことを意味します。この機能はライブラリのすべての機能を提供するとともに、機能ごとのサブセットにファイルを分けておくときに便利です。</p>
 
-<p><strong>@import</strong> also supports index styles. This means when you <code>@import blueprint</code>, it will resolve <strong>either</strong> <code>blueprint.styl</code> <strong>or</strong> <code>blueprint/index.styl</code>.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported.</p>
-
-<p>For example, a common lib structure might be:</p>
+<p>例えば、一般的なライブラリのファイル構造は以下のようになるでしょう:</p>
 
 <pre><code>./tablet
-  |-- index.styl
-  |-- vendor.styl
-  |-- buttons.styl
-  |-- images.styl
+  |-- index.styl 
+  |-- vendor.styl 
+  |-- buttons.styl 
+  |-- images.styl 
 </code></pre>
 
-<p>In the example below, we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code>, we could then <code>@import "mixins/border-radius"</code>, or <code>@import "border-radius"</code> (since <code>./mixins</code> is exposed to Stylus).</p>
+<p>下の例では、<code>paths</code>オプションを用いてStylusに追加のパスを指定しています。<code>./mixins</code>がStylusの<code>paths</code>オプションに追加されているので、<code>./test.styl</code>のなかで、<code>@import "mixins/border-radius"</code>と<code>@import "border-radius"</code>のどちらでも用いることができます。</p>
 
 <pre><code>  /**
    * Module dependencies.
@@ -60,43 +62,9 @@
     });
 </code></pre>
 
-<h3 id="require">Require</h3>
-
-<p>Along with <code>@import</code>, Stylus have also <code>@require</code>. It works almost in the same way, with the exception of importing any given file only once.</p>
-
-<h3 id="file-globbing">File globbing</h3>
-
-<p>Stylus supports <a href="https://github.com/isaacs/node-glob#readme">globbing</a>. With it you could import many files using a file mask:</p>
-
-<pre><code>@import 'product/*'
-</code></pre>
-
-<p>This would import all the stylus sheets from the <code>product</code> directory in such structure:</p>
-
-<pre><code>./product
-  |-- body.styl
-  |-- foot.styl
-  |-- head.styl
-</code></pre>
-
-<p>Note that this works with <code>@require</code> too, so if you would have also a <code>./product/index.styl</code> with this content:</p>
-
-<pre><code>@require 'head'
-@require 'body'
-@require 'foot'
-</code></pre>
-
-<p>then <code>@require 'product/*'</code> would include each individual sheet only once.</p>
-
-<h3 id="resolving-relative-urls-inside-imports">Resolving relative urls inside imports</h3>
-
-<p>By default Stylus don&#8217;t resolve the urls in imported <code>.styl</code> files, so if you&#8217;d happen to have a <code>foo.styl</code> with <code>@import "bar/bar.styl"</code> which would have <code>url("baz.png")</code>, it would be <code>url("baz.png")</code> too in a resulting CSS.</p>
-
-<p>But you can alter this behavior by using <code>--resolve-url</code> (or just <code>-r</code>) CLI option to get <code>url("bar/baz.png")</code> in your resulting CSS.</p>
-
 <h3 id="javascript-import-api">JavaScript Import API</h3>
 
-<p>When using the <code>.import(path)</code> method, these imports are deferred until evaluation:</p>
+<p><code>.import(path)</code>メソッドを使うとき、このファイルインポートは展開時に遅延実行されます。</p>
 
 <pre><code>   var stylus = require('../')
      , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
@@ -110,14 +78,14 @@
    });
 </code></pre>
 
-<p>The following statement&#8230;</p>
+<p>次の宣言は…</p>
 
 <pre><code> @import 'mixins/vendor'
 </code></pre>
 
-<p>&#8230;is equivalent to&#8230;</p>
+<p>…次と同様です…</p>
 
-<pre><code> .import('mixins/vendor')
+<pre><code> .import('mixins/vendor') 
 </code></pre>
 
 </div></div></body></html>

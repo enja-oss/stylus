@@ -2,21 +2,24 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/error-reporting.md" title="stylus/docs/error-reporting.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub">stylus/docs/error-reporting.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<h2 id="error-reporting">Error Reporting</h2>
+<h2 id="error-reporting-httplearnboostgithubcomstylusdocserror-reportinghtml">Error Reporting <a href="http://learnboost.github.com/stylus/docs/error-reporting.html">原文</a></h2>
 
-<p>Stylus has fantastic error reporting built-in for syntax, parse, and evaluation errors—complete with stack traces, line numbers, and filenames.</p>
+<p>Stylusには、文法やパース、実行エラーの解析のために、スタックトレース、行番号、ファイル名の出力を備えた、素晴らしいエラーレポートが備えられています。</p>
 
-<h3 id="parse-error">Parse Error</h3>
+<h3 id="section">パースエラー</h3>
 
-<p>Parse error example:</p>
+<p>パースエラーの例:</p>
 
 <pre><code> body
    form input
      == padding 5px
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次の様に展開されます:</p>
 
 <pre><code> Error: /Users/tj/Projects/stylus/testing/test.styl:4
    3: '  form input'
@@ -25,9 +28,9 @@
  illegal unary ==
 </code></pre>
 
-<h3 id="evaluation-error">Evaluation Error</h3>
+<h3 id="section-1">実行エラー</h3>
 
-<p>This &#8220;runtime&#8221; or evaluation error is caused by passing a string to <code>border-radius()</code>, instead of the expected <code>Unit</code> (by using our helper <code>ensure(n, 'unit')</code>).</p>
+<p>次の、”ランタイム”、または実行エラーは<code>border-radius()</code>に、期待される<code>Unit</code>ではなく文字列を渡すことで引き起こされます(ヘルパー関数<code>ensure(n, 'unit')</code>でエラーを投げています)。</p>
 
 <pre><code>  ensure(val, type)
     unless val is a type
@@ -43,7 +46,7 @@
     border-radius '5px'
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次の様に展開されます:</p>
 
 <pre><code>  Error: /Users/tj/Projects/stylus/examples/error.styl:12
     11: ''

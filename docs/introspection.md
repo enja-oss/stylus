@@ -1,16 +1,20 @@
++ 元文書: [stylus/docs/introspection.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/introspection.md 
+"stylus/docs/introspection.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-## Introspection API
+## イントロスペクション API [原文](http://learnboost.github.com/stylus/docs/introspection.html)
 
- Stylus supports an introspection API. This allows mixins and functions to reflect relative to the caller, etc.
-
+Stylusはイントロスペクション（一般的には、リフレクション機能の一種で、依存関係など内部情報を返すインターフェース）APIをサポートしています。
+これによりmixins とfunctionsの呼び出し元に応じて、その振舞いを変更させることが出来ます。
 
 ## mixin
 
-  The `mixin` local variable is automatically assigned within function bodies.
-  It contains the string `root` if the function was called at the root
-  level, or `block` indicating otherwise, and finally `false` if the invoked function expects a return value.
+  `mixin` は、関数内部に自動的に割り当てられるローカル変数です。
+  `mixin`  は、トップレベルから呼び出されたことを示す `root` 文字列、
+  それ以外からの呼び出しを示す `block` 文字列、そして関数として戻り値を期待された場合を示す `false` で構成されています。
 
-  In the following example, we define `reset()` to alter its behaviour depending on whether it's mixed into root, into another block, or into a return value, as used in the `foo` property below:
+  次の例では、`reset()` を定義し、下の3パターンに応じてその振舞いを変更しています。
+  トップレベルから呼び出された場合、それ以外から呼び出された場合、そして、`foo` プロパティの中で戻り値を期待されている場合。
 
       reset()
         if mixin == 'root'
@@ -27,7 +31,7 @@
         reset()
         foo reset()
 
-Compiles to:
+コンパイル後:
 
         got {
           root: true;

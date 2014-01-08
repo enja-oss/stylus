@@ -2,9 +2,13 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
-<h2 id="media">@media</h2>
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/b27196e4e8ac736e2e7d66b1175391d365a32f5e/docs/media.md" title="stylus/docs/media.md at b27196e4e8ac736e2e7d66b1175391d365a32f5e · LearnBoost/stylus · GitHub">stylus/docs/media.md at b27196e4e8ac736e2e7d66b1175391d365a32f5e · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<p>The <code>@media</code> works just as it does within regular CSS, but with Stylus&#8217;s block notation:</p>
+<h2 id="media-httplearnboostgithubcomstylusdocsmediahtml">@media <a href="http://learnboost.github.com/stylus/docs/media.html">原文</a></h2>
+
+<p><code>@media</code>は通常のCSSと同様に動作しますが、Stylusのブロック記法を反映します。</p>
 
 <pre><code> @media print
    #header
@@ -12,7 +16,7 @@
      display none
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは以下のように展開されます:</p>
 
 <pre><code>  @media print {
     #header,
@@ -20,29 +24,5 @@
       display: none;
     }
   }
-</code></pre>
-
-<h3 id="media-query-nesting">Media Query Nesting</h3>
-
-<p>Media queries can be nested, too, and they will be expanded to wrap the context in which they are used. For example:</p>
-
-<pre><code>.widget
-  padding 10px
-  
-  @media screen and (min-width: 600px)
-    padding 20px
-</code></pre>
-
-<p>Yielding:</p>
-
-<pre><code>.widget {
-  padding: 10px;
-}
-
-@media screen and (min-width: 600px) {
-  .widget {
-    padding: 20px;
-  }
-}
 </code></pre>
 </div></div></body></html>

@@ -2,31 +2,38 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
-<h2 id="escaping">Escaping</h2>
+<ul>
+  <li>元文書: [stylus/docs/escape.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub]
+(https://github.com/LearnBoost/stylus/blob/f9ed220d7e5f0b44aeaca58ffd6490566b5f0757/docs/escape.md 
+“stylus/docs/escape.md at f9ed220d7e5f0b44aeaca58ffd6490566b5f0757 · LearnBoost/stylus · GitHub”)</li>
+</ul>
 
-<p>Stylus lets you escape characters. This effectively turns them into identifiers, allowing them to be rendered as literals. </p>
+<h2 id="httplearnboostgithubcomstylusdocsescapehtml">エスケープ <a href="http://learnboost.github.com/stylus/docs/escape.html">原文</a></h2>
 
-<p>For example:</p>
+<p>Stylusでは文字をエスケープすることも出来ます。
+識別子の中に効果的に配置することで、レンダリング時にリテラルとして出力されるようになります。 </p>
+
+<p>例:</p>
 
 <pre><code> body
    padding 1 \+ 2
 </code></pre>
 
-<p>Compiles to:</p>
+<p>コンパイル後:</p>
 
 <pre><code> body {
    padding: 1 + 2;
  }
 </code></pre>
 
-<p>Note that Stylus requires that <code>/</code> is parenthesized when used in a property:</p>
+<p>注意：Stylusでは、プロパティの中で <code>/</code> を使用する際は、括弧で囲うことが必須です。</p>
 
 <pre><code>body
   font 14px/1.4
   font (14px/1.4)
 </code></pre>
 
-<p>yields:</p>
+<p>結果:</p>
 
 <pre><code>body {
   font: 14px/1.4;

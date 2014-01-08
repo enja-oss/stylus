@@ -1,17 +1,18 @@
++ 元文書: [stylus/docs/iteration.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/iteration.md "stylus/docs/iteration.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-## Iteration
+## 繰り返し [原文](http://learnboost.github.io/stylus/docs/iteration.html)
 
- Stylus allows you to iterate expressions via the `for/in` construct, taking the form of:
+ Stylusでは、`for/in`構文を使って式を反復することができます。これは次のような形をとります:
  
       for <val-name> [, <key-name>] in <expression>
 
-For example:
+例えば、以下の表現は:
 
     body
       for num in 1 2 3
         foo num
 
-Yields:
+次のように展開されます:
 
       body {
         foo: 1;
@@ -19,14 +20,14 @@ Yields:
         foo: 3;
       }
 
-The example below shows how to use the `<key-name>`:
+次の例は、`<key‐name>`の利用法を示します:
 
       body
         fonts = Impact Arial sans-serif
         for font, i in fonts
           foo i font
 
-Yielding:
+これは次のように展開されます:
 
         body {
           foo: 0 Impact;
@@ -34,27 +35,11 @@ Yielding:
           foo: 2 sans-serif;
         }
 
-And here's how you do a regular for loop
+### ミックスイン
 
-    body
-      for num in (1..5)
-        foo num
-
-Yields:
-
-    body {
-      foo: 1;
-      foo: 2;
-      foo: 3;
-      foo: 4;
-      foo: 5;
-    }
-              
-### Mixins
-
- We can use iteration within mixins to produce powerful functionality. For example, we can apply expression pairs as properties using interpolation and iteration. 
+ 繰り返しをミックスインと一緒に使うととても便利です。例えば、挿入と繰り返しを使って、式のペアをプロパティとして扱うことができます。
  
- Below we define `apply()`, conditionally utilizing all the `arguments` so that comma-delimited _and_ expression lists are supported:
+ 以下では、すべての`arguments`を条件によって活用することで、カンマ区切りと式のリストの _両方_ をサポートできるように`apply()`を定義します。
  
      apply(props)
        props = arguments if length(arguments) > 1
@@ -68,9 +53,9 @@ Yields:
        list = (one 1) (two 2) (three 3)
        apply(list)
 
-### Functions
+### 関数
 
- Stylus functions may also contain for-loops. Below are some example use-cases:
+ Stylusでは関数の中でもforループを使うことができます。以下にいくつかの利用例を挙げます。
 
 Sum:
 
@@ -95,9 +80,9 @@ join:
       join(', ', foo bar baz)
       // => "foo, bar, baz"
 
-### Postfix
+### 後置記法
 
- Much like `if` / `unless` may be utilized post-statement, the same can be done with `for`. Below are the same examples as above utilizing the postfix syntax:
+ `if`や`unless`と同様に、`for`でも後置記法が使えます。以下の例は、上記の例を後置記法を使って書きなおしたものです。
  
        sum(nums)
          sum = 0
@@ -108,8 +93,7 @@ join:
          buf = ''
          buf += i ? delim + arg : arg for arg, i in args
 
- We can also __return__ from within a loop, below is an example returning the
- number when `n % 2 == 0` evaluates to __true__.
+ ループの中で、 __return__ を使うこともできます。以下の例では、`n % 2 == 0`が __true__ を返した場合に`n`を返しています。
  
      first-even(nums)
        return n if n % 2 == 0 for n in nums

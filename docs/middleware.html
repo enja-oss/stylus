@@ -3,74 +3,79 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
 
-<h2 id="connect-middleware">Connect Middleware</h2>
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0a3a8add79880b5f96ef680ea8f30786c17c3233/docs/middleware.md" title="stylus/docs/middleware.md at 0a3a8add79880b5f96ef680ea8f30786c17c3233 · LearnBoost/stylus · GitHub">stylus/docs/middleware.md at 0a3a8add79880b5f96ef680ea8f30786c17c3233 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<p>Stylus ships with <a href="http://www.senchalabs.org/connect/">Connect</a> middleware for auto-compiling Stylus sheets whenever they&#8217;re modified.</p>
+<h2 id="connect--httplearnboostgithubcomstylusdocsmiddlewarehtml">Connect ミドルウェア <a href="http://learnboost.github.com/stylus/docs/middleware.html">原文</a></h2>
+
+<p>Stylusはファイル変更を検知して自動でコンパイルできる、Connectミドルウェアを備えています。</p>
 
 <h2 id="stylusmiddlewareoptions">stylus.middleware(options)</h2>
 
-<h4 id="options">Options</h4>
+<p>与えられた<code>options</code>で初期化された、Connectミドルウェアを返します。</p>
 
-<p>Return Connect middleware with the given <code>options</code>.</p>
+<h4 id="options">オプション(options)</h4>
 
-<pre><code>  `serve`     Serve the stylus files from `dest` [true]
-  `force`     Always re-compile
-  `src`       Source directory used to find .styl files
-  `dest`      Destination directory used to output .css files
-              when undefined defaults to `src`.
-  `compile`   Custom compile function, accepting the arguments
-              `(str, path)`.
-  `compress`  Whether the output .css files should be compressed
-  `firebug`   Emits debug infos in the generated css that can
-              be used by the FireStylus Firebug plugin
-  `linenos`   Emits comments in the generated css indicating 
-              the corresponding stylus line
+<pre><code>  `force`     __true__ の場合、常にコンパイルし直します
+  `src`       .stylファイルを検索するソースディレクトリです
+  `dest`      .cssファイルを出力するためのディレクトリです
+              undefined の場合は`src`の設定値が使われます
+  `compress`  出力の.cssファイルを圧縮するかどうかを指定します
+  `compile`   カスタムのコンパイル関数です。引数、`(str, path)`を受け取り、
+              レンダラを返します。
+  `firebug`   出力CSSにデバッグ情報を付加します。
+              この情報はFireStylus Firebugプラグインで利用できます。
+  `linenos`   出力CSSに、対応するStylusファイルの行番号を示す
+              コメントを付加します。
 </code></pre>
 
-<h4 id="examples">Examples</h4>
+<h4 id="section">使用例</h4>
 
-<p>Serve .styl files from ./public:</p>
+<p>ここでは、設定を追加することでレンダラーの動作を変更するために、カスタムのコンパイル関数をセットアップしてみます。</p>
 
-<pre><code>var app = connect();
+<p>デフォルトではコンパイル関数は単純に<code>filename</code>を設定し、CSSを書き出します。</p>
 
-app.middleware(__dirname + '/public');
+<pre><code>    function compile(str, path) {
+      return stylus(str)
+        .import(__dirname + '/css/mixins/blueprint')
+        .import(__dirname + '/css/mixins/css3')
+        .set('filename', path)
+        .set('warn', true)
+        .set('compress', true);
+    }
 </code></pre>
 
-<p>Change the <code>src</code> and <code>dest</code> options to alter where .styl files
- are loaded and where they&#8217;re saved:</p>
+<p>ミドルウェアをConnectに渡し、<code>.styl</code>ファイルをあるディレクトリから読み込み、変換済みの<code>.css</code>ファイルを <em>./public</em> に保存するように設定してみましょう。
+ ここでも、独自の<code>compile</code>関数を用います。</p>
 
-<pre><code> var app = connect();
+<p>こうすることで、Stylusによって出力された<code>.css</code>ファイルを配信する<code>static</code>レイヤを作ることができます。</p>
+
+<pre><code>    var stylus = require('stylus');
  
- app.middleware({
-   src: __dirname + '/stylesheets',
-   dest: __dirname + '/public'
- });
+    var app = connect();
+
+    app.use(stylus.middleware({
+        src: __dirname
+      , dest: __dirname + '/public'
+      , compile: compile
+    }));
+
+    app.use(connect.static(__dirname + '/public'));
 </code></pre>
 
-<p>Here we set up the custom compile function so that we may
- set the <code>compress</code> option, or define additional functions.</p>
+<p>オプション、<code>force</code>が指定されると、スタイルファイルは無条件で再コンパイルされます。このオプションが設定されなかったとしても、Stylusミドルウェアは<code>@import</code>されたファイルの変更を検出できます。</p>
 
-<p>By default the compile function simply sets the <code>filename</code>
- and renders the CSS. In the following case we&#8217;re compressing
- the output, using the &#8220;nib&#8221; library plugin, and auto-importing it.</p>
+<p>開発目的のために、<code>firebug</code>オプションを有効にすることで<a href="http://github.com/LearnBoost/stylus/blob/master/docs/firebug.md">FireStylus extension for Firebug</a>を使うことができます。これとは別に、<code>lineos</code>オプションを有効にして、生成されたCSSにデバッグ情報を付加することもできます。</p>
 
-<pre><code> function compile(str, path) {
-   return stylus(str)
-     .set('filename', path)
-     .set('compress', true)
-     .use(nib())
-     .import('nib');
- }
-</code></pre>
-
-<p>Pass it as an option like so:</p>
-
-<pre><code> var app = connect();
-
- app.middleware({
-     src: __dirname
-   , dest: __dirname + '/public'
-   , compile: compile
- })
+<pre><code>    function compile(str, path) {
+      return stylus(str)
+        .import(__dirname + '/css/mixins/blueprint')
+        .import(__dirname + '/css/mixins/css3')
+        .set('filename', path)
+        .set('warn', true)
+        .set('firebug', true)
+        .set('linenos', true);
+    }
 </code></pre>
 </div></div></body></html>

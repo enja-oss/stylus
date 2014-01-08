@@ -1,17 +1,18 @@
++ 元文書: [stylus/docs/error-reporting.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub](https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/error-reporting.md "stylus/docs/error-reporting.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub")
 
-## Error Reporting
+## Error Reporting [原文](http://learnboost.github.com/stylus/docs/error-reporting.html)
 
- Stylus has fantastic error reporting built-in for syntax, parse, and evaluation errors—complete with stack traces, line numbers, and filenames.
+ Stylusには、文法やパース、実行エラーの解析のために、スタックトレース、行番号、ファイル名の出力を備えた、素晴らしいエラーレポートが備えられています。
 
-### Parse Error
+### パースエラー
 
-Parse error example:
+パースエラーの例:
 
      body
        form input
          == padding 5px
 
-Yielding:
+これは次の様に展開されます:
 
      Error: /Users/tj/Projects/stylus/testing/test.styl:4
        3: '  form input'
@@ -19,9 +20,9 @@ Yielding:
 
      illegal unary ==
 
-### Evaluation Error
+### 実行エラー
 
- This "runtime" or evaluation error is caused by passing a string to `border-radius()`, instead of the expected `Unit` (by using our helper `ensure(n, 'unit')`).
+ 次の、"ランタイム"、または実行エラーは`border-radius()`に、期待される`Unit`ではなく文字列を渡すことで引き起こされます(ヘルパー関数`ensure(n, 'unit')`でエラーを投げています)。
 
       ensure(val, type)
         unless val is a type
@@ -36,7 +37,7 @@ Yielding:
       body
         border-radius '5px'
 
-Yielding:
+これは次の様に展開されます:
 
       Error: /Users/tj/Projects/stylus/examples/error.styl:12
         11: ''

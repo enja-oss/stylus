@@ -2,15 +2,15 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+<ul>
+  <li>元文書: <a href="https://github.com/LearnBoost/stylus/blob/0ab9219d80a5304e32437ef3cabb7b3fa1345534/docs/kwargs.md" title="stylus/docs/kwargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub">stylus/docs/kwargs.md at 0ab9219d80a5304e32437ef3cabb7b3fa1345534 · LearnBoost/stylus · GitHub</a></li>
+</ul>
 
-<h2 id="keyword-arguments">Keyword Arguments</h2>
+<h2 id="httplearnboostgithubcomstylusdocskwargshtml">キーワード引数 <a href="http://learnboost.github.com/stylus/docs/kwargs.html">原文</a></h2>
 
-<p>Stylus supports keyword arguments, or &#8220;kwargs&#8221;. These allow you to reference arguents by their associated parameter name.</p>
+<p>Stylus はキーワード引数(“kwargs”)をサポートしています。キーワード引数を使うと、関連付けられたパラメータの名前によって引数を参照することが可能になります。</p>
 
-<p>The examples shown below are functionally equivalent. However, we can
- place keyword arguments anywhere within the list. The remaining arguments
- that are <em>not</em> keyed will be applied to the parameters that have not
- been satisfied.</p>
+<p>次に上げる例は、すべて同じ形に展開されます。キーワード引数はどのような順番でも関数に渡すことができますが、残りのキーワードのついて <em>いない</em> 引数はまだ割り当てられていないパラメータに順次適用されます。</p>
 
 <pre><code>  body {
     color: rgba(255, 200, 100, 0.5);
@@ -20,7 +20,7 @@
   }
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>   body {
      color: rgba(255,200,100,0.5);
@@ -30,12 +30,12 @@
    }
 </code></pre>
 
-<p>To see what parameters a function or mixin accept, use the <code>p()</code> function:</p>
+<p>関数やミックスインがどのようなパラメータを受け取るのか調べるには<code>p()</code>関数を使います:</p>
 
 <pre><code>p(rgba)
 </code></pre>
 
-<p>Yielding:</p>
+<p>これは次のように展開されます:</p>
 
 <pre><code>inspect: rgba(red, green, blue, alpha)
 </code></pre>
